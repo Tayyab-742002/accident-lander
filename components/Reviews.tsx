@@ -17,6 +17,7 @@ export default function Reviews() {
 
   return (
     <div className="social-proof">
+      <div className="section-inner">
       <div className="sp-label">{t('label')}</div>
       <div className="carousel-wrap">
         <div
@@ -40,6 +41,7 @@ export default function Reviews() {
             onClick={() => setIndex(i)}
           />
         ))}
+      </div>
       </div>
     </div>
   );

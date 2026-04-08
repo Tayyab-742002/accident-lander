@@ -88,7 +88,7 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   letter-spacing: 0.8px;
   color: var(--green);
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
 }
 .settlements-row {
   display: flex;
@@ -381,3 +381,68 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
 .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 12px; }
 
 .hidden { display: none !important; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+
+/* Inner container — constrains content width inside full-bleed sections */
+.section-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Quiz outer background — wraps the white card on desktop */
+.quiz-bg {
+  background: var(--navy-mid);
+}
+
+@media (min-width: 768px) {
+
+  /* HERO */
+  .hero { padding: 48px 24px 0; }
+  .hero h1 { font-size: 54px; }
+  .hero-sub { font-size: 15px; max-width: 480px; }
+  .urgency-bar { font-size: 12px; padding: 6px 16px; }
+  .settlements-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  .settlement-card { min-width: 120px; }
+
+  /* QUIZ CARD */
+  .quiz-bg { padding: 48px 24px 56px; }
+  .quiz-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 36px 40px 48px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+  }
+  .question-text { font-size: 23px; }
+  .option-btn { font-size: 15px; padding: 16px 20px; }
+  .submit-btn { font-size: 18px; padding: 20px; }
+
+  /* HOW IT WORKS */
+  .hiw { padding: 52px 24px; }
+  .section-title { font-size: 30px; }
+  .hiw-item h4 { font-size: 14px; }
+  .hiw-item p { font-size: 12px; }
+
+  /* REVIEWS */
+  .social-proof { padding: 52px 24px; }
+  .review-text { font-size: 15px; }
+
+  /* FOOTER */
+  .footer { padding: 32px 24px; }
+  .footer-disclaimer { font-size: 11px; max-width: 640px; margin: 0 auto 16px; }
+}
+
+@media (min-width: 1024px) {
+  .hero { padding: 60px 32px 0; }
+  .hero h1 { font-size: 64px; }
+  .hero-sub { font-size: 16px; max-width: 540px; }
+  .quiz-bg { padding: 56px 32px 64px; }
+  .quiz-wrap { max-width: 600px; padding: 40px 48px 56px; }
+}
+

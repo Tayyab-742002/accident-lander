@@ -13,12 +13,13 @@ export default function QuizSection() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
 
   const wrapRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLTextAreaElement>(null);
 
   const progressPct = Math.round((currentStep / TOTAL_STEPS) * 100);
 
   function scrollToQuiz() {
-    wrapRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function goToStep(n: number) {
@@ -70,7 +71,8 @@ export default function QuizSection() {
   const stepLabel = t('stepLabel', { current: currentStep, total: TOTAL_STEPS });
 
   return (
-    <div className="quiz-wrap" ref={wrapRef}>
+    <div className="quiz-bg" ref={wrapRef}>
+    <div className="quiz-wrap" ref={cardRef}>
       <div className="step-indicator">
         <div className="step-bar">
           <div
@@ -389,6 +391,7 @@ export default function QuizSection() {
         )}
 
       </div>
+    </div>
     </div>
   );
 }
