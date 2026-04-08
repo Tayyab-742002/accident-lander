@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "Descubra Cuánto Vale Su Caso de Accidente — Revisión Gratuita"
+  },
+  "hero": {
+    "urgency": "Los Plazos Aplican — Actúe Ahora",
+    "headline1": "La Compañía de Seguros",
+    "headline2": "No Está",
+    "headlineNot": "De Su Lado.",
+    "headline3": "",
+    "sub": "La mayoría de las víctimas de accidentes reciben solo una fracción de lo que les corresponde. Responda 8 preguntas rápidas — descubra el valor real de su caso, 100% gratis.",
+    "settlementsLabel": "Acuerdos Recientes en Nuestra Red",
+    "settlements": [
+      { "line1": "Accidente de Auto", "line2": "Por Detrás", "amount": "$127K" },
+      { "line1": "Accidente de", "line2": "Motocicleta", "amount": "$385K" },
+      { "line1": "Accidente de", "line2": "Rideshare", "amount": "$214K" },
+      { "line1": "Accidente de", "line2": "Camión", "amount": "$490K" },
+      { "line1": "Atropello de", "line2": "Peatón", "amount": "$310K" }
+    ]
+  },
+  "quiz": {
+    "stepLabel": "Paso {current} de {total}",
+    "complete": "¡Completado!",
+    "s1": {
+      "label": "Pregunta 1 de 8",
+      "question": "¿Qué tipo de accidente tuvo?",
+      "hint": "Incluso lesiones menores podrían darle derecho a una compensación significativa.",
+      "options": ["Accidente de Auto / Camión", "Accidente de Motocicleta", "Accidente de Rideshare (Uber / Lyft)", "Accidente como Peatón"]
+    },
+    "s2": {
+      "label": "Pregunta 2 de 8",
+      "question": "¿Cuándo ocurrió su accidente?",
+      "options": ["En el Último Mes", "En los Últimos 6 Meses", "En el Último Año", "Hace Más de 1 Año"]
+    },
+    "s3": {
+      "label": "Pregunta 3 de 8",
+      "question": "¿Quién tuvo principalmente la culpa del accidente?",
+      "options": ["Principalmente la Otra Parte", "Culpa Compartida", "Yo Tuve la Culpa", "No Estoy Seguro"]
+    },
+    "s4": {
+      "label": "Pregunta 4 de 8",
+      "question": "¿Resultó lesionado en el accidente?",
+      "options": ["Sí, Resulté Lesionado", "No, No Resulté Lesionado"]
+    },
+    "s5": {
+      "label": "Pregunta 5 de 8",
+      "question": "¿Recibió atención médica después del accidente?",
+      "hint": "Los registros médicos son clave para maximizar su compensación.",
+      "options": [
+        "Sí, Ya Recibí Tratamiento",
+        "Aún No — Mi Accidente Fue Reciente",
+        "No — Han Pasado Más de 30 Días y No He Visto a un Médico"
+      ]
+    },
+    "s6": {
+      "label": "Pregunta 6 de 8",
+      "question": "¿Tiene actualmente representación legal?",
+      "options": ["No, No Tengo Abogado", "Sí, Ya Tengo Uno"]
+    },
+    "s7": {
+      "label": "Pregunta 7 de 8",
+      "question": "¡Casi Terminamos!",
+      "hint": "Cuéntenos qué pasó en su accidente para que podamos estimar su posible compensación.",
+      "hintExample": "(p. ej. \"Me golpeó un conductor a exceso de velocidad en una intersección, me lesioné el hombro\")",
+      "placeholder": "p. ej. \"Me golpeó un conductor a exceso de velocidad, me lesioné el hombro y el cuello...\"",
+      "errorMsg": "⚠ Este campo es obligatorio. Por favor describa su accidente para continuar.",
+      "continueBtn": "Continuar — Ver Mis Opciones"
+    },
+    "s8": {
+      "label": "¡Casi Listo!",
+      "question": "¿A dónde enviamos su revisión de caso gratuita?",
+      "qualifyBox": "Según sus respuestas, puede calificar para una compensación significativa. Un abogado autorizado se comunicará con usted en minutos — sin obligación, sin costo inicial.",
+      "firstName": "Nombre",
+      "firstNamePh": "Nombre",
+      "lastName": "Apellido",
+      "lastNamePh": "Apellido",
+      "phone": "Número de Teléfono",
+      "phonePh": "(555) 000-0000",
+      "email": "Correo Electrónico",
+      "emailPh": "su@correo.com",
+      "street": "Dirección",
+      "streetPh": "Dirección",
+      "city": "Ciudad",
+      "cityPh": "Ciudad",
+      "state": "Estado",
+      "statePh": "Estado",
+      "zip": "Código Postal",
+      "zipPh": "p. ej. 90210",
+      "submitBtn": "Obtenga Mi Revisión de Caso GRATIS",
+      "submitSub": "Sin Honorarios a Menos Que Ganemos · 100% Confidencial · Toma 30 Segundos",
+      "trust1": "Cifrado SSL de 256 bits",
+      "trust2": "Abogado Responde en Minutos",
+      "trust3": "Sin Victoria, Sin Honorarios"
+    },
+    "thankyou": {
+      "title": "¡Todo Listo!",
+      "sub": "Un abogado autorizado en su área se comunicará en los próximos minutos para revisar su caso — sin ningún costo para usted.",
+      "nextTitle": "¿Qué Sucede Ahora?",
+      "nextBody": "Tenga su teléfono a mano. Un abogado local lo llamará para revisar sus opciones. No tiene ninguna obligación de contratar a nadie."
+    }
+  },
+  "hiw": {
+    "title": "Proceso Simple de 3 Pasos",
+    "step1Title": "Responda 8 Preguntas Rápidas",
+    "step1Desc": "Toma menos de 60 segundos. No se necesitan documentos.",
+    "step2Title": "Obtenga una Revisión Gratuita",
+    "step2Desc": "Un abogado local se comunica con usted en minutos.",
+    "step3Title": "Luche por el Máximo Pago",
+    "step3Desc": "No paga nada a menos que su caso sea ganado."
+  },
+  "reviews": {
+    "label": "Lo Que Dicen las Víctimas de Accidentes",
+    "items": [
+      {
+        "text": "\"Pensé que mi choque menor no valía la pena perseguir. El abogado que me conectaron me consiguió $43,000. Nunca lo hubiera sabido si no hubiera llenado este formulario.\"",
+        "reviewer": "— María T., California"
+      },
+      {
+        "text": "\"El seguro me ofreció $8,000 de inmediato y casi lo acepté. Después de hablar con un abogado, terminé llegando a un acuerdo por $127,500. No acepte la primera oferta.\"",
+        "reviewer": "— James K., Texas"
+      },
+      {
+        "text": "\"Alguien me llamó en 10 minutos. Todo fue gratuito y sin ninguna presión. Mi caso se resolvió en 4 meses por mucho más de lo que esperaba.\"",
+        "reviewer": "— Diana R., Florida"
+      },
+      {
+        "text": "\"Esperé casi un año antes de hacer esto. Ojalá lo hubiera hecho antes. Mi abogado fue agresivo y me consiguió cada dólar que merecía. Lo recomiendo ampliamente.\"",
+        "reviewer": "— Andre M., Georgia"
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Este es un servicio de publicidad y no un bufete de abogados ni un servicio de referencia de abogados. Al enviar su información, usted consiente ser contactado por un abogado autorizado o proveedor de servicios legales. Los resultados pueden variar. Los acuerdos mostrados son solo ilustrativos y no garantizan resultados similares. Los abogados trabajan en contingencia — sin honorarios a menos que gane. No se forma ninguna relación abogado-cliente al enviar este formulario.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "doNotSell": "No Vender Mi Información",
+    "disclaimerLink": "Aviso Legal",
+    "copy": "© 2026 Todos los derechos reservados."
+  }
+}

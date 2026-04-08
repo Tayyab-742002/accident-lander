@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "See What Your Accident Case Is Worth — Free Review"
+  },
+  "hero": {
+    "urgency": "Time Limits Apply — Act Now",
+    "headline1": "The Insurance Company",
+    "headline2": "Is",
+    "headlineNot": "Not",
+    "headline3": "On Your Side.",
+    "sub": "Most accident victims walk away with a fraction of what they're owed. Answer 8 quick questions — find out what your case is actually worth, 100% free.",
+    "settlementsLabel": "Recent Settlements In Our Network",
+    "settlements": [
+      { "line1": "Car Accident", "line2": "Rear End", "amount": "$127K" },
+      { "line1": "Motorcycle", "line2": "Accident", "amount": "$385K" },
+      { "line1": "Rideshare", "line2": "Accident", "amount": "$214K" },
+      { "line1": "Truck", "line2": "Accident", "amount": "$490K" },
+      { "line1": "Pedestrian", "line2": "Hit", "amount": "$310K" }
+    ]
+  },
+  "quiz": {
+    "stepLabel": "Step {current} of {total}",
+    "complete": "Complete!",
+    "s1": {
+      "label": "Question 1 of 8",
+      "question": "What type of accident were you in?",
+      "hint": "Even minor injuries could be owed significant money.",
+      "options": ["Car / Truck Accident", "Motorcycle Accident", "Rideshare Accident (Uber / Lyft)", "Pedestrian Accident"]
+    },
+    "s2": {
+      "label": "Question 2 of 8",
+      "question": "When did your accident occur?",
+      "options": ["Within the Last Month", "Within the Last 6 Months", "Within the Last Year", "Over 1 Year Ago"]
+    },
+    "s3": {
+      "label": "Question 3 of 8",
+      "question": "Who was primarily at fault for the accident?",
+      "options": ["Mostly the Other Party", "Shared Fault", "I Was at Fault", "Not Sure"]
+    },
+    "s4": {
+      "label": "Question 4 of 8",
+      "question": "Were you injured in the accident?",
+      "options": ["Yes, I Was Injured", "No, I Wasn't Injured"]
+    },
+    "s5": {
+      "label": "Question 5 of 8",
+      "question": "Did you receive medical treatment after the accident?",
+      "hint": "Medical records are key to maximizing your compensation.",
+      "options": [
+        "Yes, I've Received Treatment",
+        "Not Yet — My Accident Was Recent",
+        "No — It's Been Over 30 Days and I Haven't Seen a Doctor"
+      ]
+    },
+    "s6": {
+      "label": "Question 6 of 8",
+      "question": "Are you currently represented by an attorney?",
+      "options": ["No, I Don't Have an Attorney", "Yes, I Already Have One"]
+    },
+    "s7": {
+      "label": "Question 7 of 8",
+      "question": "Almost Finished!",
+      "hint": "Tell us what happened in your accident so we can estimate your potential payout.",
+      "hintExample": "(i.e. \"Hit by a speeding driver at an intersection, injured my shoulder\")",
+      "placeholder": "e.g. \"Hit by a speeding driver at an intersection, injured my shoulder and neck...\"",
+      "errorMsg": "⚠ This field is required. Please describe your accident to continue.",
+      "continueBtn": "Continue — See My Options"
+    },
+    "s8": {
+      "label": "Almost Done!",
+      "question": "Where should we send your free case review?",
+      "qualifyBox": "Based on your answers, you may qualify for significant compensation. A licensed attorney will reach out within minutes — no obligation, no upfront cost.",
+      "firstName": "First Name",
+      "firstNamePh": "First name",
+      "lastName": "Last Name",
+      "lastNamePh": "Last name",
+      "phone": "Phone Number",
+      "phonePh": "(555) 000-0000",
+      "email": "Email Address",
+      "emailPh": "your@email.com",
+      "street": "Street Address",
+      "streetPh": "Street address",
+      "city": "City",
+      "cityPh": "City",
+      "state": "State",
+      "statePh": "State",
+      "zip": "Zip Code",
+      "zipPh": "e.g. 90210",
+      "submitBtn": "Get My FREE Case Review Now",
+      "submitSub": "No Fees Unless We Win · 100% Confidential · Takes 30 Seconds",
+      "trust1": "256-bit SSL Encrypted",
+      "trust2": "Attorney Replies in Minutes",
+      "trust3": "No Win, No Fee"
+    },
+    "thankyou": {
+      "title": "You're All Set!",
+      "sub": "A licensed attorney in your area will reach out within the next few minutes to review your case — at zero cost to you.",
+      "nextTitle": "What Happens Next?",
+      "nextBody": "Keep your phone nearby. A local attorney will call to go over your options. You are under no obligation to hire anyone."
+    }
+  },
+  "hiw": {
+    "title": "Simple 3-Step Process",
+    "step1Title": "Answer 8 Quick Questions",
+    "step1Desc": "Takes under 60 seconds. No paperwork needed.",
+    "step2Title": "Get a Free Case Review",
+    "step2Desc": "A local attorney contacts you within minutes.",
+    "step3Title": "Fight for Max Payout",
+    "step3Desc": "You pay nothing unless your case is won."
+  },
+  "reviews": {
+    "label": "What Accident Victims Are Saying",
+    "items": [
+      {
+        "text": "\"I thought my fender bender wasn't worth pursuing. The attorney they connected me with got me $43,000. I never would have known if I hadn't filled out this form.\"",
+        "reviewer": "— Maria T., California"
+      },
+      {
+        "text": "\"Insurance offered me $8,000 right away and I almost accepted. After speaking with an attorney, I ended up settling for $127,500. Don't take the first offer.\"",
+        "reviewer": "— James K., Texas"
+      },
+      {
+        "text": "\"Someone called me within 10 minutes. The whole thing was free and there was zero pressure. My case settled in 4 months for way more than I expected.\"",
+        "reviewer": "— Diana R., Florida"
+      },
+      {
+        "text": "\"I waited almost a year before doing this. I wish I'd done it sooner. My attorney was aggressive and got me every dollar I deserved. Highly recommend.\"",
+        "reviewer": "— Andre M., Georgia"
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "This is an advertising service and not a law firm or attorney referral service. By submitting your information, you consent to being contacted by a licensed attorney or legal service provider. Results may vary. Settlements shown are for illustrative purposes only and do not guarantee similar outcomes. Attorneys work on contingency — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "doNotSell": "Do Not Sell My Info",
+    "disclaimerLink": "Disclaimer",
+    "copy": "© 2026 All rights reserved."
+  }
+}
