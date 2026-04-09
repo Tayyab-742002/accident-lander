@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -47,6 +48,25 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+
+        {/* TrustedForm — Properly formatted for React/Next.js */}
+        <Script id="trustedform-init" strategy="afterInteractive">
+          {`
+            (function() {
+              var tf = document.createElement('script');
+              tf.type = 'text/javascript';
+              tf.async = true;
+              tf.src = ("https:" == document.location.protocol ? 'https' : 'http') +
+              '://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&use_tagged_consent=true&l=' +
+              new Date().getTime() + Math.random();
+              var s = document.getElementsByTagName('script')[0]; 
+              if (s && s.parentNode) s.parentNode.insertBefore(tf, s);
+            })();
+          `}
+        </Script>
+        <noscript>
+          <img src="https://api.trustedform.com/ns.gif" alt="TrustedForm" />
+        </noscript>
       </body>
     </html>
   );

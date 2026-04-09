@@ -1,7 +1,17 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import PrivacyModal from './PrivacyModal';
+import TermsModal from './TermsModal';
+import {
+  type QuizAnswers,
+  type LeadPayload,
+  postLead,
+  getVisitorIp,
+  getTrustedFormValues,
+  formatInquiryDate,
+} from '@/lib/leadpost';
 
 const TOTAL_STEPS = 8;
 
@@ -9,14 +19,23 @@ export default function QuizSection() {
   const t = useTranslations('quiz');
   const [currentStep, setCurrentStep] = useState(1);
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [storyError, setStoryError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
+
+  /* ── quiz answer tracking ─────────────────────────────────── */
+  const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLTextAreaElement>(null);
 
   const progressPct = Math.round((currentStep / TOTAL_STEPS) * 100);
+
+  /* Pre-fetch visitor IP as early as possible */
+  useEffect(() => {
+    getVisitorIp();
+  }, []);
 
   function scrollToQuiz() {
     cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -27,7 +46,12 @@ export default function QuizSection() {
     setTimeout(scrollToQuiz, 50);
   }
 
-  function selectOption(nextStep: number) {
+  /**
+   * Store the selected option text and advance to the next step.
+   * `answerKey` maps 1:1 to the LeadProsper API field name.
+   */
+  function selectOption(answerKey: keyof QuizAnswers, value: string, nextStep: number) {
+    setAnswers((prev) => ({ ...prev, [answerKey]: value }));
     setTimeout(() => goToStep(nextStep), 300);
   }
 
@@ -39,13 +63,14 @@ export default function QuizSection() {
       return;
     }
     setStoryError(false);
+    setAnswers((prev) => ({ ...prev, Accident_Details: val }));
     goToStep(8);
   }
 
-  function submitForm(e: React.FormEvent<HTMLFormElement>) {
+  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const fields = ['firstName', 'lastName', 'phone', 'email', 'street', 'city', 'state', 'zip'];
+    const fields = ['fullName', 'phone', 'email', 'street', 'city', 'state', 'zip'];
     const errors: Record<string, boolean> = {};
     let firstInvalid: HTMLElement | null = null;
 
@@ -64,6 +89,57 @@ export default function QuizSection() {
     }
 
     setFieldErrors({});
+    setSubmitting(true);
+
+    /* ── Assemble the full lead payload ─────────────────────── */
+    const fd = (name: string) =>
+      (form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement).value.trim();
+
+    const consentEl = form.elements.namedItem('consent') as HTMLInputElement | null;
+    const consentChecked = consentEl?.checked ?? true;
+
+    const ip = await getVisitorIp();
+    const tf = getTrustedFormValues();
+
+    const payload: LeadPayload = {
+      /* quiz answers */
+      Was_in_accident: answers.Was_in_accident ?? '',
+      Accident_timeframe: answers.Accident_timeframe ?? '',
+      At_fault: answers.At_fault ?? '',
+      Was_injured: answers.Was_injured ?? '',
+      Medical_treatment: answers.Medical_treatment ?? '',
+      Has_lawyer: answers.Has_lawyer ?? '',
+      Accident_Details: answers.Accident_Details ?? '',
+
+      /* contact form */
+      Full_Name: fd('fullName'),
+      Phone: fd('phone'),
+      Email: fd('email'),
+      street: fd('street'),
+      city: fd('city'),
+      State: fd('state'),
+      zip_code: fd('zip'),
+
+      /* auto-collected */
+      Page_URL: window.location.href,
+      IP_Address: ip,
+      Inquiry_date: formatInquiryDate(),
+      TCPA_Consent: consentChecked ? 'Accepted' : 'Declined',
+
+      /* TrustedForm */
+      xxTrustedFormCertUrl: tf.xxTrustedFormCertUrl,
+      xxTrustedFormPingUrl: tf.xxTrustedFormPingUrl,
+      xxTrustedFormToken: tf.xxTrustedFormToken,
+    };
+
+    try {
+      await postLead(payload);
+    } catch {
+      // Silently continue — we always show the thank-you screen.
+      // If the CRM rejects, the team can debug in LeadProsper.
+    }
+
+    setSubmitting(false);
     setDone(true);
     setTimeout(scrollToQuiz, 50);
   }
@@ -110,7 +186,7 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 1 */}
+        {/* STEP 1 — Accident type */}
         {!done && currentStep === 1 && (
           <div className="step">
             <div className="question-label">{t('s1.label')}</div>
@@ -118,7 +194,7 @@ export default function QuizSection() {
             <div className="question-hint">{t('s1.hint')}</div>
             <div className="options">
               {(t.raw('s1.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(2)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('Was_in_accident', opt, 2)}>
                   {opt}
                 </button>
               ))}
@@ -126,14 +202,14 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 2 */}
+        {/* STEP 2 — Timeframe */}
         {!done && currentStep === 2 && (
           <div className="step">
             <div className="question-label">{t('s2.label')}</div>
             <div className="question-text">{t('s2.question')}</div>
             <div className="options">
               {(t.raw('s2.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(3)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('Accident_timeframe', opt, 3)}>
                   {opt}
                 </button>
               ))}
@@ -141,14 +217,14 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 3 */}
+        {/* STEP 3 — Fault */}
         {!done && currentStep === 3 && (
           <div className="step">
             <div className="question-label">{t('s3.label')}</div>
             <div className="question-text">{t('s3.question')}</div>
             <div className="options">
               {(t.raw('s3.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(4)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('At_fault', opt, 4)}>
                   {opt}
                 </button>
               ))}
@@ -156,14 +232,14 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 4 */}
+        {/* STEP 4 — Injured */}
         {!done && currentStep === 4 && (
           <div className="step">
             <div className="question-label">{t('s4.label')}</div>
             <div className="question-text">{t('s4.question')}</div>
             <div className="options">
               {(t.raw('s4.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(5)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('Was_injured', opt, 5)}>
                   {opt}
                 </button>
               ))}
@@ -171,7 +247,7 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 5 */}
+        {/* STEP 5 — Medical treatment */}
         {!done && currentStep === 5 && (
           <div className="step">
             <div className="question-label">{t('s5.label')}</div>
@@ -179,7 +255,7 @@ export default function QuizSection() {
             <div className="question-hint">{t('s5.hint')}</div>
             <div className="options">
               {(t.raw('s5.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(6)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('Medical_treatment', opt, 6)}>
                   {opt}
                 </button>
               ))}
@@ -187,14 +263,14 @@ export default function QuizSection() {
           </div>
         )}
 
-        {/* STEP 6 */}
+        {/* STEP 6 — Has lawyer */}
         {!done && currentStep === 6 && (
           <div className="step">
             <div className="question-label">{t('s6.label')}</div>
             <div className="question-text">{t('s6.question')}</div>
             <div className="options">
               {(t.raw('s6.options') as string[]).map((opt, i) => (
-                <button key={i} className="option-btn" onClick={() => selectOption(7)}>
+                <button key={i} className="option-btn" onClick={() => selectOption('Has_lawyer', opt, 7)}>
                   {opt}
                 </button>
               ))}
@@ -252,25 +328,14 @@ export default function QuizSection() {
 
             <form onSubmit={submitForm} noValidate>
               <div className="form-group">
-                <label className="form-label">{t('s8.firstName')}</label>
+                <label className="form-label">{t('s8.fullName')}</label>
                 <input
                   className="form-input"
                   type="text"
-                  name="firstName"
-                  placeholder={t('s8.firstNamePh')}
-                  style={fieldErrors.firstName ? { borderColor: '#D63030' } : undefined}
-                  onChange={() => setFieldErrors(p => ({ ...p, firstName: false }))}
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label">{t('s8.lastName')}</label>
-                <input
-                  className="form-input"
-                  type="text"
-                  name="lastName"
-                  placeholder={t('s8.lastNamePh')}
-                  style={fieldErrors.lastName ? { borderColor: '#D63030' } : undefined}
-                  onChange={() => setFieldErrors(p => ({ ...p, lastName: false }))}
+                  name="fullName"
+                  placeholder={t('s8.fullNamePh')}
+                  style={fieldErrors.fullName ? { borderColor: '#D63030' } : undefined}
+                  onChange={() => setFieldErrors(p => ({ ...p, fullName: false }))}
                 />
               </div>
               <div className="form-group">
@@ -360,9 +425,23 @@ export default function QuizSection() {
                 />
               </div>
 
-              <button type="submit" className="submit-btn">
-                {t('s8.submitBtn')}
-                <span className="sub">{t('s8.submitSub')}</span>
+              <div className="consent-wrap">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  defaultChecked
+                  className="consent-checkbox"
+                />
+                <div className="consent-text">
+                  <label htmlFor="consent">{t('s8.consentPre')}</label>
+                  <PrivacyModal />{t('s8.consentAnd')}<TermsModal />{t('s8.consentPost')}
+                </div>
+              </div>
+
+              <button type="submit" className="submit-btn" disabled={submitting}>
+                {submitting ? t('s8.submittingBtn') : t('s8.submitBtn')}
+                {!submitting && <span className="sub">{t('s8.submitSub')}</span>}
               </button>
             </form>
 
