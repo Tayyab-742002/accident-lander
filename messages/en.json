@@ -133,8 +133,162 @@
     "disclaimer": "This is an advertising service and not a law firm or attorney referral service. By submitting your information, you consent to being contacted by a licensed attorney or legal service provider. Results may vary. Settlements shown are for illustrative purposes only and do not guarantee similar outcomes. Attorneys work on contingency — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "doNotSell": "Do Not Sell My Info",
     "disclaimerLink": "Disclaimer",
     "copy": "© 2026 All rights reserved."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: December 11, 2025",
+    "close": "Close",
+    "intro": "Welcome to Case Settlement Now. These Terms of Service (\"Terms\", \"Agreement\") govern your use of our website located at https://casesettlementnow.com (\"Service\") and any related services provided by Case Settlement Now (\"Company\", \"We\", or \"Our\").\n\nBy accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.",
+    "s1Title": "Interpretation and Definitions",
+    "s1InterpTitle": "Interpretation",
+    "s1InterpBody": "Words with initial capital letters have defined meanings under the following conditions. These definitions apply whether the terms appear in singular or plural form.",
+    "s1DefsTitle": "Definitions",
+    "s1DefsIntro": "For the purposes of these Terms:",
+    "s1Defs": [
+      "Account means a unique account created for you to access our Service or parts of our Service.",
+      "Affiliate means an entity that controls, is controlled by, or is under common control with a party.",
+      "Company refers to Case Settlement Now.",
+      "Service refers to the Website and all services offered through it.",
+      "Service Provider means any third-party company or individual employed to facilitate, provide, or assist with the Service.",
+      "User, You or Your means the individual or legal entity that accesses or uses the Service.",
+      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com."
+    ],
+    "s2Title": "Use of Our Service",
+    "s2EligTitle": "Eligibility",
+    "s2EligBody": "You must be at least 18 years old and able to enter into a legally binding agreement to use the Service.",
+    "s2PurpTitle": "Purpose",
+    "s2PurpBody": "The Service is intended to provide information, guidance and assistance for claims related to motor vehicle accidents (MVA).",
+    "s2AccTitle": "Account Responsibilities",
+    "s2AccBody": "You are responsible for maintaining the confidentiality of your Account information and for all activity that occurs under your Account. You agree to notify us immediately of any unauthorized use.",
+    "s2RestTitle": "Restrictions",
+    "s2RestIntro": "You agree not to:",
+    "s2RestList": [
+      "Use the Service for any illegal purpose.",
+      "Interfere with or attempt to disrupt the Service.",
+      "Use automated systems or software to extract data from the Service.",
+      "Impersonate any person or entity or falsely represent your affiliation with any person or entity."
+    ],
+    "s3Title": "Submitting Claims",
+    "s3AccTitle": "Accuracy of Information",
+    "s3AccBody": "You agree to provide accurate and complete information when submitting claims or interacting with the Service.",
+    "s3EligTitle": "Eligibility",
+    "s3EligBody": "Not all users may qualify for legal assistance or settlement services. We reserve the right to disqualify any claim based on eligibility criteria or insufficient information.",
+    "s4Title": "Payment and Fees",
+    "s4Body": "Currently, the Service is offered free of charge to users who submit inquiries or complaints. If paid services are introduced, these fees will be clearly disclosed and payment will be required before the service is provided.",
+    "s5Title": "Intellectual Property",
+    "s5Body": "All content, logos, graphics, and materials provided through the Service are the property of Case Settlement Now or its licensors and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
+    "s6Title": "Limitation of Liability",
+    "s6Intro": "To the maximum extent permitted by law, Case Settlement Now will not be liable for:",
+    "s6List": [
+      "Any direct, indirect, incidental, special or consequential damages arising from the use of the Service.",
+      "Errors, omissions or inaccuracies in the information provided.",
+      "Delays or failures in the processing of claims."
+    ],
+    "s7Title": "Disclaimer",
+    "s7Body": "This service is provided for informational purposes only and does not constitute legal advice. You should consult a qualified attorney regarding your individual circumstances.",
+    "s8Title": "Applicable Law",
+    "s8Body": "These Terms are governed by and construed in accordance with the laws of Wyoming, United States. Any dispute arising under these Terms will be subject to the exclusive jurisdiction of the courts located in Wyoming.",
+    "s9Title": "Changes to Terms",
+    "s9Body": "We may update these Terms from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date. Your continued use of the Service after such changes constitutes your acceptance of the updated Terms.",
+    "s10Title": "Marketing Partner",
+    "s10Body": "DK Law – Injuries, Accidents and More\n611 Anton Blvd, Costa Mesa, CA 92626",
+    "s11Title": "Contact Us",
+    "s11Body": "If you have any questions about these Terms, you can contact us:",
+    "s11Email": "By email: info@casesettlementnow.com"
+  },
+  "disclaimer": {
+    "title": "Disclaimer",
+    "close": "Close",
+    "sections": [
+      {
+        "title": "General",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a California-licensed personal injury law firm. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Employee Video (Not a Lawyer)",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a California-licensed personal injury law firm. The individual represented is not an attorney. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Professional Models",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a personal injury law firm licensed in California. The individuals represented are paid professional models and do not represent actual clients of this firm. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "AI-Powered Model",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a personal injury law firm licensed in California. The individuals shown are computer-generated models and do not represent actual clients of this firm. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Car Accident Scene / Dramatization",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a California-licensed personal injury law firm. Visual representations of some events are dramatizations. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Car Accident Scenes with Models",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a California-licensed personal injury law firm. Dramatization; some individuals shown are paid professional models and do not represent actual clients of this firm. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Settlement Amount (with External Law Firm)",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a personal injury law firm licensed in California. Some settlements and verdicts are reached through collaboration with external attorneys and associated law firms. No guarantee of results. Results depend on the unique facts and applicable law of each case. Office locations and additional information can be found at www.dklaw.com."
+      },
+      {
+        "title": "Voice-Over",
+        "body": "Advertisement. DK Law – Injury, Accidents & More, PC, is a California-licensed personal injury law firm. Voiceover is performed by a paid professional spokesperson. Past results do not guarantee a similar outcome. Office locations and additional information can be found at www.dklaw.com."
+      }
+    ]
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: November 13, 2024",
+    "intro": "This Privacy Policy describes Our policies and procedures regarding the collection, use, and disclosure of Your information when you use the Service and informs you about Your privacy rights and how the law protects you.\n\nWe use your personal data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.",
+    "s1Title": "Interpretation and Definitions",
+    "s1InterpTitle": "Interpretation",
+    "s1InterpBody": "Words whose initial letter is capitalized have meanings defined under the following conditions. The following definitions will have the same meaning regardless of whether they appear in singular or plural.",
+    "s1DefsTitle": "Definitions",
+    "s1DefsIntro": "For the purposes of this Privacy Policy:",
+    "s1Defs": [
+      "Account means a unique account created for you to access our Service or parts of our Service.",
+      "Affiliate means an entity that controls, is controlled by, or is under common control with a party, where \"control\" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other management authority.",
+      "Company (referred to as \"the Company\", \"We\" or \"Our\" in this Agreement) refers to Case Settlement Now.",
+      "Cookies are small files that are placed on your computer, mobile device, or any other device by a website, containing details of your browsing history on that website, among their many uses.",
+      "Country refers to: California, United States",
+      "Device means any device that can access the Service, such as a computer, cell phone, or digital tablet.",
+      "Personal Data is any information relating to an identified or identifiable individual.",
+      "Service refers to the Website.",
+      "Service Provider means any natural or legal person who processes data on behalf of the Company.",
+      "Usage Data refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.",
+      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com/",
+      "You means the individual accessing or using the Service, or the company or other legal entity on whose behalf such individual accesses or uses the Service, as applicable."
+    ],
+    "s2Title": "Collection and Use of Your Personal Data",
+    "s2TypesTitle": "Types of Data Collected",
+    "s2PersonalTitle": "Personal Data",
+    "s2PersonalBody": "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:",
+    "s2PersonalList": ["Email address", "Name and surname", "Phone number", "Address, State, Province, ZIP/Postal Code, City"],
+    "s2UsageTitle": "Usage Data",
+    "s2UsageBody": "Usage Data is automatically collected when you use the Service. Usage Data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.",
+    "s2CookiesTitle": "Tracking Technologies and Cookies",
+    "s2CookiesBody": "We use cookies and similar tracking technologies to monitor activity on our Service and store certain information. We use both session and persistent cookies for various purposes.",
+    "s2UseTitle": "Use of Your Personal Data",
+    "s2UseIntro": "The Company may use Personal Data for the following purposes:",
+    "s2UseList": [
+      "To provide and maintain our Service",
+      "To manage your account",
+      "To contact you by email, phone calls, or SMS",
+      "To provide you with news and special offers",
+      "To manage your requests",
+      "For commercial transfers"
+    ],
+    "s3Title": "Retention of Your Personal Data",
+    "s3Body": "The Company will retain your Personal Data only for as long as necessary for the purposes set out in this Privacy Policy.",
+    "s4Title": "Security of Your Personal Data",
+    "s4Body": "The security of your personal data is important to us, but please remember that no method of transmission over the Internet is 100% secure.",
+    "s5Title": "Children's Privacy",
+    "s5Body": "Our Service is not directed to children under the age of 13. We do not intentionally collect personally identifiable information from children under the age of 13.",
+    "s6Title": "Changes to this Privacy Policy",
+    "s6Body": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
+    "s7Title": "Contact Us",
+    "s7Body": "If you have any questions about this Privacy Policy, you can contact us:",
+    "s7Email": "By email: info@casesettlementnow.com",
+    "close": "Close"
   }
 }
