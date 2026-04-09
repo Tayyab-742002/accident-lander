@@ -82,6 +82,13 @@ export default function QuizSection() {
       }
     }
 
+    const consentEl = form.elements.namedItem('consent') as HTMLInputElement | null;
+    const consentChecked = consentEl?.checked ?? false;
+
+    if (!consentChecked) {
+      errors['consent'] = true;
+    }
+
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       firstInvalid?.focus();
@@ -94,9 +101,6 @@ export default function QuizSection() {
     /* ── Assemble the full lead payload ─────────────────────── */
     const fd = (name: string) =>
       (form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement).value.trim();
-
-    const consentEl = form.elements.namedItem('consent') as HTMLInputElement | null;
-    const consentChecked = consentEl?.checked ?? true;
 
     const ip = await getVisitorIp();
     const tf = getTrustedFormValues();
@@ -425,19 +429,25 @@ export default function QuizSection() {
                 />
               </div>
 
-              <div className="consent-wrap">
+              <div className={`consent-wrap ${fieldErrors.consent ? 'error' : ''}`}>
                 <input
                   type="checkbox"
                   id="consent"
                   name="consent"
                   defaultChecked
                   className="consent-checkbox"
+                  onChange={() => setFieldErrors(p => ({ ...p, consent: false }))}
                 />
                 <div className="consent-text">
                   <label htmlFor="consent">{t('s8.consentPre')}</label>
                   <PrivacyModal />{t('s8.consentAnd')}<TermsModal />{t('s8.consentPost')}
                 </div>
               </div>
+              {fieldErrors.consent && (
+                <div className="error-msg" style={{ marginTop: -4, marginBottom: 12 }}>
+                  {t('s8.consentError')}
+                </div>
+              )}
 
               <button type="submit" className="submit-btn" disabled={submitting}>
                 {submitting ? t('s8.submittingBtn') : t('s8.submitBtn')}

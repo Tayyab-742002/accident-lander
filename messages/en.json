@@ -87,6 +87,7 @@
       "consentPre": "By clicking the 'Submit' button, I agree to the ",
       "consentAnd": " and ",
       "consentPost": " and authorize Case Settlement Now and its partners to contact me by telephone calls, email and text messages to the number and email address I provided above. I agree to receive telemarketing calls or artificial voice and pre-recorded messages via an autodialed phone system, even if my telephone number is a mobile number that is currently listed on any state, federal or corporate 'Do Not Call' list. I understand that my consent is not a condition of purchase of any goods or services and that standard message and data rates may apply.",
+      "consentError": "Please accept to continue",
       "submitBtn": "Get My FREE Case Review Now",
       "submittingBtn": "Submitting...",
       "submitSub": "No Fees Unless We Win · 100% Confidential · Takes 30 Seconds",
