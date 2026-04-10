@@ -76,7 +76,24 @@ export default function QuizSection() {
 
     for (const field of fields) {
       const el = form.elements.namedItem(field) as HTMLInputElement | HTMLSelectElement;
-      if (!el.value.trim()) {
+      const val = el.value.trim();
+      if (!val) {
+        errors[field] = true;
+        if (!firstInvalid) firstInvalid = el;
+        continue;
+      }
+      if (field === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        errors[field] = true;
+        if (!firstInvalid) firstInvalid = el;
+      }
+      if (field === 'phone') {
+        const digits = val.replace(/\D/g, '');
+        if (digits.length < 10) {
+          errors[field] = true;
+          if (!firstInvalid) firstInvalid = el;
+        }
+      }
+      if (field === 'zip' && !/^\d{5}(-\d{4})?$/.test(val)) {
         errors[field] = true;
         if (!firstInvalid) firstInvalid = el;
       }
@@ -397,22 +414,22 @@ export default function QuizSection() {
                     defaultValue=""
                   >
                     <option value="">{t('s8.statePh')}</option>
-                    <option>Alabama</option>
-                    <option>Arizona</option>
-                    <option>California</option>
-                    <option>Colorado</option>
-                    <option>Florida</option>
-                    <option>Georgia</option>
-                    <option>Illinois</option>
-                    <option>Nevada</option>
-                    <option>North Carolina</option>
-                    <option>Oklahoma</option>
-                    <option>Oregon</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Utah</option>
-                    <option>Washington</option>
-                    <option>New York</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="IL">Illinois</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="WA">Washington</option>
+                    <option value="NY">New York</option>
                   </select>
                 </div>
               </div>
