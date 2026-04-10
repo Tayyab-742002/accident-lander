@@ -41,6 +41,7 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        <meta name="apple-mobile-web-app-title" content="MyWebSite" />
       </head>
       <body>
         {/* Tracking injected ONCE here — works for all locales and regional variants automatically */}
