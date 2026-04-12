@@ -1,15 +1,26 @@
 {
   "meta": {
-    "title": "See What Your Accident Case Is Worth — Free Review"
+    "title": "See What Your California Accident Case Is Worth — Free Review | DK Law"
+  },
+  "advBar": {
+    "text": "⚖ ADVERTISING MATERIAL — This is a paid legal advertisement"
+  },
+  "firmHeader": {
+    "namePrefix": "DK",
+    "nameAccent": "LAW",
+    "tagline": "Injuries, Accidents & More",
+    "address1": "611 Anton Blvd",
+    "address2": "Costa Mesa, CA 92626",
+    "badge": "CA Licensed"
   },
   "hero": {
-    "urgency": "Time Limits Apply — Act Now",
+    "urgency": "California Statute of Limitations — Act Now",
     "headline1": "The Insurance Company",
     "headline2": "Is",
     "headlineNot": "Not",
     "headline3": "On Your Side.",
-    "sub": "Most accident victims walk away with a fraction of what they're owed. Answer 8 quick questions — find out what your case is actually worth, 100% free.",
-    "settlementsLabel": "Recent Settlements In Our Network",
+    "sub": "Most accident victims walk away with a fraction of what they're owed. Answer 8 quick questions — find out what your case may be worth, 100% free.",
+    "settlementsLabel": "Past Case Results — DK Law Network",
     "settlements": [
       { "line1": "Car Accident", "line2": "Rear End", "amount": "$127K" },
       { "line1": "Motorcycle", "line2": "Accident", "amount": "$385K" },
@@ -24,12 +35,13 @@
     "s1": {
       "label": "Question 1 of 8",
       "question": "What type of accident were you in?",
-      "hint": "Even minor injuries could be owed significant money.",
+      "hint": "California law protects injury victims — even minor injuries may qualify.",
       "options": ["Car / Truck Accident", "Motorcycle Accident", "Rideshare Accident (Uber / Lyft)", "Pedestrian Accident"]
     },
     "s2": {
       "label": "Question 2 of 8",
       "question": "When did your accident occur?",
+      "hint": "California's statute of limitations is generally 2 years from the date of injury.",
       "options": ["Within the Last Month", "Within the Last 6 Months", "Within the Last Year", "Over 1 Year Ago"]
     },
     "s3": {
@@ -45,7 +57,7 @@
     "s5": {
       "label": "Question 5 of 8",
       "question": "Did you receive medical treatment after the accident?",
-      "hint": "Medical records are key to maximizing your compensation.",
+      "hint": "Medical records can be important when evaluating your claim.",
       "options": [
         "Yes, I've Received Treatment",
         "Not Yet — My Accident Was Recent",
@@ -60,8 +72,8 @@
     "s7": {
       "label": "Question 7 of 8",
       "question": "Almost Finished!",
-      "hint": "Tell us what happened in your accident so we can estimate your potential payout.",
-      "hintExample": "(i.e. \"Hit by a speeding driver at an intersection, injured my shoulder\")",
+      "hint": "Tell us what happened so we can begin your free case evaluation.",
+      "hintExample": "(e.g. \"Hit by a speeding driver at an intersection, injured my shoulder\")",
       "placeholder": "e.g. \"Hit by a speeding driver at an intersection, injured my shoulder and neck...\"",
       "errorMsg": "⚠ This field is required. Please describe your accident to continue.",
       "continueBtn": "Continue — See My Options"
@@ -69,7 +81,7 @@
     "s8": {
       "label": "Almost Done!",
       "question": "Where should we send your free case review?",
-      "qualifyBox": "Based on your answers, you may qualify for significant compensation. A licensed attorney will reach out within minutes — no obligation, no upfront cost.",
+      "qualifyBox": "Based on your answers, your case may qualify for compensation. A licensed California attorney from DK Law will reach out — no obligation, no upfront cost.",
       "fullName": "Full Name",
       "fullNamePh": "Full name",
       "phone": "Phone Number",
@@ -82,9 +94,9 @@
       "statePh": "State",
       "zip": "Zip Code",
       "zipPh": "e.g. 90210",
-      "consentPre": "By clicking the 'Submit' button, I agree to the ",
-      "consentAnd": " and ",
-      "consentPost": " and authorize Case Settlement Now and its partners to contact me by telephone calls, email and text messages to the number and email address I provided above. I agree to receive telemarketing calls or artificial voice and pre-recorded messages via an autodialed phone system, even if my telephone number is a mobile number that is currently listed on any state, federal or corporate 'Do Not Call' list. I understand that my consent is not a condition of purchase of any goods or services and that standard message and data rates may apply.",
+      "consentPre": "By clicking the button below, I consent to be contacted by ",
+      "consentAnd": " and its representatives via telephone, text message, and email regarding my legal inquiry, including using automated dialing systems and/or pre-recorded messages, even if my number is listed on a Do Not Call registry. I understand this is advertising material, that my consent is not a condition of hiring, and that I may revoke consent at any time. No attorney-client relationship is created by submitting this form. Message and data rates may apply. View our ",
+      "consentPost": ".",
       "consentError": "Please accept to continue",
       "submitBtn": "Get My FREE Case Review Now",
       "submittingBtn": "Submitting...",
@@ -95,9 +107,9 @@
     },
     "thankyou": {
       "title": "You're All Set!",
-      "sub": "A licensed attorney in your area will reach out within the next few minutes to review your case — at zero cost to you.",
+      "sub": "A licensed DK Law attorney will reach out within the next few minutes to review your case — at zero cost to you.",
       "nextTitle": "What Happens Next?",
-      "nextBody": "Keep your phone nearby. A local attorney will call to go over your options. You are under no obligation to hire anyone."
+      "nextBody": "Keep your phone nearby. A DK Law attorney will call to go over your options. You are under no obligation to hire anyone. No attorney-client relationship has been formed by submitting this form."
     }
   },
   "hiw": {
@@ -105,8 +117,8 @@
     "step1Title": "Answer 8 Quick Questions",
     "step1Desc": "Takes under 60 seconds. No paperwork needed.",
     "step2Title": "Get a Free Case Review",
-    "step2Desc": "A local attorney contacts you within minutes.",
-    "step3Title": "Fight for Max Payout",
+    "step2Desc": "A DK Law attorney contacts you within minutes.",
+    "step3Title": "Pursue Your Claim",
     "step3Desc": "You pay nothing unless your case is won."
   },
   "reviews": {
@@ -118,24 +130,30 @@
       },
       {
         "text": "\"Insurance offered me $8,000 right away and I almost accepted. After speaking with an attorney, I ended up settling for $127,500. Don't take the first offer.\"",
-        "reviewer": "— James K., Texas"
+        "reviewer": "— James K., California"
       },
       {
         "text": "\"Someone called me within 10 minutes. The whole thing was free and there was zero pressure. My case settled in 4 months for way more than I expected.\"",
-        "reviewer": "— Diana R., Florida"
+        "reviewer": "— Diana R., California"
       },
       {
-        "text": "\"I waited almost a year before doing this. I wish I'd done it sooner. My attorney was aggressive and got me every dollar I deserved. Highly recommend.\"",
-        "reviewer": "— Andre M., Georgia"
+        "text": "\"I waited almost a year before doing this. I wish I'd done it sooner. My attorney was thorough and helped me get every dollar I deserved.\"",
+        "reviewer": "— Andre M., California"
       }
     ]
   },
   "footer": {
-    "disclaimer": "This is an advertising service and not a law firm or attorney referral service. By submitting your information, you consent to being contacted by a licensed attorney or legal service provider. Results may vary. Settlements shown are for illustrative purposes only and do not guarantee similar outcomes. Attorneys work on contingency — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
+    "firmLabel": "⚖ Advertising Attorney / Law Firm",
+    "firmName": "DK Law – Injuries, Accidents and More",
+    "firmAddr": "611 Anton Blvd, Costa Mesa, CA 92626\nLicensed by the State Bar of California",
+    "firmLic": "This advertisement was paid for by DK Law. This is advertising material.",
+    "disclaimer": "This is a legal advertisement by DK Law - Injury, Accident, and More, a licensed California law firm. By submitting your information, you agree to be contacted by DK Law and/or its partner attorneys or legal service providers. Results may vary. Past case results do not guarantee future outcomes. Attorneys may work on a contingency fee basis — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
     "disclaimerLink": "Disclaimer",
-    "copy": "© 2026 All rights reserved."
+    "ccpaLink": "Do Not Sell My Info (CCPA)",
+    "attAdvLink": "Attorney Advertising Disclosure",
+    "copy": "© 2026 DK Law – Injuries, Accidents and More. All rights reserved."
   },
   "terms": {
     "title": "Terms of Service",
@@ -204,55 +222,43 @@
     "close": "Close",
     "sections": [
       {
-        "title": "Advertising Disclosure",
-        "body": "Case Settlement Now is a legal advertising and lead generation service. We are not a law firm, attorney, or legal referral service. The information provided on this website is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed by visiting this website or submitting your information through any form on this site."
+        "title": "General",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "Attorney Advertising Notice",
-        "body": "This website constitutes attorney advertising. Case Settlement Now connects individuals who may have legal claims with licensed attorneys and law firms in their respective states. All attorneys and law firms we work with are independently licensed to practice law in their respective jurisdictions. Case Settlement Now does not endorse, recommend, or guarantee the quality of services provided by any attorney or law firm."
+        "title": "Employee Video (Non-Attorney)",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. INDIVIDUAL DEPICTED IS NON-ATTORNEY. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "No Guarantee of Results",
-        "body": "Prior results do not guarantee a similar outcome. Every legal case is unique and depends on its own facts, circumstances, and the applicable laws of the relevant jurisdiction. Settlement amounts and verdicts shown on this website are for illustrative purposes only and are not guarantees of future results. Results achieved in past cases do not predict or guarantee results in future cases."
+        "title": "Professional Models",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. THE INDIVIDUALS DEPICTED ARE PAID PROFESSIONAL MODELS AND DO NOT REPRESENT ACTUAL CLIENTS OF THIS FIRM. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "Settlement Amounts Disclosure",
-        "body": "Any settlement amounts, verdicts, or case results displayed on this website are meant for illustrative purposes only. These figures represent results obtained in specific cases and do not represent a guarantee, warranty, or prediction regarding the outcome of any future legal matter. Individual results will vary based on the specific facts and legal merits of each case."
+        "title": "AI Model",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. THE INDIVIDUALS DEPICTED ARE COMPUTER-GENERATED MODELS AND DO NOT REPRESENT ACTUAL CLIENTS OF THIS FIRM. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "No Legal Advice",
-        "body": "Nothing on this website should be construed as legal advice. The content provided is for general informational purposes only. You should consult with a qualified, licensed attorney in your jurisdiction before making any legal decisions. Submitting your information through our website does not create an attorney-client relationship between you and Case Settlement Now or any affiliated attorney or law firm."
+        "title": "Car Accident Scene/Dramatization",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. VISUAL DEPICTIONS OF SOME EVENTS ARE DRAMATIZATIONS. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "Contingency Fee Notice",
-        "body": "Attorneys who may contact you through Case Settlement Now generally work on a contingency fee basis, meaning you pay no attorney fees unless your case is successfully resolved. However, contingency fee arrangements vary by attorney and jurisdiction. You should discuss all fee arrangements directly with any attorney you choose to retain."
+        "title": "Car Accident Scenes with Models",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. DRAMATIZATION; SOME INDIVIDUALS DEPICTED ARE PAID PROFESSIONAL MODELS AND DO NOT REPRESENT ACTUAL CLIENTS OF THIS FIRM. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "TCPA & Communications Consent",
-        "body": "By submitting your information on this website, you expressly consent to be contacted by Case Settlement Now and its partners via telephone calls, emails, and text messages, including through the use of automated dialing systems, pre-recorded messages, and artificial voice messages, even if your number is listed on a federal, state, or corporate Do Not Call registry. Standard message and data rates may apply. Your consent is not a condition of any purchase or service."
+        "title": "Settlement Amount Disclaimer (w/ outside firm)",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. SOME SETTLEMENTS AND VERDICTS WERE ACHIEVED THROUGH COLLABORATION WITH OUTSIDE ATTORNEYS AND PARTNER LAW FIRMS. NO GUARANTEE OF OUTCOME. RESULTS DEPEND ON UNIQUE FACTS AND THE APPLICABLE LAW OF EACH CASE. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       },
       {
-        "title": "Third-Party Links & Services",
-        "body": "This website may contain links to third-party websites or services. Case Settlement Now is not responsible for the content, accuracy, or privacy practices of any third-party websites. The inclusion of any link does not imply endorsement by Case Settlement Now."
-      },
-      {
-        "title": "Privacy & Data Use",
-        "body": "We collect personal information submitted through our website solely for the purpose of connecting you with licensed legal professionals. Your information may be shared with our network of attorneys, law firms, and legal service providers. We do not sell your personal information to unrelated third parties. For full details on how we collect, use, and protect your data, please refer to our Privacy Policy."
-      },
-      {
-        "title": "California Residents — CCPA Notice",
-        "body": "California residents have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to request deletion of personal information, and the right to opt out of the sale of personal information. To exercise your rights, please contact us at info@casesettlementnow.com."
-      },
-      {
-        "title": "Contact Information",
-        "body": "Case Settlement Now\nEmail: info@casesettlementnow.com"
+        "title": "Voiceover",
+        "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. VOICEOVER IS DONE BY A PAID PROFESSIONAL SPOKESPERSON. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       }
     ]
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: November 13, 2024",
-    "intro": "This Privacy Policy describes Our policies and procedures regarding the collection, use, and disclosure of Your information when you use the Service and informs you about Your privacy rights and how the law protects you.\n\nWe use your personal data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.",
+    "intro": "This Privacy Policy describes Our policies and procedures regarding the collection, use, and disclosure of Your information when you use the Service and informs you about Your privacy rights and how the law protects you.\n\nCalifornia residents have the right to request deletion of their personal data in accordance with the CCPA.\n\nWe use your personal data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.",
     "s1Title": "Interpretation and Definitions",
     "s1InterpTitle": "Interpretation",
     "s1InterpBody": "Words whose initial letter is capitalized have meanings defined under the following conditions. The following definitions will have the same meaning regardless of whether they appear in singular or plural.",

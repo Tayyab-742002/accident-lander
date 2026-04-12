@@ -22,6 +22,10 @@ const pixels: Record<string, PixelConfig> = {
     metaPixelId: '845280071925859',
     gtmId: null,
   },
+  ca: {
+    metaPixelId: '845280071925859',
+    gtmId: null,
+  },
 };
 
 export function getPixelConfig(locale: string): PixelConfig {

@@ -76,8 +76,6 @@
       "phonePh": "(555) 000-0000",
       "email": "Correo Electrónico",
       "emailPh": "su@correo.com",
-      "street": "Dirección",
-      "streetPh": "Dirección",
       "city": "Ciudad",
       "cityPh": "Ciudad",
       "state": "Estado",
@@ -206,36 +204,48 @@
     "close": "Cerrar",
     "sections": [
       {
-        "title": "General",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "Advertising Disclosure",
+        "body": "Case Settlement Now is a legal advertising and lead generation service. We are not a law firm, attorney, or legal referral service. The information provided on this website is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed by visiting this website or submitting your information through any form on this site."
       },
       {
-        "title": "Video de Empleado (No es Abogado)",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. La persona representada no es un abogado. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "Attorney Advertising Notice",
+        "body": "This website constitutes attorney advertising. Case Settlement Now connects individuals who may have legal claims with licensed attorneys and law firms in their respective states. All attorneys and law firms we work with are independently licensed to practice law in their respective jurisdictions. Case Settlement Now does not endorse, recommend, or guarantee the quality of services provided by any attorney or law firm."
       },
       {
-        "title": "Modelos Profesionales",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Las personas representadas son modelos profesionales pagados y no representan clientes reales de esta firma. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "No Guarantee of Results",
+        "body": "Prior results do not guarantee a similar outcome. Every legal case is unique and depends on its own facts, circumstances, and the applicable laws of the relevant jurisdiction. Settlement amounts and verdicts shown on this website are for illustrative purposes only and are not guarantees of future results. Results achieved in past cases do not predict or guarantee results in future cases."
       },
       {
-        "title": "Modelo Generado por IA",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Las personas mostradas son modelos generados por computadora y no representan clientes reales de esta firma. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "Settlement Amounts Disclosure",
+        "body": "Any settlement amounts, verdicts, or case results displayed on this website are meant for illustrative purposes only. These figures represent results obtained in specific cases and do not represent a guarantee, warranty, or prediction regarding the outcome of any future legal matter. Individual results will vary based on the specific facts and legal merits of each case."
       },
       {
-        "title": "Escena de Accidente de Auto / Dramatización",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Las representaciones visuales de algunos eventos son dramatizaciones. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "No Legal Advice",
+        "body": "Nothing on this website should be construed as legal advice. The content provided is for general informational purposes only. You should consult with a qualified, licensed attorney in your jurisdiction before making any legal decisions. Submitting your information through our website does not create an attorney-client relationship between you and Case Settlement Now or any affiliated attorney or law firm."
       },
       {
-        "title": "Escenas de Accidente con Modelos",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Dramatización; algunas personas mostradas son modelos profesionales pagados y no representan clientes reales de esta firma. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "Contingency Fee Notice",
+        "body": "Attorneys who may contact you through Case Settlement Now generally work on a contingency fee basis, meaning you pay no attorney fees unless your case is successfully resolved. However, contingency fee arrangements vary by attorney and jurisdiction. You should discuss all fee arrangements directly with any attorney you choose to retain."
       },
       {
-        "title": "Monto del Acuerdo (con Firma Legal Externa)",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. Algunos acuerdos y veredictos se alcanzan mediante colaboración con abogados externos y firmas legales asociadas. Sin garantía de resultados. Los resultados dependen de los hechos únicos y la ley aplicable de cada caso. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "TCPA & Communications Consent",
+        "body": "By submitting your information on this website, you expressly consent to be contacted by Case Settlement Now and its partners via telephone calls, emails, and text messages, including through the use of automated dialing systems, pre-recorded messages, and artificial voice messages, even if your number is listed on a federal, state, or corporate Do Not Call registry. Standard message and data rates may apply. Your consent is not a condition of any purchase or service."
       },
       {
-        "title": "Narración en Voz",
-        "body": "Publicidad. DK Law – Injury, Accidents & More, PC, es un bufete de abogados de lesiones personales con licencia en California. La narración es realizada por un portavoz profesional pagado. Los resultados pasados no garantizan un resultado similar. Las ubicaciones de las oficinas e información adicional se pueden encontrar en www.dklaw.com."
+        "title": "Third-Party Links & Services",
+        "body": "This website may contain links to third-party websites or services. Case Settlement Now is not responsible for the content, accuracy, or privacy practices of any third-party websites. The inclusion of any link does not imply endorsement by Case Settlement Now."
+      },
+      {
+        "title": "Privacy & Data Use",
+        "body": "We collect personal information submitted through our website solely for the purpose of connecting you with licensed legal professionals. Your information may be shared with our network of attorneys, law firms, and legal service providers. We do not sell your personal information to unrelated third parties. For full details on how we collect, use, and protect your data, please refer to our Privacy Policy."
+      },
+      {
+        "title": "California Residents — CCPA Notice",
+        "body": "California residents have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to request deletion of personal information, and the right to opt out of the sale of personal information. To exercise your rights, please contact us at info@casesettlementnow.com."
+      },
+      {
+        "title": "Contact Information",
+        "body": "Case Settlement Now\nEmail: info@casesettlementnow.com"
       }
     ]
   },

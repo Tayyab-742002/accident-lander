@@ -19,6 +19,70 @@
 
 html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(--white); }
 
+/* ADV DISCLOSURE BAR */
+.adv-disclosure-bar {
+  background: #1a1400;
+  border-bottom: 2px solid var(--gold);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* FIRM HEADER */
+.firm-header {
+  background: var(--navy-mid);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.firm-logo-wrap { display: flex; flex-direction: column; }
+.firm-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+.firm-name span { color: var(--red); }
+.firm-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.firm-address {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+  text-align: right;
+}
+.firm-address strong {
+  color: rgba(255,255,255,0.65);
+  display: block;
+  font-weight: 700;
+}
+.ca-badge {
+  background: var(--red);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(180deg, #0B1220 0%, #162035 100%);
@@ -415,11 +479,33 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   padding: 22px 20px;
   text-align: center;
 }
+.footer-firm-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 0 auto 16px;
+  text-align: left;
+  width: 100%;
+  max-width: 640px;
+}
+.ff-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.ff-name { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 3px; }
+.ff-addr { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.ff-lic { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 5px; font-style: italic; }
 .footer-disclaimer {
   font-size: 10px;
   color: rgba(255,255,255,0.3);
   line-height: 1.7;
-  margin-bottom: 14px;
+  margin: 0 auto 14px;
+  max-width: 640px;
 }
 .footer-links {
   display: flex;
@@ -662,7 +748,7 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
 
   /* FOOTER */
   .footer { padding: 32px 24px; }
-  .footer-disclaimer { font-size: 11px; max-width: 640px; margin: 0 auto 16px; }
+  .footer-disclaimer { font-size: 11px; }
 }
 
 @media (min-width: 1024px) {

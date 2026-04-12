@@ -12,11 +12,14 @@ import {
   getTrustedFormValues,
   formatInquiryDate,
 } from '@/lib/leadpost';
+import { trackEvent } from '@/lib/fbq';
+import { getVariantConfig } from '@/lib/variants';
 
 const TOTAL_STEPS = 8;
 
-export default function QuizSection() {
+export default function QuizSection({ locale }: { locale: string }) {
   const t = useTranslations('quiz');
+  const { stateOptions } = getVariantConfig(locale);
   const [currentStep, setCurrentStep] = useState(1);
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -52,6 +55,8 @@ export default function QuizSection() {
    */
   function selectOption(answerKey: keyof QuizAnswers, value: string, nextStep: number) {
     setAnswers((prev) => ({ ...prev, [answerKey]: value }));
+    // Fire once on first quiz interaction (step 1 → step 2)
+    if (nextStep === 2) trackEvent('SubmitApplication');
     setTimeout(() => goToStep(nextStep), 300);
   }
 
@@ -70,7 +75,7 @@ export default function QuizSection() {
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const fields = ['fullName', 'phone', 'email', 'street', 'city', 'state', 'zip'];
+    const fields = ['fullName', 'phone', 'email', 'city', 'state', 'zip'];
     const errors: Record<string, boolean> = {};
     let firstInvalid: HTMLElement | null = null;
 
@@ -136,7 +141,7 @@ export default function QuizSection() {
       Full_Name: fd('fullName'),
       Phone: fd('phone'),
       Email: fd('email'),
-      street: fd('street'),
+      street: '',
       city: fd('city'),
       State: fd('state'),
       zip_code: fd('zip'),
@@ -160,6 +165,7 @@ export default function QuizSection() {
       // If the CRM rejects, the team can debug in LeadProsper.
     }
 
+    trackEvent('CompleteRegistration');
     setSubmitting(false);
     setDone(true);
     setTimeout(scrollToQuiz, 50);
@@ -381,17 +387,6 @@ export default function QuizSection() {
                   onChange={() => setFieldErrors(p => ({ ...p, email: false }))}
                 />
               </div>
-              <div className="form-group">
-                <label className="form-label">{t('s8.street')}</label>
-                <input
-                  className="form-input"
-                  type="text"
-                  name="street"
-                  placeholder={t('s8.streetPh')}
-                  style={fieldErrors.street ? { borderColor: '#D63030' } : undefined}
-                  onChange={() => setFieldErrors(p => ({ ...p, street: false }))}
-                />
-              </div>
               <div style={{ display: 'flex', gap: 10 }}>
                 <div className="form-group" style={{ flex: 1 }}>
                   <label className="form-label">{t('s8.city')}</label>
@@ -414,22 +409,9 @@ export default function QuizSection() {
                     defaultValue=""
                   >
                     <option value="">{t('s8.statePh')}</option>
-                    <option value="AL">Alabama</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="IL">Illinois</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="WA">Washington</option>
-                    <option value="NY">New York</option>
+                    {stateOptions.map((s) => (
+                      <option key={s.value} value={s.value}>{s.label}</option>
+                    ))}
                   </select>
                 </div>
               </div>
