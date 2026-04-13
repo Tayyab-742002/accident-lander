@@ -15,11 +15,15 @@ export interface PixelConfig {
  */
 const pixels: Record<string, PixelConfig> = {
   en: {
-    metaPixelId: null, // Replace with your Meta Pixel ID e.g. '1234567890'
-    gtmId: null,       // Replace with your GTM ID e.g. 'GTM-XXXXXXX'
+    metaPixelId: '845280071925859',
+    gtmId: null,
   },
   es: {
-    metaPixelId: null,
+    metaPixelId: '845280071925859',
+    gtmId: null,
+  },
+  ca: {
+    metaPixelId: '845280071925859',
     gtmId: null,
   },
 };

@@ -1,47 +1,88 @@
+export interface StateOption {
+  value: string;
+  label: string;
+}
+
 export interface VariantConfig {
   sections: {
+    advDisclosureBar: boolean; // Gold advertising material bar (CA SB 37)
+    firmHeader: boolean;       // Law firm branding header
     hero: boolean;
     quiz: boolean;
     howItWorks: boolean;
     reviews: boolean;
     footer: boolean;
   };
+  footerFirmBlock: boolean;  // Attorney identification block in footer
+  footerCcpaLink: boolean;   // "Do Not Sell My Info (CCPA)" link
+  footerAttAdvLink: boolean; // "Attorney Advertising Disclosure" link
+  stateOptions: StateOption[];
 }
 
-/**
- * Control which sections appear on each locale/regional variant.
- * Add a new entry here when you need a region with different content rules.
- * The page component reads this — zero component changes needed.
- *
- * Example regional variant:
- *   'en-uk': {
- *     sections: {
- *       hero: true,
- *       quiz: true,
- *       howItWorks: true,
- *       reviews: false,   // removed per UK advertising standards
- *       footer: true,
- *     }
- *   }
- */
+const ALL_STATES: StateOption[] = [
+  { value: 'AL', label: 'Alabama' },
+  { value: 'AZ', label: 'Arizona' },
+  { value: 'CA', label: 'California' },
+  { value: 'CO', label: 'Colorado' },
+  { value: 'FL', label: 'Florida' },
+  { value: 'GA', label: 'Georgia' },
+  { value: 'IL', label: 'Illinois' },
+  { value: 'NV', label: 'Nevada' },
+  { value: 'NC', label: 'North Carolina' },
+  { value: 'OK', label: 'Oklahoma' },
+  { value: 'OR', label: 'Oregon' },
+  { value: 'TN', label: 'Tennessee' },
+  { value: 'TX', label: 'Texas' },
+  { value: 'UT', label: 'Utah' },
+  { value: 'WA', label: 'Washington' },
+  { value: 'NY', label: 'New York' },
+];
+
 const variants: Record<string, VariantConfig> = {
   en: {
     sections: {
+      advDisclosureBar: false,
+      firmHeader: false,
       hero: true,
       quiz: true,
       howItWorks: true,
       reviews: true,
       footer: true,
     },
+    footerFirmBlock: false,
+    footerCcpaLink: false,
+    footerAttAdvLink: false,
+    stateOptions: ALL_STATES,
   },
   es: {
     sections: {
+      advDisclosureBar: false,
+      firmHeader: false,
       hero: true,
       quiz: true,
       howItWorks: true,
       reviews: true,
       footer: true,
     },
+    footerFirmBlock: false,
+    footerCcpaLink: false,
+    footerAttAdvLink: false,
+    stateOptions: ALL_STATES,
+  },
+  ca: {
+    sections: {
+      advDisclosureBar: false,
+      firmHeader: false,
+      hero: true,
+      quiz: true,
+      howItWorks: true,
+      reviews: true,
+      footer: true,
+    },
+    footerFirmBlock: true,
+    footerCcpaLink: true,
+    footerAttAdvLink: true,
+    stateOptions: [{ value: 'CA', label: 'California' }],
   },
 };
 
