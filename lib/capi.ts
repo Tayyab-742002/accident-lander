@@ -35,6 +35,8 @@ export interface CAPIUserData {
   phone?:     string;
   firstName?: string;
   lastName?:  string;
+  zipcode?:   string;
+  city?:      string;
   ip?:        string;   // pass result of getVisitorIp() from lib/leadpost.ts
 }
 

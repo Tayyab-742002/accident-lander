@@ -1,15 +1,24 @@
 "use client";
 
 import Script from "next/script";
+import { useEffect } from "react";
 import { getPixelConfig } from "@/lib/pixels";
+import { generateEventId, sendCAPIEvent } from "@/lib/capi";
+import { getVisitorIp } from "@/lib/leadpost";
 
-/**
- * Injects Meta Pixel and GTM for the given locale.
- * This component lives in [locale]/layout.tsx — it runs once
- * and covers every page/variant under that locale automatically.
- */
 export default function Pixels({ locale }: { locale: string }) {
   const { metaPixelId, gtmId } = getPixelConfig(locale);
+
+  useEffect(() => {
+    // Fire CAPI PageView once on mount, paired with the fbq('track', 'PageView')
+    // in the inline script below. Same eventId is NOT needed for PageView
+    // dedup (Meta doesn't dedup PageView by eventId), but we send one anyway
+    // for consistency.
+    const eventId = generateEventId();
+    getVisitorIp().then((ip) => {
+      sendCAPIEvent("PageView", eventId, { ip });
+    });
+  }, []);
 
   return (
     <>
@@ -20,11 +29,7 @@ export default function Pixels({ locale }: { locale: string }) {
             id="gtm-head"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${gtmId}');`,
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','${gtmId}');`,
             }}
           />
           <noscript>
