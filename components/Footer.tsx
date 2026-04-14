@@ -28,9 +28,7 @@ export default async function Footer({ locale }: { locale: string }) {
       <div className="footer-links">
         <PrivacyModal />
         <TermsModal />
-        {footerCcpaLink && <a href="#">{t('ccpaLink')}</a>}
         <DisclaimerModal />
-        {footerAttAdvLink && <a href="#">{t('attAdvLink')}</a>}
       </div>
 
       <div className="footer-copy">{t('copy')}</div>
