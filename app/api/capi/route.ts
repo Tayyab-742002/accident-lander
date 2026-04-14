@@ -23,7 +23,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
 
-const PIXEL_ID = "845280071925859";
+const PIXEL_ID = process.env.META_PIXEL_ID!;
 const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
 
 /** SHA-256 hash a string and lowercase-trim it first (Meta's requirement). */
