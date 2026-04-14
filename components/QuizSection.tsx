@@ -191,6 +191,7 @@ export default function QuizSection({ locale }: { locale: string }) {
       phone: fd("phone"),
       firstName,
       lastName,
+      state: fd("state"),
       zipcode: fd("zip"),
       city: fd("city"),
       ip,

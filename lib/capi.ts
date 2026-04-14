@@ -20,24 +20,29 @@ export function generateEventId(): string {
 
 /** Read the _fbp and _fbc cookies (set by the Meta Pixel) for better match quality. */
 function getFBCookies(): { fbp?: string; fbc?: string } {
-  if (typeof document === 'undefined') return {};
+  if (typeof document === "undefined") return {};
   const cookies = Object.fromEntries(
-    document.cookie.split('; ').map((c) => c.split('='))
+    // With this (splits only on the FIRST = sign):
+    document.cookie.split("; ").map((c) => {
+      const i = c.indexOf("=");
+      return [c.slice(0, i), c.slice(i + 1)];
+    }),
   );
   return {
-    fbp: cookies['_fbp'],
-    fbc: cookies['_fbc'],
+    fbp: cookies["_fbp"],
+    fbc: cookies["_fbc"],
   };
 }
 
 export interface CAPIUserData {
-  email?:     string;
-  phone?:     string;
+  email?: string;
+  phone?: string;
   firstName?: string;
-  lastName?:  string;
-  zipcode?:   string;
-  city?:      string;
-  ip?:        string;   // pass result of getVisitorIp() from lib/leadpost.ts
+  lastName?: string;
+  zipcode?: string;
+  city?: string;
+  state?:string;
+  ip?: string; // pass result of getVisitorIp() from lib/leadpost.ts
 }
 
 /**
@@ -46,14 +51,14 @@ export interface CAPIUserData {
  */
 export async function sendCAPIEvent(
   eventName: string,
-  eventId:   string,
-  userData:  CAPIUserData = {},
+  eventId: string,
+  userData: CAPIUserData = {},
 ): Promise<void> {
   try {
     const { fbp, fbc } = getFBCookies();
-    await fetch('/api/capi', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
+    await fetch("/api/capi", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         eventName,
         eventId,

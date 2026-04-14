@@ -41,6 +41,7 @@ interface CAPIRequestBody {
     firstName?: string;
     lastName?: string;
     zipcode?: string;
+    state?: string;
     city?: string;
     ip?: string;
     userAgent?: string;
@@ -56,7 +57,6 @@ export async function POST(req: NextRequest) {
     console.warn("[CAPI] META_CAPI_TOKEN is not set. Skipping CAPI event.");
     return NextResponse.json({ skipped: true });
   }
-
   let body: CAPIRequestBody;
   try {
     body = await req.json();
@@ -66,6 +66,14 @@ export async function POST(req: NextRequest) {
 
   const { eventName, eventId, sourceUrl, userData = {} } = body;
 
+  const ALLOWED_EVENTS = [
+    "PageView",
+    "SubmitApplication",
+    "CompleteRegistration",
+  ];
+  if (!eventName || !eventId || !ALLOWED_EVENTS.includes(eventName)) {
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
   // Build hashed user_data object — only include fields that were provided
   const user_data: Record<string, string> = {};
 
@@ -86,6 +94,7 @@ export async function POST(req: NextRequest) {
   if (userData.fbp) user_data.fbp = userData.fbp;
   if (userData.fbc) user_data.fbc = userData.fbc;
 
+  if (userData.state) user_data.st = hash(userData.state); // lowercase auto-applied by hash()
   const payload = {
     data: [
       {
