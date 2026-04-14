@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { generateEventId,sendCAPIEvent } from '@/lib/capi';
 import { useTranslations } from 'next-intl';
 import PrivacyModal from './PrivacyModal';
 import TermsModal from './TermsModal';
@@ -56,7 +57,11 @@ export default function QuizSection({ locale }: { locale: string }) {
   function selectOption(answerKey: keyof QuizAnswers, value: string, nextStep: number) {
     setAnswers((prev) => ({ ...prev, [answerKey]: value }));
     // Fire once on first quiz interaction (step 1 → step 2)
-    if (nextStep === 2) trackEvent('SubmitApplication');
+    if (nextStep === 2){
+      const eventId = generateEventId();
+      trackEvent('SubmitApplication', {}, eventId);
+      sendCAPIEvent('SubmitApplication', eventId);
+    };
     setTimeout(() => goToStep(nextStep), 300);
   }
 
@@ -164,8 +169,18 @@ export default function QuizSection({ locale }: { locale: string }) {
       // Silently continue — we always show the thank-you screen.
       // If the CRM rejects, the team can debug in LeadProsper.
     }
-
-    trackEvent('CompleteRegistration');
+  
+    const [firstName, ...rest] = fd('fullName').trim().split(' ');
+    const lastName = rest.join(' ');
+    const eventId = generateEventId();
+    trackEvent('CompleteRegistration', {}, eventId);
+    sendCAPIEvent('CompleteRegistration', eventId, {
+      email: fd('email'),
+      phone: fd('phone'),
+      firstName,
+      lastName,
+      ip,
+    });
     setSubmitting(false);
     setDone(true);
     setTimeout(scrollToQuiz, 50);
