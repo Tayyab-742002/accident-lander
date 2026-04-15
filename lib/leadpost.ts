@@ -44,6 +44,9 @@ export interface LeadPayload extends QuizAnswers, ContactFields {
   IP_Address: string;
   Inquiry_date: string;
   TCPA_Consent: string;
+  fbp: string;
+  fbc: string;
+  user_agent: string;
   xxTrustedFormCertUrl: string;
   xxTrustedFormPingUrl: string;
   xxTrustedFormToken: string;
@@ -83,6 +86,25 @@ export function getTrustedFormValues() {
       'input[name="xxTrustedFormToken"]',
     )?.value) ?? '';
   return { xxTrustedFormCertUrl: cert, xxTrustedFormPingUrl: ping, xxTrustedFormToken: token };
+}
+
+/** Read Meta cookies for webhook passthrough fields. */
+export function getMetaCookieValues(): { fbp: string; fbc: string } {
+  const cookies = Object.fromEntries(
+    document.cookie
+      .split(';')
+      .map((cookie) => cookie.trim())
+      .filter(Boolean)
+      .map((cookie) => {
+        const [key, ...rest] = cookie.split('=');
+        return [decodeURIComponent(key), decodeURIComponent(rest.join('='))];
+      }),
+  );
+
+  return {
+    fbp: cookies._fbp ?? '',
+    fbc: cookies._fbc ?? '',
+  };
 }
 
 /** Format current date as MM/DD/YYYY (matches LeadProsper example). */

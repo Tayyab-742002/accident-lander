@@ -26,6 +26,9 @@ interface LeadSoldBody {
   state?:   string;
   zip?:     string;
   leadId?:  string;
+  fbp?:     string;
+  fbc?:     string;
+  user_agent?: string;
 }
 
 export async function POST(req: NextRequest) {
@@ -64,6 +67,9 @@ export async function POST(req: NextRequest) {
   if (body.city)  user_data.ct = hash(body.city);
   if (body.state) user_data.st = hash(body.state);
   if (body.zip)   user_data.zp = hash(body.zip);
+  if (body.user_agent) user_data.client_user_agent = body.user_agent;
+  if (body.fbp) user_data.fbp = body.fbp;
+  if (body.fbc) user_data.fbc = body.fbc;
 
   // country — your leads are US-only
   user_data.country = hash('us');

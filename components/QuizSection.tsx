@@ -11,6 +11,7 @@ import {
   postLead,
   getVisitorIp,
   getTrustedFormValues,
+  getMetaCookieValues,
   formatInquiryDate,
 } from "@/lib/leadpost";
 import { trackEvent } from "@/lib/fbq";
@@ -143,6 +144,7 @@ export default function QuizSection({ locale }: { locale: string }) {
 
     const ip = await getVisitorIp();
     const tf = getTrustedFormValues();
+    const { fbp, fbc } = getMetaCookieValues();
 
     const payload: LeadPayload = {
       /* quiz answers */
@@ -168,6 +170,9 @@ export default function QuizSection({ locale }: { locale: string }) {
       IP_Address: ip,
       Inquiry_date: formatInquiryDate(),
       TCPA_Consent: consentChecked ? "Accepted" : "Declined",
+      fbp,
+      fbc,
+      user_agent: navigator.userAgent,
 
       /* TrustedForm */
       xxTrustedFormCertUrl: tf.xxTrustedFormCertUrl,
