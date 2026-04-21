@@ -10,14 +10,14 @@ export default function Pixels({ locale }: { locale: string }) {
   const { metaPixelId, gtmId } = getPixelConfig(locale);
   const pageViewEventId = useRef(generateEventId());
   useEffect(() => {
-    // Fire CAPI PageView once on mount, paired with the fbq('track', 'PageView')
-    // in the inline script below. Same eventId is NOT needed for PageView
-    // dedup (Meta doesn't dedup PageView by eventId), but we send one anyway
-    // for consistency.
-    const eventId = generateEventId();
-    getVisitorIp().then((ip) => {
-      sendCAPIEvent('PageView', pageViewEventId.current, { ip });
-    });
+    // Delay slightly so fbevents.js has time to load and set the _fbp cookie
+    // before we read it inside sendCAPIEvent.
+    const timer = setTimeout(() => {
+      getVisitorIp().then((ip) => {
+        sendCAPIEvent('PageView', pageViewEventId.current, { ip });
+      });
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

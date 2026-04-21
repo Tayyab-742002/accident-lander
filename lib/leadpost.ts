@@ -58,12 +58,15 @@ let cachedIp: string | null = null;
 
 export async function getVisitorIp(): Promise<string> {
   if (cachedIp !== null) return cachedIp;
+  // Try two providers in parallel, take whichever responds first
   try {
-    const res = await fetch("https://api.ipify.org?format=json", {
-      signal: AbortSignal.timeout(4000),
-    });
-    const data = await res.json();
-    cachedIp = data.ip ?? "";
+    const result = await Promise.any([
+      fetch("https://api.ipify.org?format=json", { signal: AbortSignal.timeout(3000) })
+        .then((r) => r.json()).then((d) => d.ip as string),
+      fetch("https://api.my-ip.io/v2/ip.json", { signal: AbortSignal.timeout(3000) })
+        .then((r) => r.json()).then((d) => d.ip as string),
+    ]);
+    cachedIp = result ?? "";
   } catch {
     cachedIp = "";
   }

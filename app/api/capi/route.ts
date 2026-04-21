@@ -22,6 +22,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
+import { log } from "@/lib/logger";
 
 const PIXEL_ID = process.env.META_PIXEL_ID!;
 const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
@@ -53,8 +54,7 @@ interface CAPIRequestBody {
 export async function POST(req: NextRequest) {
   const token = process.env.META_CAPI_TOKEN;
   if (!token) {
-    // Silently succeed in dev if token not set — don't break the form.
-    console.warn("[CAPI] META_CAPI_TOKEN is not set. Skipping CAPI event.");
+    log("warn", { type: "capi_skipped", reason: "META_CAPI_TOKEN not set" });
     return NextResponse.json({ skipped: true });
   }
   let body: CAPIRequestBody;
@@ -110,6 +110,18 @@ export async function POST(req: NextRequest) {
     // test_event_code: 'TEST12345',
   };
 
+  log("info", {
+    type: "capi_request",
+    eventName,
+    eventId,
+    sourceUrl,
+    has_email: !!userData.email,
+    has_phone: !!userData.phone,
+    has_fbp: !!userData.fbp,
+    has_fbc: !!userData.fbc,
+    has_ip: !!userData.ip,
+  });
+
   try {
     const res = await fetch(`${GRAPH_URL}?access_token=${token}`, {
       method: "POST",
@@ -119,16 +131,17 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
 
     if (!res.ok) {
-      console.error("[CAPI] Meta API error:", data);
+      log("error", { type: "capi_meta_error", eventName, eventId, meta_error: data });
       return NextResponse.json({ error: data }, { status: 502 });
     }
 
+    log("info", { type: "capi_success", eventName, eventId, events_received: data.events_received });
     return NextResponse.json({
       ok: true,
       events_received: data.events_received,
     });
   } catch (err) {
-    console.error("[CAPI] Network error:", err);
+    log("error", { type: "capi_network_error", eventName, eventId, error: err instanceof Error ? err.message : String(err) });
     return NextResponse.json({ error: "Network error" }, { status: 502 });
   }
 }

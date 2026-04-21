@@ -7,6 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
+import { log } from "@/lib/logger";
 
 const PIXEL_ID = process.env.META_PIXEL_ID!;
 const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
@@ -32,6 +33,32 @@ interface LeadSoldBody {
   ip_address?: string;
 }
 
+async function parseLeadSoldBody(req: NextRequest): Promise<LeadSoldBody> {
+  const contentType = req.headers.get("content-type")?.toLowerCase() ?? "";
+
+  if (contentType.includes("application/json")) {
+    return (await req.json()) as LeadSoldBody;
+  }
+
+  if (contentType.includes("application/x-www-form-urlencoded")) {
+    const raw = await req.text();
+    const params = new URLSearchParams(raw);
+    return Object.fromEntries(params.entries()) as unknown as LeadSoldBody;
+  }
+
+  // Fallback: many webhook senders omit/incorrectly set content-type.
+  const raw = await req.text();
+  try {
+    return JSON.parse(raw) as LeadSoldBody;
+  } catch {
+    const params = new URLSearchParams(raw);
+    if ([...params.keys()].length > 0) {
+      return Object.fromEntries(params.entries()) as unknown as LeadSoldBody;
+    }
+    throw new Error("Unsupported or invalid payload format");
+  }
+}
+
 function getRequestIp(req: NextRequest): string {
   const forwardedFor = req.headers.get("x-forwarded-for");
   if (forwardedFor) {
@@ -49,21 +76,48 @@ export async function POST(req: NextRequest) {
   const token = process.env.META_CAPI_TOKEN;
   const WEBHOOK_SECRET = process.env.LEADSPROSPER_WEBHOOK_SECRET ?? "";
   if (!token) {
-    console.warn("[lead-sold] META_CAPI_TOKEN not set. Skipping.");
+    log("warn", { type: "lead_sold_skipped", reason: "META_CAPI_TOKEN not set" });
     return NextResponse.json({ skipped: true });
   }
 
   let body: LeadSoldBody;
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    body = await parseLeadSoldBody(req);
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: "Invalid request body",
+        details:
+          err instanceof Error
+            ? err.message
+            : "Body must be valid JSON or x-www-form-urlencoded payload",
+      },
+      { status: 400 },
+    );
   }
 
   // Verify the shared secret so random people can't hit this endpoint
+  if (!body.secret) {
+    return NextResponse.json(
+      { error: "Missing required field: secret" },
+      { status: 400 },
+    );
+  }
   if (WEBHOOK_SECRET && body.secret !== WEBHOOK_SECRET) {
-    console.warn("[lead-sold] Invalid secret.");
+    log("warn", { type: "lead_sold_unauthorized", reason: "Invalid secret" });
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if (!body.value) {
+    return NextResponse.json(
+      { error: "Missing required field: value" },
+      { status: 400 },
+    );
+  }
+  if (!body.currency) {
+    return NextResponse.json(
+      { error: "Missing required field: currency" },
+      { status: 400 },
+    );
   }
 
   const user_data: Record<string, string> = {};
@@ -92,6 +146,15 @@ export async function POST(req: NextRequest) {
   user_data.country = hash("us");
 
   const saleValue = parseFloat(body.value);
+  if (Number.isNaN(saleValue)) {
+    return NextResponse.json(
+      {
+        error: "Invalid value field",
+        details: "value must be a numeric string, e.g. \"45.00\"",
+      },
+      { status: 400 },
+    );
+  }
 
   const payload = {
     data: [
@@ -103,12 +166,25 @@ export async function POST(req: NextRequest) {
         action_source: "website",
         user_data,
         custom_data: {
-          value: isNaN(saleValue) ? 0 : saleValue,
+          value: saleValue,
           currency: body.currency ?? "USD",
         },
       },
     ],
   };
+
+  log("info", {
+    type: "lead_sold_request",
+    leadId: body.leadId ?? null,
+    value: saleValue,
+    currency: body.currency,
+    state: body.state ?? null,
+    has_email: !!body.email,
+    has_phone: !!body.phone,
+    has_fbp: !!body.fbp,
+    has_fbc: !!body.fbc,
+    has_ip: !!clientIpAddress,
+  });
 
   try {
     const res = await fetch(`${GRAPH_URL}?access_token=${token}`, {
@@ -119,16 +195,17 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
 
     if (!res.ok) {
-      console.error("[lead-sold] Meta API error:", data);
+      log("error", { type: "lead_sold_meta_error", leadId: body.leadId ?? null, meta_error: data });
       return NextResponse.json({ error: data }, { status: 502 });
     }
 
+    log("info", { type: "lead_sold_success", leadId: body.leadId ?? null, events_received: data.events_received });
     return NextResponse.json({
       ok: true,
       events_received: data.events_received,
     });
   } catch (err) {
-    console.error("[lead-sold] Network error:", err);
+    log("error", { type: "lead_sold_network_error", leadId: body.leadId ?? null, error: err instanceof Error ? err.message : String(err) });
     return NextResponse.json({ error: "Network error" }, { status: 502 });
   }
 }
