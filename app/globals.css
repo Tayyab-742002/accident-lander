@@ -724,7 +724,6 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   .settlement-card { min-width: 120px; }
 
   /* QUIZ CARD */
-  .quiz-bg { padding: 48px 24px 56px; }
   .quiz-wrap {
     max-width: 560px;
     margin: 0 auto;
@@ -755,7 +754,6 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   .hero { padding: 60px 32px 0; }
   .hero h1 { font-size: 64px; }
   .hero-sub { font-size: 16px; max-width: 540px; }
-  .quiz-bg { padding: 56px 32px 64px; }
   .quiz-wrap { max-width: 600px; padding: 40px 48px 56px; }
 }
 

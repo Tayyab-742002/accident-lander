@@ -3,6 +3,9 @@ import { getTranslations } from 'next-intl/server';
 export default async function HowItWorks({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: 'hiw' });
 
+  if (locale === 'en') {
+    return null; // This section is only for non-English locales per design
+  }
   return (
     <div className="hiw">
       <div className="section-inner">

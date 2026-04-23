@@ -31,7 +31,7 @@ export default async function LanderPage({
       {sections.hero             && <Hero locale={locale} />}
       {sections.quiz             && <QuizSection locale={locale} />}
       {sections.howItWorks       && <HowItWorks locale={locale} />}
-      {sections.reviews          && <Reviews />}
+      {sections.reviews          && <Reviews  locale={locale} />}
       {sections.footer           && <Footer locale={locale} />}
     </>
   );

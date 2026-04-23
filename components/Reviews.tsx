@@ -3,18 +3,19 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
-export default function Reviews() {
+export default function Reviews({ locale }: { locale: string }) {
   const t = useTranslations('reviews');
   const items = t.raw('items') as Array<{ text: string; reviewer: string }>;
   const [index, setIndex] = useState(0);
-
   useEffect(() => {
     const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % items.length);
     }, 4000);
     return () => clearInterval(id);
   }, [items.length]);
-
+      if(locale === 'en') {
+    return null; // This section is only for non-English locales per design
+  }
   return (
     <div className="social-proof">
       <div className="section-inner">

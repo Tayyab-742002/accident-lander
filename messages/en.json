@@ -4,11 +4,11 @@
   },
   "hero": {
     "urgency": "Time Limits Apply — Act Now",
-    "headline1": "The Insurance Company",
-    "headline2": "Is",
-    "headlineNot": "Not",
-    "headline3": "On Your Side.",
-    "sub": "Most accident victims walk away with a fraction of what they're owed. Answer 8 quick questions — find out what your case is actually worth, 100% free.",
+    "headline1": "Your Accident May Have ",
+    "headline2": "Left",
+    "headlineNot": "Thousands",
+    "headline3": "on the Table.",
+    "sub": "You've already been through enough. Don't walk away without knowing what you're actually owed. 60 seconds. Free. No pressure.",
     "settlementsLabel": "Recent Settlements In Our Network",
     "settlements": [
       { "line1": "Car Accident", "line2": "Rear End", "amount": "$127K" },
