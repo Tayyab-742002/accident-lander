@@ -18,19 +18,26 @@ export function generateEventId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-/** Read the _fbp and _fbc cookies (set by the Meta Pixel) for better match quality. */
+/** Read fbp/fbc — prefers URL fbclid for fbc since cookie may not be set yet. */
 function getFBCookies(): { fbp?: string; fbc?: string } {
   if (typeof document === "undefined") return {};
   const cookies = Object.fromEntries(
-    // With this (splits only on the FIRST = sign):
     document.cookie.split("; ").map((c) => {
       const i = c.indexOf("=");
       return [c.slice(0, i), c.slice(i + 1)];
     }),
   );
+
+  // Build fbc from URL fbclid if present — more reliable than waiting for cookie
+  let fbc = cookies["_fbc"];
+  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+  if (fbclid) {
+    fbc = `fb.1.${Date.now()}.${fbclid}`;
+  }
+
   return {
     fbp: cookies["_fbp"],
-    fbc: cookies["_fbc"],
+    fbc,
   };
 }
 

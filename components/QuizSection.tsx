@@ -191,7 +191,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     const lastName = rest.join(" ");
     const eventId = generateEventId();
     trackEvent("CompleteRegistration", {}, eventId);
-    sendCAPIEvent("CompleteRegistration", eventId, {
+    await sendCAPIEvent("CompleteRegistration", eventId, {
       email: fd("email"),
       phone: fd("phone"),
       firstName,

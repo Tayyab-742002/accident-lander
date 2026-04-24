@@ -106,9 +106,16 @@ export function getMetaCookieValues(): { fbp: string; fbc: string } {
       }),
   );
 
+  // Prefer fbclid from URL — more reliable than waiting for pixel to set cookie
+  let fbc = cookies._fbc ?? "";
+  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+  if (fbclid) {
+    fbc = `fb.1.${Date.now()}.${fbclid}`;
+  }
+
   return {
     fbp: cookies._fbp ?? "",
-    fbc: cookies._fbc ?? "",
+    fbc,
   };
 }
 
