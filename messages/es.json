@@ -64,6 +64,7 @@
       "hintExample": "(p. ej. \"Me golpeó un conductor a exceso de velocidad en una intersección, me lesioné el hombro\")",
       "placeholder": "p. ej. \"Me golpeó un conductor a exceso de velocidad, me lesioné el hombro y el cuello...\"",
       "errorMsg": "⚠ Este campo es obligatorio. Por favor describa su accidente para continuar.",
+      "voiceTip": "💡 Consejo rápido: ¡Presiona el 🎤 en tu teclado para hablar tu respuesta!",
       "continueBtn": "Continuar — Ver Mis Opciones"
     },
     "s8": {

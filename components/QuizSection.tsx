@@ -397,8 +397,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                 onChange={() => storyError && setStoryError(false)}
               />
               <div className="voice-tip">
-                💡 <strong>Quick tip:</strong> Tap the 🎤 on your keyboard to
-                speak your answer!
+                {t("s7.voiceTip")}
               </div>
               {storyError && (
                 <div

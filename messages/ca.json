@@ -76,6 +76,7 @@
       "hintExample": "(e.g. \"Hit by a speeding driver at an intersection, injured my shoulder\")",
       "placeholder": "e.g. \"Hit by a speeding driver at an intersection, injured my shoulder and neck...\"",
       "errorMsg": "⚠ This field is required. Please describe your accident to continue.",
+      "voiceTip": "💡 Quick tip: Tap the 🎤 on your keyboard to speak your answer!",
       "continueBtn": "Continue — Get My Free Review"
     },
     "s8": {
