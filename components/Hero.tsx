@@ -17,10 +17,9 @@ export default async function Hero({ locale }: { locale: string }) {
         </div>
 
         <h1>
-          {t("headline1")}
+          {t("headline1")} {t("headline2")}
           <br />
-          {t("headline2")} <span className="red">{t("headlineNot")}</span>{" "}
-          {t("headline3")}
+          <span className="red">{t("headlineNot")}</span> {t("headline3")}
         </h1>
 
         <p className="hero-sub">{t("sub")}</p>

@@ -421,8 +421,8 @@ export default function QuizSection({ locale }: { locale: string }) {
           {!done && currentStep === 8 && (
             <div className="step">
               <div className="question-label">{t("s8.label")}</div>
-              <div className="question-text">{t("s8.question")}</div>
-              <div
+              {/* <div className="question-text">{t("s8.question")}</div> */}
+              {/* <div
                 style={{
                   background: "#E8F7EF",
                   borderRadius: 10,
@@ -440,7 +440,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                 >
                   {t("s8.qualifyBox")}
                 </p>
-              </div>
+              </div> */}
 
               <form onSubmit={submitForm} noValidate>
                 <div className="form-group">
@@ -557,7 +557,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     type="checkbox"
                     id="consent"
                     name="consent"
-                    defaultChecked
+                    // defaultChecked
                     className="consent-checkbox"
                     onChange={() =>
                       setFieldErrors((p) => ({ ...p, consent: false }))
@@ -586,9 +586,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                   disabled={submitting}
                 >
                   {submitting ? t("s8.submittingBtn") : t("s8.submitBtn")}
-                  {!submitting && (
+                  {/* {!submitting && (
                     <span className="sub">{t("s8.submitSub")}</span>
-                  )}
+                  )} */}
                 </button>
               </form>
 

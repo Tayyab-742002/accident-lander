@@ -76,10 +76,10 @@
       "hintExample": "(e.g. \"Hit by a speeding driver at an intersection, injured my shoulder\")",
       "placeholder": "e.g. \"Hit by a speeding driver at an intersection, injured my shoulder and neck...\"",
       "errorMsg": "⚠ This field is required. Please describe your accident to continue.",
-      "continueBtn": "Continue — See My Options"
+      "continueBtn": "Continue — Get My Free Review"
     },
     "s8": {
-      "label": "Almost Done!",
+      "label": "You're Almost Done! ",
       "question": "Where should we send your free case review?",
       "qualifyBox": "Based on your answers, your case may qualify for compensation. A licensed California attorney from DK Law will reach out — no obligation, no upfront cost.",
       "fullName": "Full Name",
@@ -98,7 +98,7 @@
       "consentAnd": " and its representatives via telephone, text message, and email regarding my legal inquiry, including using automated dialing systems and/or pre-recorded messages, even if my number is listed on a Do Not Call registry. I understand this is advertising material, that my consent is not a condition of hiring, and that I may revoke consent at any time. No attorney-client relationship is created by submitting this form. Message and data rates may apply. View our ",
       "consentPost": ".",
       "consentError": "Please accept to continue",
-      "submitBtn": "Get My FREE Case Review Now",
+      "submitBtn": "Get My Free Case Review →",
       "submittingBtn": "Submitting...",
       "submitSub": "No Fees Unless We Win · 100% Confidential · Takes 30 Seconds",
       "trust1": "256-bit SSL Encrypted",
