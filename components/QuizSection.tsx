@@ -388,6 +388,7 @@ export default function QuizSection({ locale }: { locale: string }) {
               <div className="question-hint">
                 {t("s7.hint")} <em>{t("s7.hintExample")}</em>
               </div>
+
               <textarea
                 ref={storyRef}
                 className="story-input"
@@ -395,6 +396,10 @@ export default function QuizSection({ locale }: { locale: string }) {
                 style={storyError ? { borderColor: "#D63030" } : undefined}
                 onChange={() => storyError && setStoryError(false)}
               />
+              <div className="voice-tip">
+                💡 <strong>Quick tip:</strong> Tap the 🎤 on your keyboard to
+                speak your answer!
+              </div>
               {storyError && (
                 <div
                   style={{

@@ -758,3 +758,21 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   .quiz-wrap { max-width: 600px; padding: 40px 48px 56px; }
 }
 
+/* Voice tip — mobile only */
+.voice-tip {
+  display: none; /* hidden by default (desktop) */
+  font-size: 13px;
+  color: #5a4a00;
+  background: #fffbeb;
+  border: 1px solid #f5d76e;
+  border-radius: 8px;
+  padding: 10px 13px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .voice-tip {
+    display: block; /* show only on mobile */
+  }
+}
