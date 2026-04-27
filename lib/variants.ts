@@ -1,3 +1,5 @@
+import TrustedIndicator from "@/components/TrustedIndicator";
+
 export interface StateOption {
   value: string;
   label: string;
@@ -11,6 +13,7 @@ export interface VariantConfig {
     quiz: boolean;
     howItWorks: boolean;
     reviews: boolean;
+    trustedIndicator: boolean; // "Trusted by" badge with logos of review sites
     footer: boolean;
   };
   footerFirmBlock: boolean;  // Attorney identification block in footer
@@ -47,6 +50,7 @@ const variants: Record<string, VariantConfig> = {
       quiz: true,
       howItWorks: true,
       reviews: true,
+      trustedIndicator: true,
       footer: true,
     },
     footerFirmBlock: false,
@@ -62,6 +66,7 @@ const variants: Record<string, VariantConfig> = {
       quiz: true,
       howItWorks: true,
       reviews: true,
+      trustedIndicator: true,
       footer: true,
     },
     footerFirmBlock: false,
@@ -77,6 +82,7 @@ const variants: Record<string, VariantConfig> = {
       quiz: true,
       howItWorks: true,
       reviews: true,
+      trustedIndicator: true,
       footer: true,
     },
     footerFirmBlock: true,

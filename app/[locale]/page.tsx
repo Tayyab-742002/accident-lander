@@ -1,14 +1,15 @@
-import { setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
-import { getVariantConfig } from '@/lib/variants';
-import AdvDisclosureBar from '@/components/AdvDisclosureBar';
-import FirmHeader from '@/components/FirmHeader';
-import Hero from '@/components/Hero';
-import QuizSection from '@/components/QuizSection';
-import HowItWorks from '@/components/HowItWorks';
-import Reviews from '@/components/Reviews';
-import Footer from '@/components/Footer';
+import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { getVariantConfig } from "@/lib/variants";
+import AdvDisclosureBar from "@/components/AdvDisclosureBar";
+import FirmHeader from "@/components/FirmHeader";
+import Hero from "@/components/Hero";
+import QuizSection from "@/components/QuizSection";
+import HowItWorks from "@/components/HowItWorks";
+import Reviews from "@/components/Reviews";
+import Footer from "@/components/Footer";
+import TrustedIndicator from "../../components/TrustedIndicator";
 
 export default async function LanderPage({
   params,
@@ -27,12 +28,26 @@ export default async function LanderPage({
   return (
     <>
       {sections.advDisclosureBar && <AdvDisclosureBar locale={locale} />}
-      {sections.firmHeader       && <FirmHeader locale={locale} />}
-      {sections.hero             && <Hero locale={locale} />}
-      {sections.quiz             && <QuizSection locale={locale} />}
-      {sections.howItWorks       && <HowItWorks locale={locale} />}
-      {sections.reviews          && <Reviews  locale={locale} />}
-      {sections.footer           && <Footer locale={locale} />}
+      {sections.firmHeader && <FirmHeader locale={locale} />}
+      {sections.hero && <Hero locale={locale} />}
+
+      {sections.quiz && <QuizSection locale={locale} />}
+      {sections.trustedIndicator && (
+        <div
+          className="quiz-bg"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "30px 20px",
+          }}
+        >
+          <TrustedIndicator locale={locale} />
+        </div>
+      )}
+      {sections.howItWorks && <HowItWorks locale={locale} />}
+      {sections.reviews && <Reviews locale={locale} />}
+      {sections.footer && <Footer locale={locale} />}
     </>
   );
 }
