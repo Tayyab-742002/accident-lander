@@ -23,7 +23,7 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
         alignItems: "center",
         gap: "12px",
         width: "100%",
-        maxWidth: "320px",
+        maxWidth: "270px",
         margin: "0 auto",
       }}
     >
