@@ -19,12 +19,12 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
     <div
       style={{
         display: "flex",
-        flexDirection: "column",  // ← always column
-        alignItems: "center",     // ← center horizontally
+        flexDirection: "column",
+        alignItems: "center",
         gap: "12px",
         width: "100%",
-        maxWidth: "320px",        // ← constrain width so cards don't stretch too wide
-        margin: "0 auto",         // ← center in parent
+        maxWidth: "320px",
+        margin: "0 auto",
       }}
     >
       {/* TrustedIndicator pill */}
@@ -32,6 +32,7 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "center", // ← centered
           gap: "10px",
           padding: "14px 20px",
           backgroundColor: "#ffffff",
@@ -39,7 +40,7 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
           fontSize: "13px",
           color: "#1a3c8f",
           fontWeight: "700",
-          textAlign: "left",
+          textAlign: "center", // ← centered
           lineHeight: "1.5",
           width: "100%",
         }}
@@ -71,7 +72,7 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "14px",
+          justifyContent: "center", // ← centered
           padding: "14px 22px",
           backgroundColor: "#ffffff",
           borderRadius: "12px",
@@ -85,7 +86,6 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
             height: "48px",
             width: "auto",
             borderRadius: "6px",
-            flexShrink: 0,
           }}
         />
       </div>

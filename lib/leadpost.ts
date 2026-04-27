@@ -110,7 +110,8 @@ export function getMetaCookieValues(): { fbp: string; fbc: string } {
   let fbc = cookies._fbc ?? "";
   const fbclid = new URLSearchParams(window.location.search).get("fbclid");
   if (fbclid) {
-    fbc = `fb.1.${Date.now()}.${fbclid}`;
+    // Convert timestamp from milliseconds to seconds (Meta expects seconds)
+    fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}`;
   }
 
   return {
