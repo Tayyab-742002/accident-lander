@@ -106,12 +106,11 @@ export function getMetaCookieValues(): { fbp: string; fbc: string } {
       }),
   );
 
-  // Prefer fbclid from URL — more reliable than waiting for pixel to set cookie
+  // Prefer fbclid from URL — original case, millisecond timestamp (Meta spec)
   let fbc = cookies._fbc ?? "";
   const fbclid = new URLSearchParams(window.location.search).get("fbclid");
   if (fbclid) {
-    // Convert timestamp from milliseconds to seconds (Meta expects seconds)
-    fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}`;
+    fbc = `fb.1.${Date.now()}.${fbclid}`;
   }
 
   return {

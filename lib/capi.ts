@@ -18,7 +18,16 @@ export function generateEventId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-/** Read fbp/fbc — prefers URL fbclid for fbc since cookie may not be set yet. */
+// Capture fbclid once at module load (page arrival time) so all events
+// in the same session share the same fbc timestamp.
+const _fbclidAtLanding = (() => {
+  if (typeof window === "undefined") return null;
+  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+  if (!fbclid) return null;
+  // Format: fb.1.{ms_timestamp}.{fbclid}  — Meta requires milliseconds
+  return `fb.1.${Date.now()}.${fbclid}`;
+})();
+
 function getFBCookies(): { fbp?: string; fbc?: string } {
   if (typeof document === "undefined") return {};
   const cookies = Object.fromEntries(
@@ -28,12 +37,9 @@ function getFBCookies(): { fbp?: string; fbc?: string } {
     }),
   );
 
-  // Build fbc from URL fbclid if present — more reliable than waiting for cookie
-  let fbc = cookies["_fbc"];
-  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
-  if (fbclid) {
-    fbc = `fb.1.${Date.now()}.${fbclid}`;
-  }
+  // Prefer URL-captured fbc (original case, correct timestamp).
+  // Fall back to _fbc cookie only when user has no fbclid in current URL.
+  const fbc = _fbclidAtLanding ?? cookies["_fbc"];
 
   return {
     fbp: cookies["_fbp"],
