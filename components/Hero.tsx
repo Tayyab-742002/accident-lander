@@ -11,11 +11,6 @@ export default async function Hero({ locale }: { locale: string }) {
   return (
     <div className="hero">
       <div className="section-inner">
-        <div className="urgency-bar">
-          <div className="urgency-dot" />
-          {t("urgency")}
-        </div>
-
         <h1>
           {t("headline1")} {t("headline2")}
           <br />

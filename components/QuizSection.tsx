@@ -206,11 +206,6 @@ export default function QuizSection({ locale }: { locale: string }) {
     setTimeout(scrollToQuiz, 50);
   }
 
-  const stepLabel = t("stepLabel", {
-    current: currentStep,
-    total: TOTAL_STEPS,
-  });
-
   return (
     <div className="quiz-bg" ref={wrapRef}>
       <div className="quiz-wrap" ref={cardRef}>
@@ -221,7 +216,9 @@ export default function QuizSection({ locale }: { locale: string }) {
               style={{ width: done ? "100%" : `${progressPct}%` }}
             />
           </div>
-          <div className="step-count">{done ? t("complete") : stepLabel}</div>
+          <div className="step-count">
+            {done ? t("complete") : `${progressPct}% ${t("progress")}`}
+          </div>
         </div>
 
         <div id="quiz">

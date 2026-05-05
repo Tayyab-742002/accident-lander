@@ -32,6 +32,7 @@
   "quiz": {
     "stepLabel": "Step {current} of {total}",
     "complete": "Complete!",
+    "progress": "Complete",
     "s1": {
       "label": "Question 1 of 8",
       "question": "What type of accident were you in?",

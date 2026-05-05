@@ -21,6 +21,7 @@
   "quiz": {
     "stepLabel": "Paso {current} de {total}",
     "complete": "¡Completado!",
+    "progress": "Completado",
     "s1": {
       "label": "Pregunta 1 de 8",
       "question": "¿Qué tipo de accidente tuvo?",
