@@ -19,6 +19,15 @@ import { getVariantConfig } from "@/lib/variants";
 
 const TOTAL_STEPS = 8;
 
+// Index-based — works across en/es/ca since option order is identical in all locales
+const DISQUALIFYING_RULES: Partial<Record<keyof QuizAnswers, number>> = {
+  Accident_timeframe: 3, // "Over 1 Year Ago"
+  At_fault:           2, // "I Was at Fault"
+  Was_injured:        1, // "No, I Wasn't Injured"
+  Medical_treatment:  2, // "No — Over 30 Days, No Doctor"
+  Has_lawyer:         1, // "Yes, I Already Have One"
+};
+
 export default function QuizSection({ locale }: { locale: string }) {
   const t = useTranslations("quiz");
   const { stateOptions } = getVariantConfig(locale);
@@ -26,7 +35,10 @@ export default function QuizSection({ locale }: { locale: string }) {
   const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [storyError, setStoryError] = useState(false);
-  const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isDisqualified, setIsDisqualified] = useState(false);
+  const steppingRef = useRef(false);
 
   /* ── quiz answer tracking ─────────────────────────────────── */
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
@@ -48,6 +60,7 @@ export default function QuizSection({ locale }: { locale: string }) {
 
   function goToStep(n: number) {
     setCurrentStep(n);
+    setSelectedOption(null);
     setTimeout(scrollToQuiz, 50);
   }
 
@@ -59,9 +72,17 @@ export default function QuizSection({ locale }: { locale: string }) {
     answerKey: keyof QuizAnswers,
     value: string,
     nextStep: number,
+    optionIndex: number,
   ) {
+    if (selectedOption) return;
+    setSelectedOption(value);
     setAnswers((prev) => ({ ...prev, [answerKey]: value }));
-    // Fire once on first quiz interaction (step 1 → step 2)
+
+    // Track disqualification — once disqualified, stays disqualified
+    if (DISQUALIFYING_RULES[answerKey] === optionIndex) {
+      setIsDisqualified(true);
+    }
+
     if (nextStep === 2) {
       const eventId = generateEventId();
       trackEvent("SubmitApplication", {}, eventId);
@@ -69,63 +90,61 @@ export default function QuizSection({ locale }: { locale: string }) {
         sendCAPIEvent("SubmitApplication", eventId, { ip });
       });
     }
-    setTimeout(() => goToStep(nextStep), 300);
+    goToStep(nextStep);
+  }
+
+  function formatPhone(e: React.ChangeEvent<HTMLInputElement>) {
+    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+    let formatted = digits;
+    if (digits.length >= 7) formatted = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+    else if (digits.length >= 4) formatted = `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+    else if (digits.length >= 1) formatted = `(${digits}`;
+    e.target.value = formatted;
+    setFieldErrors((p) => ({ ...p, phone: "" }));
   }
 
   function validateStory() {
+    if (steppingRef.current) return;
     const val = storyRef.current?.value.trim() ?? "";
     if (!val) {
       setStoryError(true);
       storyRef.current?.focus();
       return;
     }
+    steppingRef.current = true;
     setStoryError(false);
     setAnswers((prev) => ({ ...prev, Accident_Details: val }));
     goToStep(8);
+    setTimeout(() => { steppingRef.current = false; }, 500);
   }
 
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const fields = ["fullName", "phone", "email", "city", "state", "zip"];
-    const errors: Record<string, boolean> = {};
+    const errors: Record<string, string> = {};
     let firstInvalid: HTMLElement | null = null;
 
-    for (const field of fields) {
-      const el = form.elements.namedItem(field) as
-        | HTMLInputElement
-        | HTMLSelectElement;
+    const fieldRules: [string, string, ((v: string) => boolean)?][] = [
+      ["fullName", t("s8.nameError")],
+      ["phone",    t("s8.phoneError"),  (v) => v.replace(/\D/g, "").length === 10],
+      ["email",    t("s8.emailError"),  (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+      ["city",     t("s8.cityError")],
+      ["state",    t("s8.stateError")],
+      ["zip",      t("s8.zipError"),    (v) => /^\d{5}(-\d{4})?$/.test(v)],
+    ];
+
+    for (const [field, msg, validate] of fieldRules) {
+      const el = form.elements.namedItem(field) as HTMLInputElement | HTMLSelectElement;
       const val = el.value.trim();
-      if (!val) {
-        errors[field] = true;
-        if (!firstInvalid) firstInvalid = el;
-        continue;
-      }
-      if (field === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        errors[field] = true;
-        if (!firstInvalid) firstInvalid = el;
-      }
-      if (field === "phone") {
-        const digits = val.replace(/\D/g, "");
-        if (digits.length < 10) {
-          errors[field] = true;
-          if (!firstInvalid) firstInvalid = el;
-        }
-      }
-      if (field === "zip" && !/^\d{5}(-\d{4})?$/.test(val)) {
-        errors[field] = true;
+      if (!val || (validate && !validate(val))) {
+        errors[field] = msg;
         if (!firstInvalid) firstInvalid = el;
       }
     }
 
-    const consentEl = form.elements.namedItem(
-      "consent",
-    ) as HTMLInputElement | null;
+    const consentEl = form.elements.namedItem("consent") as HTMLInputElement | null;
     const consentChecked = consentEl?.checked ?? false;
-
-    if (!consentChecked) {
-      errors["consent"] = true;
-    }
+    if (!consentChecked) errors["consent"] = t("s8.consentError");
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
@@ -190,8 +209,9 @@ export default function QuizSection({ locale }: { locale: string }) {
     const [firstName, ...rest] = fd("fullName").trim().split(" ");
     const lastName = rest.join(" ");
     const eventId = generateEventId();
-    trackEvent("CompleteRegistration", {}, eventId);
-    await sendCAPIEvent("CompleteRegistration", eventId, {
+    const eventName = isDisqualified ? "Disqualified" : "CompleteRegistration";
+    trackEvent(eventName, {}, eventId);
+    await sendCAPIEvent(eventName, eventId, {
       email: fd("email"),
       phone: fd("phone"),
       firstName,
@@ -267,8 +287,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s1.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("Was_in_accident", opt, 2)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Was_in_accident", opt, 2, i)}
                   >
                     {opt}
                   </button>
@@ -285,8 +306,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s2.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("Accident_timeframe", opt, 3)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Accident_timeframe", opt, 3, i)}
                   >
                     {opt}
                   </button>
@@ -303,8 +325,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s3.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("At_fault", opt, 4)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("At_fault", opt, 4, i)}
                   >
                     {opt}
                   </button>
@@ -321,8 +344,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s4.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("Was_injured", opt, 5)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Was_injured", opt, 5, i)}
                   >
                     {opt}
                   </button>
@@ -340,8 +364,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s5.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("Medical_treatment", opt, 6)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Medical_treatment", opt, 6, i)}
                   >
                     {opt}
                   </button>
@@ -358,8 +383,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                 {(t.raw("s6.options") as string[]).map((opt, i) => (
                   <button
                     key={i}
-                    className="option-btn"
-                    onClick={() => selectOption("Has_lawyer", opt, 7)}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Has_lawyer", opt, 7, i)}
                   >
                     {opt}
                   </button>
@@ -443,15 +469,11 @@ export default function QuizSection({ locale }: { locale: string }) {
                     type="text"
                     name="fullName"
                     placeholder={t("s8.fullNamePh")}
-                    style={
-                      fieldErrors.fullName
-                        ? { borderColor: "#D63030" }
-                        : undefined
-                    }
-                    onChange={() =>
-                      setFieldErrors((p) => ({ ...p, fullName: false }))
-                    }
+                    autoComplete="name"
+                    style={fieldErrors.fullName ? { borderColor: "#D63030" } : undefined}
+                    onChange={() => setFieldErrors((p) => ({ ...p, fullName: "" }))}
                   />
+                  {fieldErrors.fullName && <div className="error-msg">{fieldErrors.fullName}</div>}
                 </div>
                 <div className="form-group">
                   <label className="form-label">{t("s8.phone")}</label>
@@ -460,13 +482,12 @@ export default function QuizSection({ locale }: { locale: string }) {
                     type="tel"
                     name="phone"
                     placeholder={t("s8.phonePh")}
-                    style={
-                      fieldErrors.phone ? { borderColor: "#D63030" } : undefined
-                    }
-                    onChange={() =>
-                      setFieldErrors((p) => ({ ...p, phone: false }))
-                    }
+                    autoComplete="tel"
+                    inputMode="tel"
+                    style={fieldErrors.phone ? { borderColor: "#D63030" } : undefined}
+                    onChange={formatPhone}
                   />
+                  {fieldErrors.phone && <div className="error-msg">{fieldErrors.phone}</div>}
                 </div>
                 <div className="form-group">
                   <label className="form-label">{t("s8.email")}</label>
@@ -475,13 +496,12 @@ export default function QuizSection({ locale }: { locale: string }) {
                     type="email"
                     name="email"
                     placeholder={t("s8.emailPh")}
-                    style={
-                      fieldErrors.email ? { borderColor: "#D63030" } : undefined
-                    }
-                    onChange={() =>
-                      setFieldErrors((p) => ({ ...p, email: false }))
-                    }
+                    autoComplete="email"
+                    inputMode="email"
+                    style={fieldErrors.email ? { borderColor: "#D63030" } : undefined}
+                    onChange={() => setFieldErrors((p) => ({ ...p, email: "" }))}
                   />
+                  {fieldErrors.email && <div className="error-msg">{fieldErrors.email}</div>}
                 </div>
                 <div style={{ display: "flex", gap: 10 }}>
                   <div className="form-group" style={{ flex: 1 }}>
@@ -491,39 +511,28 @@ export default function QuizSection({ locale }: { locale: string }) {
                       type="text"
                       name="city"
                       placeholder={t("s8.cityPh")}
-                      style={
-                        fieldErrors.city
-                          ? { borderColor: "#D63030" }
-                          : undefined
-                      }
-                      onChange={() =>
-                        setFieldErrors((p) => ({ ...p, city: false }))
-                      }
+                      autoComplete="address-level2"
+                      style={fieldErrors.city ? { borderColor: "#D63030" } : undefined}
+                      onChange={() => setFieldErrors((p) => ({ ...p, city: "" }))}
                     />
+                    {fieldErrors.city && <div className="error-msg">{fieldErrors.city}</div>}
                   </div>
                   <div className="form-group" style={{ flex: 1 }}>
                     <label className="form-label">{t("s8.state")}</label>
                     <select
                       className="form-input"
                       name="state"
-                      style={{
-                        cursor: "pointer",
-                        ...(fieldErrors.state
-                          ? { borderColor: "#D63030" }
-                          : {}),
-                      }}
-                      onChange={() =>
-                        setFieldErrors((p) => ({ ...p, state: false }))
-                      }
+                      autoComplete="address-level1"
+                      style={{ cursor: "pointer", ...(fieldErrors.state ? { borderColor: "#D63030" } : {}) }}
+                      onChange={() => setFieldErrors((p) => ({ ...p, state: "" }))}
                       defaultValue=""
                     >
                       <option value="">{t("s8.statePh")}</option>
                       {stateOptions.map((s) => (
-                        <option key={s.value} value={s.value}>
-                          {s.label}
-                        </option>
+                        <option key={s.value} value={s.value}>{s.label}</option>
                       ))}
                     </select>
+                    {fieldErrors.state && <div className="error-msg">{fieldErrors.state}</div>}
                   </div>
                 </div>
                 <div className="form-group">
@@ -533,28 +542,22 @@ export default function QuizSection({ locale }: { locale: string }) {
                     type="text"
                     name="zip"
                     placeholder={t("s8.zipPh")}
+                    autoComplete="postal-code"
+                    inputMode="numeric"
                     maxLength={10}
-                    style={
-                      fieldErrors.zip ? { borderColor: "#D63030" } : undefined
-                    }
-                    onChange={() =>
-                      setFieldErrors((p) => ({ ...p, zip: false }))
-                    }
+                    style={fieldErrors.zip ? { borderColor: "#D63030" } : undefined}
+                    onChange={() => setFieldErrors((p) => ({ ...p, zip: "" }))}
                   />
+                  {fieldErrors.zip && <div className="error-msg">{fieldErrors.zip}</div>}
                 </div>
 
-                <div
-                  className={`consent-wrap ${fieldErrors.consent ? "error" : ""}`}
-                >
+                <div className={`consent-wrap ${fieldErrors.consent ? "error" : ""}`}>
                   <input
                     type="checkbox"
                     id="consent"
                     name="consent"
-                    // defaultChecked
                     className="consent-checkbox"
-                    onChange={() =>
-                      setFieldErrors((p) => ({ ...p, consent: false }))
-                    }
+                    onChange={() => setFieldErrors((p) => ({ ...p, consent: "" }))}
                   />
                   <div className="consent-text">
                     <label htmlFor="consent">{t("s8.consentPre")}</label>
@@ -565,11 +568,8 @@ export default function QuizSection({ locale }: { locale: string }) {
                   </div>
                 </div>
                 {fieldErrors.consent && (
-                  <div
-                    className="error-msg"
-                    style={{ marginTop: -4, marginBottom: 12 }}
-                  >
-                    {t("s8.consentError")}
+                  <div className="error-msg" style={{ marginTop: -4, marginBottom: 12 }}>
+                    {fieldErrors.consent}
                   </div>
                 )}
 

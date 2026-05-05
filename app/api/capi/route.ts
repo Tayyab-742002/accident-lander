@@ -70,6 +70,7 @@ export async function POST(req: NextRequest) {
     "PageView",
     "SubmitApplication",
     "CompleteRegistration",
+    "Disqualified",
   ];
   if (!eventName || !eventId || !ALLOWED_EVENTS.includes(eventName)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });

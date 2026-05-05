@@ -242,8 +242,9 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   font-weight: 600;
   color: var(--navy);
 }
-.option-btn:hover { background: #FDEAEA; border-color: var(--red); color: var(--red-dark); transform: translateX(3px); }
+.option-btn:hover:not(:disabled) { background: #FDEAEA; border-color: var(--red); color: var(--red-dark); transform: translateX(3px); }
 .option-btn.selected { background: var(--red); border-color: var(--red); color: var(--white); transform: translateX(3px); }
+.option-btn:disabled:not(.selected) { cursor: default; opacity: 0.5; }
 
 /* TEXTAREA */
 .story-input {
@@ -305,6 +306,7 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   appearance: none;
 }
 .form-input:focus { border-color: var(--red); background: var(--white); }
+.error-msg { font-size: 12px; color: #D63030; font-weight: 600; margin-top: 5px; }
 
 .submit-btn {
   width: 100%;
@@ -566,7 +568,6 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   border-bottom: 1px solid rgba(255,255,255,0.08);
   flex-shrink: 0;
 }
-.modal-header-text {}
 .modal-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 26px;
@@ -756,6 +757,18 @@ html { font-family: 'Manrope', sans-serif; background: var(--navy); color: var(-
   .hero h1 { font-size: 64px; }
   .hero-sub { font-size: 16px; max-width: 540px; }
   .quiz-wrap { max-width: 600px; padding: 40px 48px 56px; }
+}
+
+/* 14-inch laptops and short desktop screens — keep quiz fully visible */
+@media (min-width: 1024px) and (max-height: 900px) {
+  .hero { padding: 24px 32px 0; }
+  .hero h1 { font-size: 48px; }
+  .hero-sub { font-size: 14px; margin-bottom: 12px; }
+  .quiz-wrap { padding: 24px 48px 32px; }
+  .step-indicator { margin-bottom: 14px; }
+  .question-text { font-size: 20px; }
+  .options { gap: 7px; }
+  .option-btn { padding: 12px 18px; }
 }
 
 /* Voice tip — mobile only */
