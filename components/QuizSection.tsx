@@ -261,7 +261,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 1 — Accident type */}
           {!done && currentStep === 1 && (
             <div className="step">
-              <div className="question-label">{t("s1.label")}</div>
               <div className="question-text">{t("s1.question")}</div>
               <div className="question-hint">{t("s1.hint")}</div>
               <div className="options">
@@ -281,7 +280,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 2 — Timeframe */}
           {!done && currentStep === 2 && (
             <div className="step">
-              <div className="question-label">{t("s2.label")}</div>
               <div className="question-text">{t("s2.question")}</div>
               <div className="options">
                 {(t.raw("s2.options") as string[]).map((opt, i) => (
@@ -300,7 +298,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 3 — Fault */}
           {!done && currentStep === 3 && (
             <div className="step">
-              <div className="question-label">{t("s3.label")}</div>
               <div className="question-text">{t("s3.question")}</div>
               <div className="options">
                 {(t.raw("s3.options") as string[]).map((opt, i) => (
@@ -319,7 +316,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 4 — Injured */}
           {!done && currentStep === 4 && (
             <div className="step">
-              <div className="question-label">{t("s4.label")}</div>
               <div className="question-text">{t("s4.question")}</div>
               <div className="options">
                 {(t.raw("s4.options") as string[]).map((opt, i) => (
@@ -338,7 +334,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 5 — Medical treatment */}
           {!done && currentStep === 5 && (
             <div className="step">
-              <div className="question-label">{t("s5.label")}</div>
               <div className="question-text">{t("s5.question")}</div>
               <div className="question-hint">{t("s5.hint")}</div>
               <div className="options">
@@ -358,7 +353,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 6 — Has lawyer */}
           {!done && currentStep === 6 && (
             <div className="step">
-              <div className="question-label">{t("s6.label")}</div>
               <div className="question-text">{t("s6.question")}</div>
               <div className="options">
                 {(t.raw("s6.options") as string[]).map((opt, i) => (
@@ -377,7 +371,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 7 — Story */}
           {!done && currentStep === 7 && (
             <div className="step">
-              <div className="question-label">{t("s7.label")}</div>
               <div className="question-text">
                 {t("s7.question")}{" "}
                 <span style={{ color: "var(--red)" }}>*</span>
@@ -421,7 +414,6 @@ export default function QuizSection({ locale }: { locale: string }) {
           {/* STEP 8 — Contact form */}
           {!done && currentStep === 8 && (
             <div className="step">
-              <div className="question-label">{t("s8.label")}</div>
               {/* <div className="question-text">{t("s8.question")}</div> */}
               {/* <div
                 style={{
