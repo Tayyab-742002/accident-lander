@@ -58,6 +58,10 @@
       "question": "¿Tiene actualmente representación legal?",
       "options": ["No, No Tengo Abogado", "Sí, Ya Tengo Uno"]
     },
+    "sCta": {
+      "question": "Las víctimas de accidentes que no obtienen ayuda legal a menudo reciben mucho menos de lo que merecen. Aproveche una consulta sin costo con un defensor de lesiones para saber exactamente lo que se le debe.",
+      "options": ["Sí, Quiero Saber Lo Que Me Deben", "No Gracias, Me Arriesgaré"]
+    },
     "s7": {
       "label": "Pregunta 7 de 8",
       "question": "¡Casi Terminamos!",

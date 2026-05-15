@@ -58,6 +58,10 @@
       "question": "Are you currently represented by an attorney?",
       "options": ["No, I Don't Have an Attorney", "Yes, I Already Have One"]
     },
+    "sCta": {
+      "question": "Accident victims who don't get legal help often walk away with far less than they deserve. Take advantage of a no-cost consultation with an injury advocate to find out exactly what you're owed.",
+      "options": ["Yes, Find Out What I'm Owed", "No Thanks, I'll Take My Chances"]
+    },
     "s7": {
       "label": "Question 7 of 8",
       "question": "Almost Finished!",

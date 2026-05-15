@@ -17,7 +17,7 @@ import {
 import { trackEvent } from "@/lib/fbq";
 import { getVariantConfig } from "@/lib/variants";
 
-const TOTAL_STEPS = 8;
+const TOTAL_STEPS = 9;
 
 // Index-based — works across en/es/ca since option order is identical in all locales
 const DISQUALIFYING_RULES: Partial<Record<keyof QuizAnswers, number>> = {
@@ -114,7 +114,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     steppingRef.current = true;
     setStoryError(false);
     setAnswers((prev) => ({ ...prev, Accident_Details: val }));
-    goToStep(8);
+    goToStep(9);
     setTimeout(() => { steppingRef.current = false; }, 500);
   }
 
@@ -173,6 +173,7 @@ export default function QuizSection({ locale }: { locale: string }) {
       Was_injured: answers.Was_injured ?? "",
       Medical_treatment: answers.Medical_treatment ?? "",
       Has_lawyer: answers.Has_lawyer ?? "",
+      Consultation_Interest: answers.Consultation_Interest ?? "",
       Accident_Details: answers.Accident_Details ?? "",
 
       /* contact form */
@@ -209,7 +210,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     const [firstName, ...rest] = fd("fullName").trim().split(" ");
     const lastName = rest.join(" ");
     const eventId = generateEventId();
-    const eventName = isDisqualified ? "Disqualified" : "CompleteRegistration";
+    const eventName = "CompleteRegistration"; // "Disqualified" paused — re-enable: isDisqualified ? "Disqualified" : "CompleteRegistration"
     trackEvent(eventName, {}, eventId);
     await sendCAPIEvent(eventName, eventId, {
       email: fd("email"),
@@ -394,8 +395,27 @@ export default function QuizSection({ locale }: { locale: string }) {
             </div>
           )}
 
-          {/* STEP 7 — Story */}
+          {/* STEP 7 — Consultation CTA */}
           {!done && currentStep === 7 && (
+            <div className="step">
+              <div className="question-text">{t("sCta.question")}</div>
+              <div className="options">
+                {(t.raw("sCta.options") as string[]).map((opt, i) => (
+                  <button
+                    key={i}
+                    className={`option-btn${selectedOption === opt ? " selected" : ""}`}
+                    disabled={!!selectedOption}
+                    onClick={() => selectOption("Consultation_Interest", opt, 8, i)}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* STEP 8 — Story */}
+          {!done && currentStep === 8 && (
             <div className="step">
               <div className="question-text">
                 {t("s7.question")}{" "}
@@ -437,8 +457,8 @@ export default function QuizSection({ locale }: { locale: string }) {
             </div>
           )}
 
-          {/* STEP 8 — Contact form */}
-          {!done && currentStep === 8 && (
+          {/* STEP 9 — Contact form */}
+          {!done && currentStep === 9 && (
             <div className="step">
               {/* <div className="question-text">{t("s8.question")}</div> */}
               {/* <div

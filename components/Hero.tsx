@@ -19,7 +19,7 @@ export default async function Hero({ locale }: { locale: string }) {
 
         <p className="hero-sub">{t("sub")}</p>
 
-        {locale !== "en" && (
+        {locale === "es" && (
           <div className="settlements-wrap">
             <div className="settlements-label">{t("settlementsLabel")}</div>
             <div className="settlements-row">
