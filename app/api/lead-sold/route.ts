@@ -73,6 +73,15 @@ function getRequestIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest) {
+  // Log every incoming request immediately — before any validation —
+  // so we can confirm in Axiom that LeadProsper is actually hitting us.
+  log("info", {
+    type: "lead_sold_received",
+    contentType: req.headers.get("content-type") ?? null,
+    userAgent: req.headers.get("user-agent") ?? null,
+    ip: getRequestIp(req) || null,
+  });
+
   const token = process.env.META_CAPI_TOKEN;
   const WEBHOOK_SECRET = process.env.LEADSPROSPER_WEBHOOK_SECRET ?? "";
   if (!token) {
@@ -84,6 +93,10 @@ export async function POST(req: NextRequest) {
   try {
     body = await parseLeadSoldBody(req);
   } catch (err) {
+    log("error", {
+      type: "lead_sold_invalid_body",
+      error: err instanceof Error ? err.message : String(err),
+    });
     return NextResponse.json(
       {
         error: "Invalid request body",
@@ -98,22 +111,25 @@ export async function POST(req: NextRequest) {
 
   // Verify the shared secret so random people can't hit this endpoint
   if (!body.secret) {
+    log("warn", { type: "lead_sold_missing_secret", leadId: body.leadId ?? null });
     return NextResponse.json(
       { error: "Missing required field: secret" },
       { status: 400 },
     );
   }
   if (WEBHOOK_SECRET && body.secret !== WEBHOOK_SECRET) {
-    log("warn", { type: "lead_sold_unauthorized", reason: "Invalid secret" });
+    log("warn", { type: "lead_sold_unauthorized", reason: "Invalid secret", leadId: body.leadId ?? null });
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   if (!body.value) {
+    log("warn", { type: "lead_sold_missing_value", leadId: body.leadId ?? null });
     return NextResponse.json(
       { error: "Missing required field: value" },
       { status: 400 },
     );
   }
   if (!body.currency) {
+    log("warn", { type: "lead_sold_missing_currency", leadId: body.leadId ?? null });
     return NextResponse.json(
       { error: "Missing required field: currency" },
       { status: 400 },
@@ -147,6 +163,11 @@ export async function POST(req: NextRequest) {
 
   const saleValue = parseFloat(body.value);
   if (Number.isNaN(saleValue)) {
+    log("warn", {
+      type: "lead_sold_invalid_value",
+      leadId: body.leadId ?? null,
+      raw_value: body.value,
+    });
     return NextResponse.json(
       {
         error: "Invalid value field",

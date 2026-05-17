@@ -173,7 +173,7 @@ export default function QuizSection({ locale }: { locale: string }) {
       Was_injured: answers.Was_injured ?? "",
       Medical_treatment: answers.Medical_treatment ?? "",
       Has_lawyer: answers.Has_lawyer ?? "",
-      Consultation_Interest: answers.Consultation_Interest ?? "",
+      find_out_exactly_what_you_owed: answers.find_out_exactly_what_you_owed ?? "",
       Accident_Details: answers.Accident_Details ?? "",
 
       /* contact form */
@@ -200,12 +200,9 @@ export default function QuizSection({ locale }: { locale: string }) {
       xxTrustedFormToken: tf.xxTrustedFormToken,
     };
 
-    try {
-      await postLead(payload);
-    } catch {
-      // Silently continue — we always show the thank-you screen.
-      // If the CRM rejects, the team can debug in LeadProsper.
-    }
+    // Fire-and-forget — 8s timeout in postLead handles slow/unreachable CRM.
+    // Don't await so Meta events fire immediately regardless of CRM latency.
+    postLead(payload);
 
     const [firstName, ...rest] = fd("fullName").trim().split(" ");
     const lastName = rest.join(" ");
@@ -405,7 +402,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Consultation_Interest", opt, 8, i)}
+                    onClick={() => selectOption("find_out_exactly_what_you_owed", opt, 8, i)}
                   >
                     {opt}
                   </button>

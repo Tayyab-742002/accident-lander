@@ -5,6 +5,8 @@
  * Change WEBHOOK_URL or the LP params when switching campaigns.
  */
 
+import { getFbCookies } from "@/lib/capi";
+
 const WEBHOOK_URL = "https://api.leadprosper.io/direct_post/";
 
 const LP_PARAMS = {
@@ -25,7 +27,7 @@ export interface QuizAnswers {
   Was_injured: string; // step 4
   Medical_treatment: string; // step 5
   Has_lawyer: string; // step 6
-  Consultation_Interest: string; // step 7 (cta)
+  find_out_exactly_what_you_owed: string; // step 7 (cta)
   Accident_Details: string; // step 8 (story)
 }
 
@@ -94,30 +96,13 @@ export function getTrustedFormValues() {
   };
 }
 
-/** Read Meta cookies for webhook passthrough fields. */
+/**
+ * Read Meta cookies for webhook passthrough fields.
+ * Delegates to the centralized resolver in lib/capi.ts so fbp/fbc
+ * always match what CAPI sends (URL → localStorage → self-generated).
+ */
 export function getMetaCookieValues(): { fbp: string; fbc: string } {
-  const cookies = Object.fromEntries(
-    document.cookie
-      .split(";")
-      .map((cookie) => cookie.trim())
-      .filter(Boolean)
-      .map((cookie) => {
-        const [key, ...rest] = cookie.split("=");
-        return [decodeURIComponent(key), decodeURIComponent(rest.join("="))];
-      }),
-  );
-
-  // Prefer fbclid from URL — original case, millisecond timestamp (Meta spec)
-  let fbc = cookies._fbc ?? "";
-  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
-  if (fbclid) {
-    fbc = `fb.1.${Date.now()}.${fbclid}`;
-  }
-
-  return {
-    fbp: cookies._fbp ?? "",
-    fbc,
-  };
+  return getFbCookies();
 }
 
 /** Format current date as MM/DD/YYYY (matches LeadProsper example). */
@@ -149,6 +134,7 @@ export async function postLead(payload: LeadPayload): Promise<PostResult> {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: body.toString(),
+      signal: AbortSignal.timeout(8000),
     });
 
     const data = await res.json();

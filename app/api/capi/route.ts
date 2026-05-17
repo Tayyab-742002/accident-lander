@@ -92,8 +92,14 @@ export async function POST(req: NextRequest) {
   // Unhashed — Meta uses these for browser matching
   if (userData.ip) user_data.client_ip_address = userData.ip;
   if (userData.userAgent) user_data.client_user_agent = userData.userAgent;
-  if (userData.fbp) user_data.fbp = userData.fbp;
-  if (userData.fbc) user_data.fbc = userData.fbc;
+
+  // fbp/fbc resolution order: client-provided → request cookie fallback.
+  // The cookie layer catches edge cases where the client bundle failed
+  // to capture (e.g. JS error during module init).
+  const fbp = userData.fbp || req.cookies.get("_fbp")?.value;
+  const fbc = userData.fbc || req.cookies.get("_fbc")?.value;
+  if (fbp) user_data.fbp = fbp;
+  if (fbc) user_data.fbc = fbc;
 
   if (userData.state) user_data.st = hash(userData.state); // lowercase auto-applied by hash()
   const payload = {
@@ -118,8 +124,10 @@ export async function POST(req: NextRequest) {
     sourceUrl,
     has_email: !!userData.email,
     has_phone: !!userData.phone,
-    has_fbp: !!userData.fbp,
-    has_fbc: !!userData.fbc,
+    has_fbp: !!fbp,
+    has_fbc: !!fbc,
+    fbp_source: userData.fbp ? "client" : fbp ? "cookie" : "none",
+    fbc_source: userData.fbc ? "client" : fbc ? "cookie" : "none",
     has_ip: !!userData.ip,
   });
 

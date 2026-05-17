@@ -10,14 +10,11 @@ export default function Pixels({ locale }: { locale: string }) {
   const { metaPixelId, gtmId } = getPixelConfig(locale);
   const pageViewEventId = useRef(generateEventId());
   useEffect(() => {
-    // Delay slightly so fbevents.js has time to load and set the _fbp cookie
-    // before we read it inside sendCAPIEvent.
-    const timer = setTimeout(() => {
-      getVisitorIp().then((ip) => {
-        sendCAPIEvent('PageView', pageViewEventId.current, { ip });
-      });
-    }, 1500);
-    return () => clearTimeout(timer);
+    // fbp/fbc are captured/generated synchronously at module load
+    // (see lib/capi.ts), so we don't need to wait for fbevents.js.
+    getVisitorIp().then((ip) => {
+      sendCAPIEvent('PageView', pageViewEventId.current, { ip });
+    });
   }, []);
 
   return (
