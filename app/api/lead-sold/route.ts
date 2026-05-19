@@ -7,7 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
-import { log } from "@/lib/logger";
+import { log, flushLogs } from "@/lib/logger";
 
 const PIXEL_ID = process.env.META_PIXEL_ID!;
 const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
@@ -73,6 +73,7 @@ function getRequestIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest) {
+  try {
   // Log every incoming request immediately — before any validation —
   // so we can confirm in Axiom that LeadProsper is actually hitting us.
   log("info", {
@@ -137,13 +138,14 @@ export async function POST(req: NextRequest) {
   }
 
   const user_data: Record<string, string> = {};
-  const requestIp = getRequestIp(req);
-  const clientIpAddress = body.ip_address?.trim() || requestIp;
+  // Use only the lead's browser IP — requestIp here is LeadProsper's server IP, not the user's.
+  const clientIpAddress = body.ip_address?.trim() || "";
 
   if (body.email) user_data.em = hash(body.email);
   if (body.phone) {
-    const digits = body.phone.replace(/\D/g, "");
-    if (digits.length >= 10) user_data.ph = hash(digits);
+    let digits = body.phone.replace(/\D/g, "");
+    if (digits.length === 10) digits = "1" + digits;
+    if (digits.length >= 11) user_data.ph = hash(digits);
   }
   if (body.fullName) {
     const [firstName, ...rest] = body.fullName.trim().split(" ");
@@ -200,11 +202,12 @@ export async function POST(req: NextRequest) {
     value: saleValue,
     currency: body.currency,
     state: body.state ?? null,
-    has_email: !!body.email,
-    has_phone: !!body.phone,
-    has_fbp: !!body.fbp,
-    has_fbc: !!body.fbc,
-    has_ip: !!clientIpAddress,
+    email: body.email || null,
+    phone: body.phone || null,
+    fbp: body.fbp || null,
+    fbc: body.fbc || null,
+    ip: clientIpAddress || null,
+    user_agent: body.user_agent || null,
   });
 
   try {
@@ -228,5 +231,11 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     log("error", { type: "lead_sold_network_error", leadId: body.leadId ?? null, error: err instanceof Error ? err.message : String(err) });
     return NextResponse.json({ error: "Network error" }, { status: 502 });
+  }
+  } catch (err) {
+    log("error", { type: "lead_sold_unexpected_error", error: err instanceof Error ? err.message : String(err) });
+    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
+  } finally {
+    await flushLogs();
   }
 }

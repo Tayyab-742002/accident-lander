@@ -22,7 +22,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
-import { log } from "@/lib/logger";
+import { log, flushLogs } from "@/lib/logger";
 
 const PIXEL_ID = process.env.META_PIXEL_ID!;
 const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
@@ -52,6 +52,7 @@ interface CAPIRequestBody {
 }
 
 export async function POST(req: NextRequest) {
+  try {
   const token = process.env.META_CAPI_TOKEN;
   if (!token) {
     log("warn", { type: "capi_skipped", reason: "META_CAPI_TOKEN not set" });
@@ -80,9 +81,10 @@ export async function POST(req: NextRequest) {
 
   if (userData.email) user_data.em = hash(userData.email);
   if (userData.phone) {
-    // Strip all non-digits, then hash
-    const digits = userData.phone.replace(/\D/g, "");
-    if (digits.length >= 10) user_data.ph = hash(digits);
+    // E.164: country code + digits. Prepend "1" for bare 10-digit US numbers.
+    let digits = userData.phone.replace(/\D/g, "");
+    if (digits.length === 10) digits = "1" + digits;
+    if (digits.length >= 11) user_data.ph = hash(digits);
   }
   if (userData.firstName) user_data.fn = hash(userData.firstName);
   if (userData.lastName) user_data.ln = hash(userData.lastName);
@@ -101,7 +103,9 @@ export async function POST(req: NextRequest) {
   if (fbp) user_data.fbp = fbp;
   if (fbc) user_data.fbc = fbc;
 
-  if (userData.state) user_data.st = hash(userData.state); // lowercase auto-applied by hash()
+  if (userData.state) user_data.st = hash(userData.state);
+  // US-only lander — always send country for EMQ
+  user_data.country = hash("us");
   const payload = {
     data: [
       {
@@ -122,35 +126,37 @@ export async function POST(req: NextRequest) {
     eventName,
     eventId,
     sourceUrl,
-    has_email: !!userData.email,
-    has_phone: !!userData.phone,
-    has_fbp: !!fbp,
-    has_fbc: !!fbc,
+    email: userData.email || null,
+    phone: userData.phone || null,
+    fbp: fbp || null,
+    fbc: fbc || null,
     fbp_source: userData.fbp ? "client" : fbp ? "cookie" : "none",
     fbc_source: userData.fbc ? "client" : fbc ? "cookie" : "none",
-    has_ip: !!userData.ip,
+    ip: userData.ip || null,
+    userAgent: userData.userAgent || null,
   });
 
-  try {
-    const res = await fetch(`${GRAPH_URL}?access_token=${token}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    const data = await res.json();
+  const res = await fetch(`${GRAPH_URL}?access_token=${token}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
 
-    if (!res.ok) {
-      log("error", { type: "capi_meta_error", eventName, eventId, meta_error: data });
-      return NextResponse.json({ error: data }, { status: 502 });
-    }
+  if (!res.ok) {
+    log("error", { type: "capi_meta_error", eventName, eventId, meta_error: data });
+    return NextResponse.json({ error: data }, { status: 502 });
+  }
 
-    log("info", { type: "capi_success", eventName, eventId, events_received: data.events_received });
-    return NextResponse.json({
-      ok: true,
-      events_received: data.events_received,
-    });
+  log("info", { type: "capi_success", eventName, eventId, events_received: data.events_received });
+  return NextResponse.json({
+    ok: true,
+    events_received: data.events_received,
+  });
   } catch (err) {
-    log("error", { type: "capi_network_error", eventName, eventId, error: err instanceof Error ? err.message : String(err) });
+    log("error", { type: "capi_network_error", error: err instanceof Error ? err.message : String(err) });
     return NextResponse.json({ error: "Network error" }, { status: 502 });
+  } finally {
+    await flushLogs();
   }
 }

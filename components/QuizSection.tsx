@@ -38,7 +38,9 @@ export default function QuizSection({ locale }: { locale: string }) {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isDisqualified, setIsDisqualified] = useState(false);
+  const [phoneVal, setPhoneVal] = useState("");
   const steppingRef = useRef(false);
+  const submittingRef = useRef(false);
 
   /* ── quiz answer tracking ─────────────────────────────────── */
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
@@ -93,14 +95,38 @@ export default function QuizSection({ locale }: { locale: string }) {
     goToStep(nextStep);
   }
 
-  function formatPhone(e: React.ChangeEvent<HTMLInputElement>) {
-    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
-    let formatted = digits;
-    if (digits.length >= 7) formatted = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
-    else if (digits.length >= 4) formatted = `(${digits.slice(0,3)}) ${digits.slice(3)}`;
-    else if (digits.length >= 1) formatted = `(${digits}`;
-    e.target.value = formatted;
+  function formatPhoneDigits(digits: string): string {
+    if (digits.length === 0) return "";
+    if (digits.length <= 3) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
+  function validatePhone(v: string): boolean {
+    const d = v.replace(/\D/g, "");
+    // NANP rules: area code (first digit after optional country code "1") must not be 0 or 1
+    if (d.length === 11 && d[0] === "1") return d[1] !== "0" && d[1] !== "1";
+    if (d.length === 10) return d[0] !== "0" && d[0] !== "1";
+    return false;
+  }
+
+  function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
+    let digits = e.target.value.replace(/\D/g, "");
+    if (digits.length === 11 && digits[0] === "1") digits = digits.slice(1);
+    digits = digits.slice(0, 10);
+    setPhoneVal(formatPhoneDigits(digits));
     setFieldErrors((p) => ({ ...p, phone: "" }));
+  }
+
+  function handlePhoneKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Backspace") {
+      const digits = phoneVal.replace(/\D/g, "");
+      if (digits.length > 0) {
+        e.preventDefault();
+        setPhoneVal(formatPhoneDigits(digits.slice(0, -1)));
+        setFieldErrors((p) => ({ ...p, phone: "" }));
+      }
+    }
   }
 
   function validateStory() {
@@ -120,13 +146,14 @@ export default function QuizSection({ locale }: { locale: string }) {
 
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submittingRef.current) return;
     const form = e.currentTarget;
     const errors: Record<string, string> = {};
     let firstInvalid: HTMLElement | null = null;
 
     const fieldRules: [string, string, ((v: string) => boolean)?][] = [
       ["fullName", t("s8.nameError")],
-      ["phone",    t("s8.phoneError"),  (v) => v.replace(/\D/g, "").length === 10],
+      ["phone",    t("s8.phoneError"),  validatePhone],
       ["email",    t("s8.emailError"),  (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
       ["city",     t("s8.cityError")],
       ["state",    t("s8.stateError")],
@@ -144,15 +171,23 @@ export default function QuizSection({ locale }: { locale: string }) {
 
     const consentEl = form.elements.namedItem("consent") as HTMLInputElement | null;
     const consentChecked = consentEl?.checked ?? false;
-    if (!consentChecked) errors["consent"] = t("s8.consentError");
+    if (!consentChecked) {
+      errors["consent"] = t("s8.consentError");
+      if (!firstInvalid) firstInvalid = consentEl;
+    }
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
-      firstInvalid?.focus();
+      // Defer until after React renders error divs, then scroll + focus
+      requestAnimationFrame(() => {
+        firstInvalid?.scrollIntoView({ behavior: "smooth", block: "center" });
+        firstInvalid?.focus();
+      });
       return;
     }
 
     setFieldErrors({});
+    submittingRef.current = true;
     setSubmitting(true);
 
     /* ── Assemble the full lead payload ─────────────────────── */
@@ -219,6 +254,7 @@ export default function QuizSection({ locale }: { locale: string }) {
       city: fd("city"),
       ip,
     });
+    submittingRef.current = false;
     setSubmitting(false);
     setDone(true);
     setTimeout(scrollToQuiz, 50);
@@ -501,9 +537,15 @@ export default function QuizSection({ locale }: { locale: string }) {
                     placeholder={t("s8.phonePh")}
                     autoComplete="tel"
                     inputMode="tel"
+                    value={phoneVal}
                     style={fieldErrors.phone ? { borderColor: "#D63030" } : undefined}
-                    onChange={formatPhone}
+                    onChange={handlePhoneChange}
+                    onKeyDown={handlePhoneKeyDown}
+                    onBlur={() => {
+                      if (phoneVal && !validatePhone(phoneVal)) setFieldErrors((p) => ({ ...p, phone: t("s8.phoneError") }));
+                    }}
                   />
+                  <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 3 }}>(XXX) XXX-XXXX</div>
                   {fieldErrors.phone && <div className="error-msg">{fieldErrors.phone}</div>}
                 </div>
                 <div className="form-group">
@@ -564,7 +606,12 @@ export default function QuizSection({ locale }: { locale: string }) {
                     maxLength={10}
                     style={fieldErrors.zip ? { borderColor: "#D63030" } : undefined}
                     onChange={() => setFieldErrors((p) => ({ ...p, zip: "" }))}
+                    onBlur={(e) => {
+                      const v = e.target.value.trim();
+                      if (v && !/^\d{5}(-\d{4})?$/.test(v)) setFieldErrors((p) => ({ ...p, zip: t("s8.zipError") }));
+                    }}
                   />
+                  <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 3 }}>5-digit ZIP (e.g. 90210)</div>
                   {fieldErrors.zip && <div className="error-msg">{fieldErrors.zip}</div>}
                 </div>
 

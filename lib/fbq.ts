@@ -17,23 +17,31 @@ declare global {
   }
 }
 
+// Standard Meta events — must use 'track'. Everything else uses 'trackCustom'.
+const STANDARD_META_EVENTS = new Set([
+  "PageView", "ViewContent", "Search", "AddToCart", "AddToWishlist",
+  "InitiateCheckout", "AddPaymentInfo", "Purchase", "Lead",
+  "CompleteRegistration", "Contact", "CustomizeProduct", "Donate",
+  "FindLocation", "Schedule", "StartTrial", "SubmitApplication", "Subscribe",
+]);
+
 export function trackEvent(
   eventName: string,
   params?:   Record<string, unknown>,
   eventId?:  string,
 ) {
   if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-    // Build the options object — eventID is the deduplication key for CAPI
+    const method = STANDARD_META_EVENTS.has(eventName) ? 'track' : 'trackCustom';
     const options = eventId ? { eventID: eventId } : undefined;
 
     if (params && options) {
-      window.fbq('track', eventName, params, options);
+      window.fbq(method, eventName, params, options);
     } else if (params) {
-      window.fbq('track', eventName, params);
+      window.fbq(method, eventName, params);
     } else if (options) {
-      window.fbq('track', eventName, {}, options);
+      window.fbq(method, eventName, {}, options);
     } else {
-      window.fbq('track', eventName);
+      window.fbq(method, eventName);
     }
   }
 }
