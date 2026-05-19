@@ -19,15 +19,6 @@ import { getVariantConfig } from "@/lib/variants";
 
 const TOTAL_STEPS = 9;
 
-// Index-based — works across en/es/ca since option order is identical in all locales
-const DISQUALIFYING_RULES: Partial<Record<keyof QuizAnswers, number>> = {
-  Accident_timeframe: 3, // "Over 1 Year Ago"
-  At_fault:           2, // "I Was at Fault"
-  Was_injured:        1, // "No, I Wasn't Injured"
-  Medical_treatment:  2, // "No — Over 30 Days, No Doctor"
-  Has_lawyer:         1, // "Yes, I Already Have One"
-};
-
 export default function QuizSection({ locale }: { locale: string }) {
   const t = useTranslations("quiz");
   const { stateOptions } = getVariantConfig(locale);
@@ -37,7 +28,6 @@ export default function QuizSection({ locale }: { locale: string }) {
   const [storyError, setStoryError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [isDisqualified, setIsDisqualified] = useState(false);
   const [phoneVal, setPhoneVal] = useState("");
   const steppingRef = useRef(false);
   const submittingRef = useRef(false);
@@ -66,24 +56,14 @@ export default function QuizSection({ locale }: { locale: string }) {
     setTimeout(scrollToQuiz, 50);
   }
 
-  /**
-   * Store the selected option text and advance to the next step.
-   * `answerKey` maps 1:1 to the LeadProsper API field name.
-   */
   function selectOption(
     answerKey: keyof QuizAnswers,
     value: string,
     nextStep: number,
-    optionIndex: number,
   ) {
     if (selectedOption) return;
     setSelectedOption(value);
     setAnswers((prev) => ({ ...prev, [answerKey]: value }));
-
-    // Track disqualification — once disqualified, stays disqualified
-    if (DISQUALIFYING_RULES[answerKey] === optionIndex) {
-      setIsDisqualified(true);
-    }
 
     if (nextStep === 2) {
       const eventId = generateEventId();
@@ -242,7 +222,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     const [firstName, ...rest] = fd("fullName").trim().split(" ");
     const lastName = rest.join(" ");
     const eventId = generateEventId();
-    const eventName = "CompleteRegistration"; // "Disqualified" paused — re-enable: isDisqualified ? "Disqualified" : "CompleteRegistration"
+    const eventName = "CompleteRegistration";
     trackEvent(eventName, {}, eventId);
     await sendCAPIEvent(eventName, eventId, {
       email: fd("email"),
@@ -323,7 +303,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Was_in_accident", opt, 2, i)}
+                    onClick={() => selectOption("Was_in_accident", opt, 2)}
                   >
                     {opt}
                   </button>
@@ -342,7 +322,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Accident_timeframe", opt, 3, i)}
+                    onClick={() => selectOption("Accident_timeframe", opt, 3)}
                   >
                     {opt}
                   </button>
@@ -361,7 +341,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("At_fault", opt, 4, i)}
+                    onClick={() => selectOption("At_fault", opt, 4)}
                   >
                     {opt}
                   </button>
@@ -380,7 +360,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Was_injured", opt, 5, i)}
+                    onClick={() => selectOption("Was_injured", opt, 5)}
                   >
                     {opt}
                   </button>
@@ -400,7 +380,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Medical_treatment", opt, 6, i)}
+                    onClick={() => selectOption("Medical_treatment", opt, 6)}
                   >
                     {opt}
                   </button>
@@ -419,7 +399,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("Has_lawyer", opt, 7, i)}
+                    onClick={() => selectOption("Has_lawyer", opt, 7)}
                   >
                     {opt}
                   </button>
@@ -438,7 +418,7 @@ export default function QuizSection({ locale }: { locale: string }) {
                     key={i}
                     className={`option-btn${selectedOption === opt ? " selected" : ""}`}
                     disabled={!!selectedOption}
-                    onClick={() => selectOption("find_out_exactly_what_you_owed", opt, 8, i)}
+                    onClick={() => selectOption("find_out_exactly_what_you_owed", opt, 8)}
                   >
                     {opt}
                   </button>
