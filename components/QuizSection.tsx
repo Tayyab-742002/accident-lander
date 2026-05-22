@@ -513,6 +513,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                         {s.label}
                       </option>
                     ))}
+                    <option value="Other">Other</option>
                   </select>
                   {fieldErrors.state && (
                     <span className="error-msg show">{fieldErrors.state}</span>
@@ -529,8 +530,11 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     }}
                   />
                   <span className="tcpa">
-                    {t("s6.tcpaPre")} <PrivacyModal /> {t("s6.tcpaAnd")} <TermsModal />{" "}
-                    {t("s6.tcpaPost")}
+                    {t("s6.tcpaPre")}{" "}
+                    <span onClick={(e) => e.stopPropagation()}><PrivacyModal /></span>
+                    {" "}{t("s6.tcpaAnd")}{" "}
+                    <span onClick={(e) => e.stopPropagation()}><TermsModal /></span>
+                    {" "}{t("s6.tcpaPost")}
                   </span>
                 </label>
                 {fieldErrors.tcpa && (
