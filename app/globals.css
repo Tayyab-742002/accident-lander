@@ -631,7 +631,6 @@ body::before {
   font-size: 10.5px;
   font-weight: 600;
   color: var(--text-2);
-  white-space: nowrap;
   padding: 5px 6px;
   width: 100%;
   text-align: center;
@@ -771,18 +770,12 @@ body::before {
   .card-hdr { padding: 14px 16px 12px; }
   .card-body { padding: 14px 16px 16px; }
   .q-title { font-size: 14px; }
-  .trust-strip { padding: 8px 6px; }
-  .trust-strip .trust-item { font-size: 9.5px; padding: 4px 3px; gap: 3px; }
   .cta-btn { font-size: 14.5px; padding: 14px; }
   .opt { padding: 10px 12px; }
   .opt-label { font-size: 13px; }
-}
-
-@media (max-width: 360px) {
-  .trust-strip { grid-template-columns: repeat(2, 1fr); }
-  .trust-strip .trust-item { border-right: none; border-bottom: 1px solid var(--border); padding: 7px 4px; }
-  .trust-strip .trust-item:nth-child(1),
-  .trust-strip .trust-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+  /* Switch trust strip to 2×2 grid — 4 columns is too tight on phones */
+  .trust-strip { padding: 6px; grid-template-columns: repeat(2, 1fr); }
+  .trust-strip .trust-item { font-size: 10px; padding: 6px 4px; gap: 3px; border-right: none; border-bottom: 1px solid var(--border); }
   .trust-strip .trust-item:nth-child(3),
   .trust-strip .trust-item:nth-child(4) { border-bottom: none; }
   .trust-strip .trust-item:nth-child(odd) { border-right: 1px solid var(--border); }
