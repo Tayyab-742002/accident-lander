@@ -25,7 +25,8 @@ export interface QuizAnswers {
   Was_injured: string; // step 4
   Medical_treatment: string; // step 5
   Has_lawyer: string; // step 6
-  Accident_Details: string; // step 7 (story)
+  find_out_exactly_what_you_owed: string; // step 7 (CTA)
+  Accident_Details: string; // step 8 (story)
 }
 
 export interface ContactFields {
