@@ -28,7 +28,7 @@ export default function TermsModal() {
     <>
       <button
         onClick={() => setOpen(true)}
-        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', padding: 0 }}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0 }}
       >
         {ft('terms')}
       </button>
