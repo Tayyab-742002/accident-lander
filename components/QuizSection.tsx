@@ -17,10 +17,7 @@ import {
 import { trackEvent } from "@/lib/fbq";
 import { getVariantConfig } from "@/lib/variants";
 
-type StepId =
-  | 1 | 2 | 3 | 4 | 5 | 6
-  | "dq-time" | "dq-injury" | "dq-fault" | "dq-attorney"
-  | "ty";
+type StepId = 1 | 2 | 3 | 4 | 5 | 6 | "ty";
 
 interface OptionItem {
   label: string;
@@ -62,7 +59,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
   const currentStep = stepHistory[stepHistory.length - 1];
   const done = currentStep === "ty";
   const progressPct = PCT[String(currentStep)] ?? 95;
-  const isDQ = String(currentStep).startsWith("dq");
   const stepNum = typeof currentStep === "number" ? currentStep : null;
 
   useEffect(() => {
@@ -233,8 +229,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
               <span className="prog-label">
                 {stepNum
                   ? `${t("stepOf", { step: stepNum, total: TOTAL_STEPS })}`
-                  : isDQ
-                  ? t("dqStep")
                   : ""}
               </span>
               <span className="prog-pct">{progressPct}% {t("progressComplete")}</span>
@@ -317,7 +311,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     onClick={() =>
                       selectOption(
                         { Accident_timeframe: opt.label },
-                        opt.dq ? "dq-time" : 3,
+                        3,
                       )
                     }
                   >
@@ -329,18 +323,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     <span className="opt-arrow">›</span>
                   </button>
                 ))}
-              </div>
-              <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
-            </div>
-          )}
-
-          {/* DQ: Time */}
-          {!done && currentStep === "dq-time" && (
-            <div className="step">
-              <div className="dq-box">
-                <div className="dq-icon">⏰</div>
-                <div className="dq-title">{t("dqTime.title")}</div>
-                <div className="dq-msg">{t("dqTime.msg")}</div>
               </div>
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
             </div>
@@ -364,7 +346,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                             ? "No, I Wasn't Injured"
                             : "Yes, I Was Injured",
                         },
-                        opt.dq ? "dq-injury" : 4,
+                        4,
                       )
                     }
                   >
@@ -376,18 +358,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     <span className="opt-arrow">›</span>
                   </button>
                 ))}
-              </div>
-              <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
-            </div>
-          )}
-
-          {/* DQ: Not Injured */}
-          {!done && currentStep === "dq-injury" && (
-            <div className="step">
-              <div className="dq-box">
-                <div className="dq-icon">🎉</div>
-                <div className="dq-title">{t("dqInjury.title")}</div>
-                <div className="dq-msg">{t("dqInjury.msg")}</div>
               </div>
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
             </div>
@@ -406,7 +376,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     onClick={() =>
                       selectOption(
                         { At_fault: opt.label },
-                        opt.dq ? "dq-fault" : 5,
+                        5,
                       )
                     }
                   >
@@ -418,18 +388,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     <span className="opt-arrow">›</span>
                   </button>
                 ))}
-              </div>
-              <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
-            </div>
-          )}
-
-          {/* DQ: My Fault */}
-          {!done && currentStep === "dq-fault" && (
-            <div className="step">
-              <div className="dq-box">
-                <div className="dq-icon">🛑</div>
-                <div className="dq-title">{t("dqFault.title")}</div>
-                <div className="dq-msg">{t("dqFault.msg")}</div>
               </div>
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
             </div>
@@ -448,7 +406,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     onClick={() =>
                       selectOption(
                         { Has_lawyer: opt.label },
-                        opt.dq ? "dq-attorney" : 6,
+                        6,
                       )
                     }
                   >
@@ -460,18 +418,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                     <span className="opt-arrow">›</span>
                   </button>
                 ))}
-              </div>
-              <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
-            </div>
-          )}
-
-          {/* DQ: Has Attorney */}
-          {!done && currentStep === "dq-attorney" && (
-            <div className="step">
-              <div className="dq-box">
-                <div className="dq-icon">🤝</div>
-                <div className="dq-title">{t("dqAttorney.title")}</div>
-                <div className="dq-msg">{t("dqAttorney.msg")}</div>
               </div>
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>
             </div>
