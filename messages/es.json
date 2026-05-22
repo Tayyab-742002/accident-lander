@@ -19,87 +19,149 @@
     ]
   },
   "quiz": {
-    "stepLabel": "Paso {current} de {total}",
     "complete": "¡Completado!",
-    "progress": "Completado",
+    "progressComplete": "Completado",
+    "backBtn": "Regresar",
+    "dqStep": "En revisión",
+    "stepOf": "Paso {step} de {total}",
+
+    "topnav": {
+      "logo": "AccidentHelpNow",
+      "badge": "Abogados Disponibles en Vivo"
+    },
+
+    "header": {
+      "eyebrow": "🔒 Calculadora de Caso Gratuita y Confidencial",
+      "title": "Descubra el Valor Real de ",
+      "titleEm": "Su Caso de Accidente",
+      "sub1": "Obtenga una estimación rápida respaldada por abogados. Si califica, la mayoría recibe hasta ",
+      "subStrong": "70% más",
+      "sub2": " + nunca pagará de su bolsillo."
+    },
+
+    "socialProof": {
+      "text": "Más de 2,200 víctimas de accidentes ayudadas — revisión en menos de 4 minutos"
+    },
+
     "s1": {
-      "label": "Pregunta 1 de 8",
-      "question": "¿Qué tipo de accidente tuvo?",
-      "hint": "Incluso lesiones menores podrían darle derecho a una compensación significativa.",
-      "options": ["Accidente de Auto / Camión", "Accidente de Motocicleta", "Accidente de Rideshare (Uber / Lyft)", "Accidente como Peatón"]
-    },
-    "s2": {
-      "label": "Pregunta 2 de 8",
-      "question": "¿Cuándo ocurrió su accidente?",
-      "options": ["En el Último Mes", "En los Últimos 6 Meses", "En el Último Año", "Hace Más de 1 Año"]
-    },
-    "s3": {
-      "label": "Pregunta 3 de 8",
-      "question": "¿Quién tuvo principalmente la culpa del accidente?",
-      "options": ["Principalmente la Otra Parte", "Culpa Compartida", "Yo Tuve la Culpa", "No Estoy Seguro"]
-    },
-    "s4": {
-      "label": "Pregunta 4 de 8",
-      "question": "¿Resultó lesionado en el accidente?",
-      "options": ["Sí, Resulté Lesionado", "No, No Resulté Lesionado"]
-    },
-    "s5": {
-      "label": "Pregunta 5 de 8",
-      "question": "¿Recibió atención médica después del accidente?",
-      "hint": "Los registros médicos son clave para maximizar su compensación.",
+      "question": "¿En qué tipo de accidente estuvo?",
+      "hint": "Seleccione la opción que mejor describa su situación.",
       "options": [
-        "Sí, Ya Recibí Tratamiento",
-        "Aún No — Mi Accidente Fue Reciente",
-        "No — Han Pasado Más de 30 Días y No He Visto a un Médico"
+        { "label": "Accidente de Auto o Camión", "sub": "Colisión con otro vehículo" },
+        { "label": "Accidente de Motocicleta", "sub": "Colisión o incidente en la carretera" },
+        { "label": "Accidente de Rideshare", "sub": "Uber, Lyft u otro conductor de reparto" },
+        { "label": "Peatón / Ciclista", "sub": "Atropellado mientras caminaba o en bicicleta" }
       ]
     },
+
+    "s2": {
+      "question": "¿Cuándo ocurrió el accidente?",
+      "hint": "El tiempo importa — su ventana legal puede estar cerrándose pronto.",
+      "options": [
+        { "label": "En el último mes", "sub": "Reciente — ventana de caso sólida" },
+        { "label": "Hace 1 a 3 meses", "sub": "Todavía dentro del plazo de reclamación" },
+        { "label": "Hace 4 a 12 meses", "sub": "Actúe pronto — aplican límites de tiempo" },
+        { "label": "Hace más de un año", "sub": "Puede afectar la elegibilidad", "dq": true }
+      ]
+    },
+
+    "s3": {
+      "question": "¿Recibió tratamiento médico?",
+      "hint": "La documentación médica fortalece significativamente su caso.",
+      "options": [
+        { "label": "Sí — Sala de Emergencias", "sub": "Tratado en urgencias el mismo día o después" },
+        { "label": "Sí — Médico o Clínica", "sub": "Vio a un médico o especialista" },
+        { "label": "Lesionado pero sin tratamiento aún", "sub": "Dolor o síntomas pero sin visita médica" },
+        { "label": "No me lesioné", "sub": "Sin daño físico del accidente", "dq": true }
+      ]
+    },
+
+    "s4": {
+      "question": "¿Quién tuvo la culpa del accidente?",
+      "hint": "Incluso los casos de culpa parcial pueden calificar para compensación.",
+      "options": [
+        { "label": "El otro conductor tuvo la culpa", "sub": "Ellos causaron el accidente" },
+        { "label": "Culpa compartida o no determinada", "sub": "Ambas partes involucradas" },
+        { "label": "No estoy seguro/a", "sub": "La culpa no ha sido determinada" },
+        { "label": "Yo tuve la culpa", "sub": "Yo causé el accidente", "dq": true }
+      ]
+    },
+
+    "s5": {
+      "question": "¿Actualmente trabaja con un abogado?",
+      "hint": "Esto nos ayuda a entender en qué etapa del proceso se encuentra.",
+      "options": [
+        { "label": "No, aún no tengo uno", "sub": "Todavía buscando representación" },
+        { "label": "Estoy pensando en cambiar", "sub": "No completamente satisfecho con el actual" },
+        { "label": "Sí, ya tengo un abogado", "sub": "Ya tengo representación", "dq": true }
+      ]
+    },
+
+    "dqTime": {
+      "title": "Es posible que no podamos ayudarle",
+      "msg": "Las reclamaciones de más de 12 meses a menudo quedan fuera del estatuto de limitaciones en la mayoría de los estados. Le recomendamos hablar con un abogado local para confirmar sus opciones — puede que aún haya una solución según su estado."
+    },
+
+    "dqInjury": {
+      "title": "¡Nos alegra que esté bien!",
+      "msg": "Dado que no se lesionó, probablemente no hay una reclamación de lesiones personales que perseguir. Sin embargo, si experimentó algún dolor o síntoma después — incluso leve — puede que valga la pena una consulta rápida con un abogado."
+    },
+
+    "dqFault": {
+      "title": "No podemos proceder con este caso",
+      "msg": "Si usted tuvo toda la culpa, no es posible presentar una reclamación de lesiones personales contra la otra parte. Sin embargo, puede que aún tenga opciones — consulte con un abogado local que pueda revisar todos los detalles de su situación."
+    },
+
+    "dqAttorney": {
+      "title": "¡Usted ya está en buenas manos!",
+      "msg": "Dado que ya tiene representación legal, no podemos asistirle en este momento. Si no está satisfecho con su abogado actual o quiere una segunda opinión, no dude en volver — trabajamos con abogados de accidentes altamente calificados en todo el país."
+    },
+
+    "qualify": {
+      "title": "¡Puede Calificar!",
+      "sub": "Complete sus datos — un especialista le llamará en minutos."
+    },
+
     "s6": {
-      "label": "Pregunta 6 de 8",
-      "question": "¿Tiene actualmente representación legal?",
-      "options": ["No, No Tengo Abogado", "Sí, Ya Tengo Uno"]
-    },
-    "s7": {
-      "label": "Pregunta 7 de 8",
-      "question": "¡Casi Terminamos!",
-      "hint": "Cuéntenos qué pasó en su accidente para que podamos estimar su posible compensación.",
-      "hintExample": "(p. ej. \"Me golpeó un conductor a exceso de velocidad en una intersección, me lesioné el hombro\")",
-      "placeholder": "p. ej. \"Me golpeó un conductor a exceso de velocidad, me lesioné el hombro y el cuello...\"",
-      "errorMsg": "⚠ Este campo es obligatorio. Por favor describa su accidente para continuar.",
-      "voiceTip": "💡 Consejo rápido: ¡Presiona el 🎤 en tu teclado para hablar tu respuesta!",
-      "continueBtn": "Continuar — Ver Mis Opciones"
-    },
-    "s8": {
-      "label": "¡Casi Listo!",
-      "question": "¿A dónde enviamos su revisión de caso gratuita?",
-      "qualifyBox": "Según sus respuestas, puede calificar para una compensación significativa. Un abogado autorizado se comunicará con usted en minutos — sin obligación, sin costo inicial.",
       "fullName": "Nombre Completo",
-      "fullNamePh": "Nombre completo",
-      "phone": "Número de Teléfono",
-      "phonePh": "(555) 000-0000",
+      "fullNamePh": "p. ej. Juan García",
       "email": "Correo Electrónico",
-      "emailPh": "su@correo.com",
-      "city": "Ciudad",
-      "cityPh": "Ciudad",
-      "state": "Estado",
-      "statePh": "Estado",
-      "zip": "Código Postal",
-      "zipPh": "p. ej. 90210",
-      "consentPre": "Al hacer clic en el botón 'Enviar', acepto la ",
-      "consentAnd": " y los ",
-      "consentPost": " y autorizo a Case Settlement Now y sus socios a contactarme por llamadas telefónicas, correo electrónico y mensajes de texto al número y dirección de correo electrónico que proporcioné anteriormente. Acepto recibir llamadas de telemarketing o voz artificial y mensajes pregrabados a través de un sistema de marcación automática, incluso si mi número de teléfono es un número móvil que actualmente está en cualquier lista estatal, federal o corporativa de 'No Llamar'. Entiendo que mi consentimiento no es una condición para la compra de bienes o servicios y que pueden aplicarse tarifas estándar de mensajes y datos.",
-      "consentError": "Por favor acepte para continuar",
-      "submitBtn": "Obtenga Mi Revisión de Caso GRATIS",
+      "emailPh": "p. ej. juan@correo.com",
+      "phone": "Número de Teléfono",
+      "state": "Estado Donde Ocurrió el Accidente",
+      "statePh": "— Seleccione su estado —",
+      "submitBtn": "Obtener Mi Revisión Gratuita →",
       "submittingBtn": "Enviando...",
-      "submitSub": "Sin Honorarios a Menos Que Ganemos · 100% Confidencial · Toma 30 Segundos",
-      "trust1": "Cifrado SSL de 256 bits",
-      "trust2": "Abogado Responde en Minutos",
-      "trust3": "Sin Victoria, Sin Honorarios"
+      "tcpaPre": "Al enviar, acepta ser contactado por un abogado autorizado por teléfono, texto o correo usando tecnología automatizada. Sin honorarios a menos que gane. Consulte nuestra",
+      "tcpaAnd": "y",
+      "tcpaPost": "para más detalles.",
+      "errName": "Por favor ingrese su nombre completo",
+      "errEmail": "Por favor ingrese un correo electrónico válido",
+      "errPhone": "Por favor ingrese un número de teléfono válido de 10 dígitos",
+      "errState": "Por favor seleccione su estado"
     },
+
+    "trustStrip": {
+      "t1": "🔒 100% Seguro",
+      "t2": "💼 Sin Costo Inicial",
+      "t3": "⚖️ Abogados con Licencia",
+      "t4": "⭐ 4.9/5 Calificación"
+    },
+
     "thankyou": {
       "title": "¡Todo Listo!",
-      "sub": "Un abogado autorizado en su área se comunicará en los próximos minutos para revisar su caso — sin ningún costo para usted.",
-      "nextTitle": "¿Qué Sucede Ahora?",
-      "nextBody": "Tenga su teléfono a mano. Un abogado local lo llamará para revisar sus opciones. No tiene ninguna obligación de contratar a nadie."
+      "sub": "Un especialista en abogados con licencia se comunicará en los próximos minutos. Tenga su teléfono cerca.",
+      "step1Title": "Conteste cuando llamemos",
+      "step1Body": "Nuestro equipo llamará desde un número local — conteste para obtener la estimación de su caso en tiempo real.",
+      "step2Title": "Revisión gratuita del caso",
+      "step2Body": "Revisaremos su situación y le conectaremos con el mejor abogado para su caso.",
+      "step3Title": "Sin costo para usted",
+      "step3Body": "Su abogado solo cobra si gana — sin honorarios por adelantado, garantizado."
+    },
+
+    "footer": {
+      "disclaimer": "Este es un servicio de publicidad y no un bufete de abogados ni un servicio de referencia de abogados. Al enviar su información, acepta ser contactado por un abogado o proveedor de servicios legales con licencia. Los resultados pueden variar. Los acuerdos mostrados son solo para fines ilustrativos y no garantizan resultados similares. Los abogados trabajan en contingencia — sin honorarios a menos que gane. No se forma ninguna relación abogado-cliente al enviar este formulario.",
+      "copy": "© 2026 AccidentHelpNow. Todos los derechos reservados."
     }
   },
   "hiw": {

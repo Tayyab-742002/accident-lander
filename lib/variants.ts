@@ -1,5 +1,3 @@
-import TrustedIndicator from "@/components/TrustedIndicator";
-
 export interface StateOption {
   value: string;
   label: string;
@@ -46,12 +44,12 @@ const variants: Record<string, VariantConfig> = {
     sections: {
       advDisclosureBar: false,
       firmHeader: false,
-      hero: true,
+      hero: false,
       quiz: true,
-      howItWorks: true,
-      reviews: true,
-      trustedIndicator: true,
-      footer: true,
+      howItWorks: false,
+      reviews: false,
+      trustedIndicator: false,
+      footer: false,
     },
     footerFirmBlock: false,
     footerCcpaLink: false,
@@ -62,12 +60,12 @@ const variants: Record<string, VariantConfig> = {
     sections: {
       advDisclosureBar: false,
       firmHeader: false,
-      hero: true,
+      hero: false,
       quiz: true,
-      howItWorks: true,
-      reviews: true,
-      trustedIndicator: true,
-      footer: true,
+      howItWorks: false,
+      reviews: false,
+      trustedIndicator: false,
+      footer: false,
     },
     footerFirmBlock: false,
     footerCcpaLink: false,
@@ -78,12 +76,12 @@ const variants: Record<string, VariantConfig> = {
     sections: {
       advDisclosureBar: false,
       firmHeader: false,
-      hero: true,
+      hero: false,
       quiz: true,
-      howItWorks: true,
-      reviews: true,
-      trustedIndicator: true,
-      footer: true,
+      howItWorks: false,
+      reviews: false,
+      trustedIndicator: false,
+      footer: false,
     },
     footerFirmBlock: true,
     footerCcpaLink: true,
