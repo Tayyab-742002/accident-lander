@@ -587,14 +587,39 @@ body::before {
 .cta-lock { font-size: 14px; opacity: 0.9; }
 
 /* ===== TCPA ===== */
+.tcpa-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+}
+.tcpa-check input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.tcpa-check--error {
+  border-top-color: var(--danger);
+}
+.tcpa-check--error input[type="checkbox"] {
+  outline: 2px solid var(--danger);
+  border-radius: 2px;
+}
+
 .tcpa {
   font-size: 10px;
   color: var(--text-3);
   line-height: 1.65;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  text-align: center;
+  text-align: left;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .tcpa a { color: var(--text-3); text-decoration: underline; }

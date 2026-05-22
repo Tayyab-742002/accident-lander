@@ -205,7 +205,8 @@
       "errName": "Por favor ingrese su nombre completo",
       "errEmail": "Por favor ingrese un correo electrónico válido",
       "errPhone": "Por favor ingrese un número de teléfono válido de 10 dígitos",
-      "errState": "Por favor seleccione su estado"
+      "errState": "Por favor seleccione su estado",
+      "errTcpa": "Por favor acepta los términos para continuar"
     },
     "trustStrip": {
       "t1": "🔒 100% Seguro",

@@ -52,6 +52,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [tcpaChecked, setTcpaChecked] = useState(false);
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const submittingRef = useRef(false);
@@ -111,6 +112,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = t("s6.errEmail");
     if (!validatePhone(phone)) errors.phone = t("s6.errPhone");
     if (!state) errors.state = t("s6.errState");
+    if (!tcpaChecked) errors.tcpa = t("s6.errTcpa");
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
@@ -522,10 +524,23 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                   {submitting ? t("s6.submittingBtn") : t("s6.submitBtn")}
                 </button>
 
-                <p className="tcpa">
-                  {t("s6.tcpaPre")} <PrivacyModal /> {t("s6.tcpaAnd")} <TermsModal />{" "}
-                  {t("s6.tcpaPost")}
-                </p>
+                <label className={`tcpa-check${fieldErrors.tcpa ? " tcpa-check--error" : ""}`}>
+                  <input
+                    type="checkbox"
+                    checked={tcpaChecked}
+                    onChange={(e) => {
+                      setTcpaChecked(e.target.checked);
+                      setFieldErrors((p) => ({ ...p, tcpa: "" }));
+                    }}
+                  />
+                  <span className="tcpa">
+                    {t("s6.tcpaPre")} <PrivacyModal /> {t("s6.tcpaAnd")} <TermsModal />{" "}
+                    {t("s6.tcpaPost")}
+                  </span>
+                </label>
+                {fieldErrors.tcpa && (
+                  <span className="error-msg show">{fieldErrors.tcpa}</span>
+                )}
               </form>
 
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>

@@ -205,7 +205,8 @@
       "errName": "Please enter your full name",
       "errEmail": "Please enter a valid email address",
       "errPhone": "Please enter a valid 10-digit phone number",
-      "errState": "Please select your state"
+      "errState": "Please select your state",
+      "errTcpa": "Please agree to the terms to continue"
     },
     "trustStrip": {
       "t1": "🔒 100% Secure",
