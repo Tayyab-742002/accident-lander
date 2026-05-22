@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslations } from 'next-intl';
 
 export default function TermsModal() {
@@ -33,7 +34,7 @@ export default function TermsModal() {
         {ft('terms')}
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           className="modal-overlay"
           onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
@@ -169,7 +170,8 @@ export default function TermsModal() {
 
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
