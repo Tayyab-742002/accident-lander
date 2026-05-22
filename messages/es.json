@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "Descubra Cuánto Vale Su Caso de Accidente — Revisión Gratuita"
   },
@@ -205,7 +205,7 @@
     "title": "Términos de Servicio",
     "lastUpdated": "Última actualización: 11 de diciembre de 2025",
     "close": "Cerrar",
-    "intro": "Bienvenido a Case Settlement Now. Estos Términos de Servicio (\"Términos\", \"Acuerdo\") rigen su uso de nuestro sitio web ubicado en https://casesettlementnow.com (\"Servicio\") y cualquier servicio relacionado proporcionado por Case Settlement Now (\"Compañía\", \"Nosotros\" o \"Nuestro\").\n\nAl acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo con estos Términos, no puede acceder ni utilizar el Servicio.",
+    "intro": "Bienvenido a AccidentHelpNow. Estos Términos de Servicio (\"Términos\", \"Acuerdo\") rigen su uso de nuestro sitio web ubicado en https://accidenthelpnow.com (\"Servicio\") y cualquier servicio relacionado proporcionado por AccidentHelpNow (\"Compañía\", \"Nosotros\" o \"Nuestro\").\n\nAl acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo con estos Términos, no puede acceder ni utilizar el Servicio.",
     "s1Title": "Interpretación y Definiciones",
     "s1InterpTitle": "Interpretación",
     "s1InterpBody": "Las palabras con letras iniciales en mayúscula tienen significados definidos bajo las siguientes condiciones. Estas definiciones aplican ya sea que los términos aparezcan en forma singular o plural.",
@@ -214,11 +214,11 @@
     "s1Defs": [
       "Cuenta significa una cuenta única creada para que usted acceda a nuestro Servicio o partes de nuestro Servicio.",
       "Afiliado significa una entidad que controla, es controlada por, o está bajo control común con una parte.",
-      "Compañía se refiere a Case Settlement Now.",
+      "Compañía se refiere a AccidentHelpNow.",
       "Servicio se refiere al Sitio Web y todos los servicios ofrecidos a través de él.",
       "Proveedor de Servicios significa cualquier empresa o individuo de terceros empleado para facilitar, proveer o asistir con el Servicio.",
       "Usuario, Usted o Su significa el individuo o entidad legal que accede o utiliza el Servicio.",
-      "Sitio Web se refiere a Case Settlement Now, accesible desde https://casesettlementnow.com."
+      "Sitio Web se refiere a AccidentHelpNow, accesible desde https://accidenthelpnow.com."
     ],
     "s2Title": "Uso de Nuestro Servicio",
     "s2EligTitle": "Elegibilidad",
@@ -243,9 +243,9 @@
     "s4Title": "Pago y Tarifas",
     "s4Body": "Actualmente, el Servicio se ofrece de forma gratuita a los usuarios que envíen consultas o quejas. Si se introducen servicios de pago, estas tarifas se divulgarán claramente y se requerirá el pago antes de que se proporcione el servicio.",
     "s5Title": "Propiedad Intelectual",
-    "s5Body": "Todo el contenido, logotipos, gráficos y materiales proporcionados a través del Servicio son propiedad de Case Settlement Now o sus licenciantes y están protegidos por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. No puede reproducir, distribuir ni crear obras derivadas sin nuestro permiso expreso por escrito.",
+    "s5Body": "Todo el contenido, logotipos, gráficos y materiales proporcionados a través del Servicio son propiedad de AccidentHelpNow o sus licenciantes y están protegidos por derechos de autor, marcas comerciales y otras leyes de propiedad intelectual. No puede reproducir, distribuir ni crear obras derivadas sin nuestro permiso expreso por escrito.",
     "s6Title": "Limitación de Responsabilidad",
-    "s6Intro": "En la máxima medida permitida por la ley, Case Settlement Now no será responsable de:",
+    "s6Intro": "En la máxima medida permitida por la ley, AccidentHelpNow no será responsable de:",
     "s6List": [
       "Cualquier daño directo, indirecto, incidental, especial o consecuente que surja del uso del Servicio.",
       "Errores, omisiones o inexactitudes en la información proporcionada.",
@@ -261,7 +261,7 @@
     "s10Body": "DK Law – Injuries, Accidents and More\n611 Anton Blvd, Costa Mesa, CA 92626",
     "s11Title": "Contáctenos",
     "s11Body": "Si tiene alguna pregunta sobre estos Términos, puede contactarnos:",
-    "s11Email": "Por correo electrónico: info@casesettlementnow.com"
+    "s11Email": "Por correo electrónico: info@accidenthelpnow.com"
   },
   "disclaimer": {
     "title": "Aviso Legal",
@@ -269,11 +269,11 @@
     "sections": [
       {
         "title": "Advertising Disclosure",
-        "body": "Case Settlement Now is a legal advertising and lead generation service. We are not a law firm, attorney, or legal referral service. The information provided on this website is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed by visiting this website or submitting your information through any form on this site."
+        "body": "AccidentHelpNow is a legal advertising and lead generation service. We are not a law firm, attorney, or legal referral service. The information provided on this website is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed by visiting this website or submitting your information through any form on this site."
       },
       {
         "title": "Attorney Advertising Notice",
-        "body": "This website constitutes attorney advertising. Case Settlement Now connects individuals who may have legal claims with licensed attorneys and law firms in their respective states. All attorneys and law firms we work with are independently licensed to practice law in their respective jurisdictions. Case Settlement Now does not endorse, recommend, or guarantee the quality of services provided by any attorney or law firm."
+        "body": "This website constitutes attorney advertising. AccidentHelpNow connects individuals who may have legal claims with licensed attorneys and law firms in their respective states. All attorneys and law firms we work with are independently licensed to practice law in their respective jurisdictions. AccidentHelpNow does not endorse, recommend, or guarantee the quality of services provided by any attorney or law firm."
       },
       {
         "title": "No Guarantee of Results",
@@ -285,19 +285,19 @@
       },
       {
         "title": "No Legal Advice",
-        "body": "Nothing on this website should be construed as legal advice. The content provided is for general informational purposes only. You should consult with a qualified, licensed attorney in your jurisdiction before making any legal decisions. Submitting your information through our website does not create an attorney-client relationship between you and Case Settlement Now or any affiliated attorney or law firm."
+        "body": "Nothing on this website should be construed as legal advice. The content provided is for general informational purposes only. You should consult with a qualified, licensed attorney in your jurisdiction before making any legal decisions. Submitting your information through our website does not create an attorney-client relationship between you and AccidentHelpNow or any affiliated attorney or law firm."
       },
       {
         "title": "Contingency Fee Notice",
-        "body": "Attorneys who may contact you through Case Settlement Now generally work on a contingency fee basis, meaning you pay no attorney fees unless your case is successfully resolved. However, contingency fee arrangements vary by attorney and jurisdiction. You should discuss all fee arrangements directly with any attorney you choose to retain."
+        "body": "Attorneys who may contact you through AccidentHelpNow generally work on a contingency fee basis, meaning you pay no attorney fees unless your case is successfully resolved. However, contingency fee arrangements vary by attorney and jurisdiction. You should discuss all fee arrangements directly with any attorney you choose to retain."
       },
       {
         "title": "TCPA & Communications Consent",
-        "body": "By submitting your information on this website, you expressly consent to be contacted by Case Settlement Now and its partners via telephone calls, emails, and text messages, including through the use of automated dialing systems, pre-recorded messages, and artificial voice messages, even if your number is listed on a federal, state, or corporate Do Not Call registry. Standard message and data rates may apply. Your consent is not a condition of any purchase or service."
+        "body": "By submitting your information on this website, you expressly consent to be contacted by AccidentHelpNow and its partners via telephone calls, emails, and text messages, including through the use of automated dialing systems, pre-recorded messages, and artificial voice messages, even if your number is listed on a federal, state, or corporate Do Not Call registry. Standard message and data rates may apply. Your consent is not a condition of any purchase or service."
       },
       {
         "title": "Third-Party Links & Services",
-        "body": "This website may contain links to third-party websites or services. Case Settlement Now is not responsible for the content, accuracy, or privacy practices of any third-party websites. The inclusion of any link does not imply endorsement by Case Settlement Now."
+        "body": "This website may contain links to third-party websites or services. AccidentHelpNow is not responsible for the content, accuracy, or privacy practices of any third-party websites. The inclusion of any link does not imply endorsement by AccidentHelpNow."
       },
       {
         "title": "Privacy & Data Use",
@@ -305,11 +305,11 @@
       },
       {
         "title": "California Residents — CCPA Notice",
-        "body": "California residents have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to request deletion of personal information, and the right to opt out of the sale of personal information. To exercise your rights, please contact us at info@casesettlementnow.com."
+        "body": "California residents have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to request deletion of personal information, and the right to opt out of the sale of personal information. To exercise your rights, please contact us at info@accidenthelpnow.com."
       },
       {
         "title": "Contact Information",
-        "body": "Case Settlement Now\nEmail: info@casesettlementnow.com"
+        "body": "AccidentHelpNow\nEmail: info@accidenthelpnow.com"
       }
     ]
   },
@@ -325,7 +325,7 @@
     "s1Defs": [
       "Cuenta significa una cuenta única creada para que usted acceda a nuestro Servicio o partes de nuestro Servicio.",
       "Afiliado significa una entidad que controla, es controlada por, o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación accionaria u otros valores con derecho a voto para la elección de directores u otra autoridad de gestión.",
-      "Compañía (referida como \"la Compañía\", \"Nosotros\" o \"Nuestro\" en este Acuerdo) se refiere a Case Settlement Now.",
+      "Compañía (referida como \"la Compañía\", \"Nosotros\" o \"Nuestro\" en este Acuerdo) se refiere a AccidentHelpNow.",
       "Las Cookies son pequeños archivos que se colocan en su computadora, dispositivo móvil o cualquier otro dispositivo por un sitio web, que contienen detalles de su historial de navegación en ese sitio web, entre sus muchos usos.",
       "País se refiere a: California, Estados Unidos",
       "Dispositivo significa cualquier dispositivo que pueda acceder al Servicio, como una computadora, teléfono celular o tablet digital.",
@@ -333,7 +333,7 @@
       "Servicio se refiere al Sitio Web.",
       "Proveedor de Servicios significa cualquier persona natural o jurídica que procesa datos en nombre de la Compañía.",
       "Los Datos de Uso se refieren a datos recopilados automáticamente, ya sea generados por el uso del Servicio o desde la propia infraestructura del Servicio.",
-      "Sitio Web se refiere a Case Settlement Now, accesible desde https://casesettlementnow.com/",
+      "Sitio Web se refiere a AccidentHelpNow, accesible desde https://accidenthelpnow.com/",
       "Usted significa el individuo que accede o usa el Servicio, o la empresa u otra entidad legal en cuyo nombre dicho individuo accede o usa el Servicio, según corresponda."
     ],
     "s2Title": "Recopilación y Uso de Sus Datos Personales",
@@ -365,7 +365,7 @@
     "s6Body": "Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página.",
     "s7Title": "Contáctenos",
     "s7Body": "Si tiene alguna pregunta sobre esta Política de Privacidad, puede contactarnos:",
-    "s7Email": "Por correo electrónico: info@casesettlementnow.com",
+    "s7Email": "Por correo electrónico: info@accidenthelpnow.com",
     "close": "Cerrar"
   }
 }

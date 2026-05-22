@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "title": "See What Your California Accident Case Is Worth — Free Review | DK Law"
   },
@@ -220,7 +220,7 @@
     "title": "Terms of Service",
     "lastUpdated": "Last updated: December 11, 2025",
     "close": "Close",
-    "intro": "Welcome to Case Settlement Now. These Terms of Service (\"Terms\", \"Agreement\") govern your use of our website located at https://casesettlementnow.com (\"Service\") and any related services provided by Case Settlement Now (\"Company\", \"We\", or \"Our\").\n\nBy accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.",
+    "intro": "Welcome to AccidentHelpNow. These Terms of Service (\"Terms\", \"Agreement\") govern your use of our website located at https://accidenthelpnow.com (\"Service\") and any related services provided by AccidentHelpNow (\"Company\", \"We\", or \"Our\").\n\nBy accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.",
     "s1Title": "Interpretation and Definitions",
     "s1InterpTitle": "Interpretation",
     "s1InterpBody": "Words with initial capital letters have defined meanings under the following conditions. These definitions apply whether the terms appear in singular or plural form.",
@@ -229,11 +229,11 @@
     "s1Defs": [
       "Account means a unique account created for you to access our Service or parts of our Service.",
       "Affiliate means an entity that controls, is controlled by, or is under common control with a party.",
-      "Company refers to Case Settlement Now.",
+      "Company refers to AccidentHelpNow.",
       "Service refers to the Website and all services offered through it.",
       "Service Provider means any third-party company or individual employed to facilitate, provide, or assist with the Service.",
       "User, You or Your means the individual or legal entity that accesses or uses the Service.",
-      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com."
+      "Website refers to AccidentHelpNow, accessible from https://accidenthelpnow.com."
     ],
     "s2Title": "Use of Our Service",
     "s2EligTitle": "Eligibility",
@@ -258,9 +258,9 @@
     "s4Title": "Payment and Fees",
     "s4Body": "Currently, the Service is offered free of charge to users who submit inquiries or complaints. If paid services are introduced, these fees will be clearly disclosed and payment will be required before the service is provided.",
     "s5Title": "Intellectual Property",
-    "s5Body": "All content, logos, graphics, and materials provided through the Service are the property of Case Settlement Now or its licensors and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
+    "s5Body": "All content, logos, graphics, and materials provided through the Service are the property of AccidentHelpNow or its licensors and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
     "s6Title": "Limitation of Liability",
-    "s6Intro": "To the maximum extent permitted by law, Case Settlement Now will not be liable for:",
+    "s6Intro": "To the maximum extent permitted by law, AccidentHelpNow will not be liable for:",
     "s6List": [
       "Any direct, indirect, incidental, special or consequential damages arising from the use of the Service.",
       "Errors, omissions or inaccuracies in the information provided.",
@@ -276,7 +276,7 @@
     "s10Body": "DK Law – Injuries, Accidents and More\n611 Anton Blvd, Costa Mesa, CA 92626",
     "s11Title": "Contact Us",
     "s11Body": "If you have any questions about these Terms, you can contact us:",
-    "s11Email": "By email: info@casesettlementnow.com"
+    "s11Email": "By email: info@accidenthelpnow.com"
   },
   "disclaimer": {
     "title": "Disclaimer",
@@ -328,7 +328,7 @@
     "s1Defs": [
       "Account means a unique account created for you to access our Service or parts of our Service.",
       "Affiliate means an entity that controls, is controlled by, or is under common control with a party, where \"control\" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other management authority.",
-      "Company (referred to as \"the Company\", \"We\" or \"Our\" in this Agreement) refers to Case Settlement Now.",
+      "Company (referred to as \"the Company\", \"We\" or \"Our\" in this Agreement) refers to AccidentHelpNow.",
       "Cookies are small files that are placed on your computer, mobile device, or any other device by a website, containing details of your browsing history on that website, among their many uses.",
       "Country refers to: California, United States",
       "Device means any device that can access the Service, such as a computer, cell phone, or digital tablet.",
@@ -336,7 +336,7 @@
       "Service refers to the Website.",
       "Service Provider means any natural or legal person who processes data on behalf of the Company.",
       "Usage Data refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.",
-      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com/",
+      "Website refers to AccidentHelpNow, accessible from https://accidenthelpnow.com/",
       "You means the individual accessing or using the Service, or the company or other legal entity on whose behalf such individual accesses or uses the Service, as applicable."
     ],
     "s2Title": "Collection and Use of Your Personal Data",
@@ -368,7 +368,7 @@
     "s6Body": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
     "s7Title": "Contact Us",
     "s7Body": "If you have any questions about this Privacy Policy, you can contact us:",
-    "s7Email": "By email: info@casesettlementnow.com",
+    "s7Email": "By email: info@accidenthelpnow.com",
     "close": "Close"
   }
 }
