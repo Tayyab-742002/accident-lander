@@ -519,11 +519,6 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                   )}
                 </div>
 
-                <button type="submit" className="cta-btn" disabled={submitting}>
-                  <span className="cta-lock">🔒</span>
-                  {submitting ? t("s6.submittingBtn") : t("s6.submitBtn")}
-                </button>
-
                 <label className={`tcpa-check${fieldErrors.tcpa ? " tcpa-check--error" : ""}`}>
                   <input
                     type="checkbox"
@@ -541,6 +536,11 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
                 {fieldErrors.tcpa && (
                   <span className="error-msg show">{fieldErrors.tcpa}</span>
                 )}
+
+                <button type="submit" className="cta-btn" disabled={submitting}>
+                  <span className="cta-lock">🔒</span>
+                  {submitting ? t("s6.submittingBtn") : t("s6.submitBtn")}
+                </button>
               </form>
 
               <button className="back-btn" onClick={goBack}>← {t("backBtn")}</button>

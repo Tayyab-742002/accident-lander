@@ -614,7 +614,7 @@ body::before {
 
 .tcpa {
   font-size: 10px;
-  color: var(--text-3);
+  color: var(--text-2);
   line-height: 1.65;
   text-align: left;
   margin-top: 0;
@@ -622,19 +622,19 @@ body::before {
   border-top: none;
 }
 
-.tcpa a { color: var(--text-3); text-decoration: underline; }
+.tcpa a { color: var(--text-2); text-decoration: underline; }
 
 .tcpa button {
   background: none;
   border: none;
-  color: var(--text-3);
+  color: var(--text-2);
   text-decoration: underline;
   cursor: pointer;
   font: inherit;
   padding: 0;
   display: inline;
 }
-.tcpa button:hover { color: var(--text-2); }
+.tcpa button:hover { color: var(--text-1); }
 
 /* ===== TRUST STRIP ===== */
 .trust-strip {
