@@ -2,14 +2,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
-  // TEST OVERRIDE: ?_state=TX — remove before final production
-  const testState = request.nextUrl.searchParams.get('_state');
-  if (testState) {
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-user-state', testState.toUpperCase());
-    return NextResponse.next({ request: { headers: requestHeaders } });
-  }
-
   // Vercel provides x-vercel-ip-country-subdivision as e.g. "US-TX"
   const subdivision = request.headers.get('x-vercel-ip-country-subdivision');
   const country = request.headers.get('x-vercel-ip-country');
