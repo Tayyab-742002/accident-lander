@@ -11,11 +11,31 @@
     "sub": "You've already been through enough. Don't walk away without knowing what you're actually owed. 60 seconds. Free. No pressure.",
     "settlementsLabel": "Recent Settlements In Our Network",
     "settlements": [
-      { "line1": "Car Accident", "line2": "Rear End", "amount": "$127K" },
-      { "line1": "Motorcycle", "line2": "Accident", "amount": "$385K" },
-      { "line1": "Rideshare", "line2": "Accident", "amount": "$214K" },
-      { "line1": "Truck", "line2": "Accident", "amount": "$490K" },
-      { "line1": "Pedestrian", "line2": "Hit", "amount": "$310K" }
+      {
+        "line1": "Car Accident",
+        "line2": "Rear End",
+        "amount": "$127K"
+      },
+      {
+        "line1": "Motorcycle",
+        "line2": "Accident",
+        "amount": "$385K"
+      },
+      {
+        "line1": "Rideshare",
+        "line2": "Accident",
+        "amount": "$214K"
+      },
+      {
+        "line1": "Truck",
+        "line2": "Accident",
+        "amount": "$490K"
+      },
+      {
+        "line1": "Pedestrian",
+        "line2": "Hit",
+        "amount": "$310K"
+      }
     ]
   },
   "quiz": {
@@ -24,12 +44,10 @@
     "backBtn": "Go back",
     "dqStep": "Under Review",
     "stepOf": "Step {step} of {total}",
-
     "topnav": {
       "logo": "AccidentHelpNow",
       "badge": "Live Attorneys Available"
     },
-
     "header": {
       "eyebrow": "🔒 Free & Confidential Case Calculator",
       "title": "Find Out What Your Accident Case Is ",
@@ -38,90 +56,139 @@
       "subStrong": "70% more",
       "sub2": " + you'll never pay out of pocket."
     },
-
     "socialProof": {
       "text": "2,200+ accident victims helped — avg. review in under 4 mins"
     },
-
     "s1": {
       "question": "What type of accident were you in?",
       "hint": "Select the option that best describes your situation.",
       "options": [
-        { "label": "Car or Truck Accident", "sub": "Collision with another vehicle" },
-        { "label": "Motorcycle Accident", "sub": "Bike collision or road incident" },
-        { "label": "Rideshare Accident", "sub": "Uber, Lyft or delivery driver" },
-        { "label": "Pedestrian / Cyclist", "sub": "Hit while walking or cycling" }
+        {
+          "label": "Car or Truck Accident",
+          "sub": "Collision with another vehicle"
+        },
+        {
+          "label": "Motorcycle Accident",
+          "sub": "Bike collision or road incident"
+        },
+        {
+          "label": "Rideshare Accident",
+          "sub": "Uber, Lyft or delivery driver"
+        },
+        {
+          "label": "Pedestrian / Cyclist",
+          "sub": "Hit while walking or cycling"
+        }
       ]
     },
-
     "s2": {
       "question": "When did the accident happen?",
       "hint": "Timing matters — your legal window may be closing soon.",
       "options": [
-        { "label": "Within the last month", "sub": "Recent — strong case window" },
-        { "label": "1 to 3 months ago", "sub": "Still within claim window" },
-        { "label": "4 to 12 months ago", "sub": "Act soon — time limits apply" },
-        { "label": "Over a year ago", "sub": "May affect eligibility", "dq": true }
+        {
+          "label": "Within the last month",
+          "sub": "Recent — strong case window"
+        },
+        {
+          "label": "1 to 3 months ago",
+          "sub": "Still within claim window"
+        },
+        {
+          "label": "4 to 12 months ago",
+          "sub": "Act soon — time limits apply"
+        },
+        {
+          "label": "Over a year ago",
+          "sub": "May affect eligibility",
+          "dq": true
+        }
       ]
     },
-
     "s3": {
       "question": "Did you receive medical treatment?",
       "hint": "Medical documentation significantly strengthens your case.",
       "options": [
-        { "label": "Yes — Emergency Room", "sub": "Treated at ER same day or after" },
-        { "label": "Yes — Doctor or Clinic", "sub": "Saw a physician or specialist" },
-        { "label": "Injured but no treatment yet", "sub": "Pain or symptoms but no visit" },
-        { "label": "Not injured", "sub": "No physical harm from accident", "dq": true }
+        {
+          "label": "Yes — Emergency Room",
+          "sub": "Treated at ER same day or after"
+        },
+        {
+          "label": "Yes — Doctor or Clinic",
+          "sub": "Saw a physician or specialist"
+        },
+        {
+          "label": "Injured but no treatment yet",
+          "sub": "Pain or symptoms but no visit"
+        },
+        {
+          "label": "Not injured",
+          "sub": "No physical harm from accident",
+          "dq": true
+        }
       ]
     },
-
     "s4": {
       "question": "Who was at fault for the accident?",
       "hint": "Even partial fault cases may still qualify for compensation.",
       "options": [
-        { "label": "The other driver was at fault", "sub": "They caused the accident" },
-        { "label": "Shared or unclear fault", "sub": "Both parties involved" },
-        { "label": "I'm not sure", "sub": "Fault hasn't been determined" },
-        { "label": "I was at fault", "sub": "I caused the accident", "dq": true }
+        {
+          "label": "The other driver was at fault",
+          "sub": "They caused the accident"
+        },
+        {
+          "label": "Shared or unclear fault",
+          "sub": "Both parties involved"
+        },
+        {
+          "label": "I'm not sure",
+          "sub": "Fault hasn't been determined"
+        },
+        {
+          "label": "I was at fault",
+          "sub": "I caused the accident",
+          "dq": true
+        }
       ]
     },
-
     "s5": {
       "question": "Are you currently working with an attorney?",
       "hint": "This helps us understand where you are in the process.",
       "options": [
-        { "label": "No, I don't have one yet", "sub": "Still looking for representation" },
-        { "label": "I'm thinking about switching", "sub": "Not fully satisfied with current one" },
-        { "label": "Yes, I have an attorney", "sub": "Already represented", "dq": true }
+        {
+          "label": "No, I don't have one yet",
+          "sub": "Still looking for representation"
+        },
+        {
+          "label": "I'm thinking about switching",
+          "sub": "Not fully satisfied with current one"
+        },
+        {
+          "label": "Yes, I have an attorney",
+          "sub": "Already represented",
+          "dq": true
+        }
       ]
     },
-
     "dqTime": {
       "title": "We may not be able to help",
       "msg": "Claims older than 12 months often fall outside the statute of limitations in most states. We recommend speaking with a local attorney to confirm your options — there may still be a path forward depending on your state."
     },
-
     "dqInjury": {
       "title": "We're glad you're okay!",
       "msg": "Since you weren't injured, there likely isn't a personal injury claim to pursue. However, if you experienced any pain or symptoms in the days after — even mild ones — it may still be worth a quick consultation with an attorney."
     },
-
     "dqFault": {
       "title": "We can't proceed with this case",
       "msg": "If you were fully at fault, pursuing a personal injury claim against the other party isn't possible. However, you may still have options — consult with a local attorney who can review the full details of your situation."
     },
-
     "dqAttorney": {
       "title": "You're already in good hands",
       "msg": "Since you already have legal representation, we can't assist at this time. If you're unhappy with your current attorney or want a second opinion, feel free to come back — we work with top-rated accident lawyers across the country."
     },
-
     "qualify": {
       "title": "You May Qualify!",
       "sub": "Fill in your details — a specialist will call within minutes."
     },
-
     "s6": {
       "fullName": "Full Name",
       "fullNamePh": "e.g. James Mitchell",
@@ -140,14 +207,12 @@
       "errPhone": "Please enter a valid 10-digit phone number",
       "errState": "Please select your state"
     },
-
     "trustStrip": {
       "t1": "🔒 100% Secure",
       "t2": "💼 No Upfront Cost",
       "t3": "⚖️ Licensed Attorneys",
       "t4": "⭐ 4.9/5 Rating"
     },
-
     "thankyou": {
       "title": "You're All Set!",
       "sub": "A licensed attorney specialist will reach out within the next few minutes. Keep your phone nearby.",
@@ -158,7 +223,6 @@
       "step3Title": "No cost to you",
       "step3Body": "Your attorney only gets paid if you win — zero upfront fees, guaranteed."
     },
-
     "footer": {
       "disclaimer": "This is an advertising service and not a law firm or attorney referral service. By submitting your information, you consent to being contacted by a licensed attorney or legal service provider. Results may vary. Settlements shown are for illustrative purposes only and do not guarantee similar outcomes. Attorneys work on contingency — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
       "copy": "© 2026 AccidentHelpNow. All rights reserved."
@@ -205,7 +269,7 @@
     "title": "Terms of Service",
     "lastUpdated": "Last updated: December 11, 2025",
     "close": "Close",
-    "intro": "Welcome to AccidentHelpNow. These Terms of Service (\"Terms\", \"Agreement\") govern your use of our website located at https://accidenthelpnow.com (\"Service\") and any related services provided by AccidentHelpNow (\"Company\", \"We\", or \"Our\").\n\nBy accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.",
+    "intro": "Welcome to Case Settlement Now. These Terms of Service (\"Terms\", \"Agreement\") govern your use of our website located at https://casesettlementnow.com (\"Service\") and any related services provided by Case Settlement Now (\"Company\", \"We\", or \"Our\").\n\nBy accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.",
     "s1Title": "Interpretation and Definitions",
     "s1InterpTitle": "Interpretation",
     "s1InterpBody": "Words with initial capital letters have defined meanings under the following conditions. These definitions apply whether the terms appear in singular or plural form.",
@@ -214,11 +278,11 @@
     "s1Defs": [
       "Account means a unique account created for you to access our Service or parts of our Service.",
       "Affiliate means an entity that controls, is controlled by, or is under common control with a party.",
-      "Company refers to AccidentHelpNow.",
+      "Company refers to Case Settlement Now.",
       "Service refers to the Website and all services offered through it.",
       "Service Provider means any third-party company or individual employed to facilitate, provide, or assist with the Service.",
       "User, You or Your means the individual or legal entity that accesses or uses the Service.",
-      "Website refers to AccidentHelpNow, accessible from https://accidenthelpnow.com."
+      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com."
     ],
     "s2Title": "Use of Our Service",
     "s2EligTitle": "Eligibility",
@@ -243,9 +307,9 @@
     "s4Title": "Payment and Fees",
     "s4Body": "Currently, the Service is offered free of charge to users who submit inquiries or complaints. If paid services are introduced, these fees will be clearly disclosed and payment will be required before the service is provided.",
     "s5Title": "Intellectual Property",
-    "s5Body": "All content, logos, graphics, and materials provided through the Service are the property of AccidentHelpNow or its licensors and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
+    "s5Body": "All content, logos, graphics, and materials provided through the Service are the property of Case Settlement Now or its licensors and are protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
     "s6Title": "Limitation of Liability",
-    "s6Intro": "To the maximum extent permitted by law, AccidentHelpNow will not be liable for:",
+    "s6Intro": "To the maximum extent permitted by law, Case Settlement Now will not be liable for:",
     "s6List": [
       "Any direct, indirect, incidental, special or consequential damages arising from the use of the Service.",
       "Errors, omissions or inaccuracies in the information provided.",
@@ -261,7 +325,7 @@
     "s10Body": "DK Law – Injuries, Accidents and More\n611 Anton Blvd, Costa Mesa, CA 92626",
     "s11Title": "Contact Us",
     "s11Body": "If you have any questions about these Terms, you can contact us:",
-    "s11Email": "By email: info@accidenthelpnow.com"
+    "s11Email": "By email: info@casesettlementnow.com"
   },
   "disclaimer": {
     "title": "Disclaimer",
@@ -325,7 +389,7 @@
     "s1Defs": [
       "Account means a unique account created for you to access our Service or parts of our Service.",
       "Affiliate means an entity that controls, is controlled by, or is under common control with a party, where \"control\" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other management authority.",
-      "Company (referred to as \"the Company\", \"We\" or \"Our\" in this Agreement) refers to AccidentHelpNow.",
+      "Company (referred to as \"the Company\", \"We\" or \"Our\" in this Agreement) refers to Case Settlement Now.",
       "Cookies are small files that are placed on your computer, mobile device, or any other device by a website, containing details of your browsing history on that website, among their many uses.",
       "Country refers to: California, United States",
       "Device means any device that can access the Service, such as a computer, cell phone, or digital tablet.",
@@ -333,14 +397,19 @@
       "Service refers to the Website.",
       "Service Provider means any natural or legal person who processes data on behalf of the Company.",
       "Usage Data refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.",
-      "Website refers to AccidentHelpNow, accessible from https://accidenthelpnow.com/",
+      "Website refers to Case Settlement Now, accessible from https://casesettlementnow.com/",
       "You means the individual accessing or using the Service, or the company or other legal entity on whose behalf such individual accesses or uses the Service, as applicable."
     ],
     "s2Title": "Collection and Use of Your Personal Data",
     "s2TypesTitle": "Types of Data Collected",
     "s2PersonalTitle": "Personal Data",
     "s2PersonalBody": "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:",
-    "s2PersonalList": ["Email address", "Name and surname", "Phone number", "Address, State, Province, ZIP/Postal Code, City"],
+    "s2PersonalList": [
+      "Email address",
+      "Name and surname",
+      "Phone number",
+      "Address, State, Province, ZIP/Postal Code, City"
+    ],
     "s2UsageTitle": "Usage Data",
     "s2UsageBody": "Usage Data is automatically collected when you use the Service. Usage Data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.",
     "s2CookiesTitle": "Tracking Technologies and Cookies",
@@ -365,7 +434,7 @@
     "s6Body": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.",
     "s7Title": "Contact Us",
     "s7Body": "If you have any questions about this Privacy Policy, you can contact us:",
-    "s7Email": "By email: info@accidenthelpnow.com",
+    "s7Email": "By email: info@casesettlementnow.com",
     "close": "Close"
   }
 }
