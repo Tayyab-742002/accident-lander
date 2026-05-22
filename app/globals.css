@@ -822,6 +822,11 @@ body::before {
   box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
 }
 
+/* Override .footer-disclaimer p specificity (0-1-1) for all text inside modal */
+.modal-panel p   { color: var(--text-2); }
+.modal-panel li  { color: var(--text-2); }
+.modal-panel a   { color: var(--primary); }
+
 /* Blue gradient header — mirrors .card-hdr */
 .modal-header {
   display: flex;
