@@ -2,14 +2,13 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
-  // Vercel provides x-vercel-ip-country-subdivision as e.g. "US-TX"
-  const subdivision = request.headers.get('x-vercel-ip-country-subdivision');
+  // Vercel provides x-vercel-ip-country-region as e.g. "TX"
+  const region = request.headers.get('x-vercel-ip-country-region');
   const country = request.headers.get('x-vercel-ip-country');
 
-  if (country === 'US' && subdivision) {
-    const stateCode = subdivision.replace('US-', '');
+  if (country === 'US' && region) {
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-user-state', stateCode);
+    requestHeaders.set('x-user-state', region);
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
