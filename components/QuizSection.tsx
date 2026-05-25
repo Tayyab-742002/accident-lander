@@ -44,7 +44,7 @@ function formatPhoneInput(raw: string): string {
   return d;
 }
 
-export default function QuizSection({ locale, userState = "" }: { locale: string; userState?: string }) {
+export default function QuizSection({ locale }: { locale: string }) {
   const t = useTranslations("quiz");
   const { stateOptions } = getVariantConfig(locale);
 
@@ -214,10 +214,7 @@ export default function QuizSection({ locale, userState = "" }: { locale: string
         <div className="card-hdr">
           <div className="eyebrow">{t("header.eyebrow")}</div>
           <div className="hdr-title">
-            {locale === "en" && userState
-              ? `Find Out What Your ${userState} Accident Case Is `
-              : t("header.title")
-            }<em>{t("header.titleEm")}</em>
+            {t("header.title")}<em>{t("header.titleEm")}</em>
           </div>
           <div className="hdr-sub">
             {t("header.sub1")}<strong>{t("header.subStrong")}</strong>{t("header.sub2")}
