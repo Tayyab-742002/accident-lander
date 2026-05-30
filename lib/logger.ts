@@ -16,9 +16,16 @@ export function log(level: LogLevel, data: Record<string, unknown>) {
   else if (level === "warn") console.warn(JSON.stringify(entry));
   else console.log(JSON.stringify(entry));
 
-  // Also send to Axiom for persistent storage (fire-and-forget)
+  // Queue in Axiom buffer — caller must await flushLogs() before returning
+  // so all logs for a request are sent in one ordered batch.
   if (axiom) {
     axiom.ingest(dataset, [entry]);
-    axiom.flush().catch(() => {});
+  }
+}
+
+/** Flush all queued log entries to Axiom. Call once per request handler. */
+export async function flushLogs(): Promise<void> {
+  if (axiom) {
+    await axiom.flush().catch(() => {});
   }
 }

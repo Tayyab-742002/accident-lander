@@ -43,44 +43,54 @@ const TrustedIndicator: React.FC<TrustedIndicatorProps> = ({ locale = "en" }) =>
       `}</style>
 
       <div className="trust-wrapper">
-        {/* TrustedIndicator pill */}
+        {/* Secure & Confidential badge */}
         <div
           className="trust-card"
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            padding: "14px 20px",
+            gap: "12px",
+            padding: "14px 18px",
             backgroundColor: "#ffffff",
             borderRadius: "12px",
-            fontSize: "13px",
-            color: "#1a3c8f",
-            fontWeight: "700",
-            textAlign: "center",
-            lineHeight: "1.5",
+            border: "1px solid #e8e8e8",
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#2a5bd7"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ flexShrink: 0 }}
-          >
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <polyline points="9 12 11 14 15 10" />
-          </svg>
-          <span>
-            {line1}
-            <br />
-            {line2}
-          </span>
+          {/* Red circle with shield icon */}
+          <div style={{
+            width: "42px",
+            height: "42px",
+            borderRadius: "50%",
+            backgroundColor: "#D63030",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          {/* Text */}
+          <div style={{ textAlign: "left" }}>
+            <div style={{ fontSize: "13px", fontWeight: "800", color: "#0B1220", lineHeight: 1.3, whiteSpace: "nowrap" }}>
+              {line1}
+            </div>
+            <div style={{ fontSize: "12px", fontWeight: "500", color: "#6b7280", lineHeight: 1.3, marginTop: "2px" }}>
+              {line2}
+            </div>
+          </div>
         </div>
 
         {/* TrustedForm badge */}
