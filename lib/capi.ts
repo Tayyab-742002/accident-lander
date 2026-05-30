@@ -33,6 +33,9 @@ const COOKIE_DAYS = 90;
 
 /** Simple unique ID for browser/CAPI event deduplication. */
 export function generateEventId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 

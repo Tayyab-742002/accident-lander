@@ -1,19 +1,31 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getPixelConfig } from "@/lib/pixels";
 import { generateEventId, sendCAPIEvent } from "@/lib/capi";
 import { getVisitorIp } from "@/lib/leadpost";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function Pixels({ locale }: { locale: string }) {
   const { metaPixelId, gtmId } = getPixelConfig(locale);
-  const pageViewEventId = useRef(generateEventId());
+
+  // Generated once on the client — same value used for pixel and CAPI
+  const [pageViewEventId] = useState(generateEventId);
+
   useEffect(() => {
-    // fbp/fbc are captured/generated synchronously at module load
-    // (see lib/capi.ts), so we don't need to wait for fbevents.js.
+    // Fire pixel PageView from here (not the inline script) so the
+    // event_id is guaranteed to match the CAPI event_id.
+    if (metaPixelId && typeof window.fbq === "function") {
+      window.fbq("track", "PageView", {}, { eventID: pageViewEventId });
+    }
     getVisitorIp().then((ip) => {
-      sendCAPIEvent('PageView', pageViewEventId.current, { ip });
+      sendCAPIEvent("PageView", pageViewEventId, { ip });
     });
   }, []);
 
@@ -40,7 +52,8 @@ export default function Pixels({ locale }: { locale: string }) {
         </>
       )}
 
-      {/* Meta Pixel */}
+      {/* Meta Pixel — init only. PageView fired from useEffect above
+          so pixel event_id and CAPI event_id are always identical. */}
       {metaPixelId && (
         <Script
           id="meta-pixel"
@@ -54,8 +67,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${metaPixelId}');
-fbq('track', 'PageView', {}, { eventID: '${pageViewEventId.current}' });`,
+fbq('init', '${metaPixelId}');`,
           }}
         />
       )}

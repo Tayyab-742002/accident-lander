@@ -185,7 +185,7 @@ export async function POST(req: NextRequest) {
         event_name: "Lead",
         event_time: Math.floor(Date.now() / 1000),
         event_id: `lead-sold-${body.leadId ?? Date.now()}`,
-        event_source_url: "https://casesettlementnow.com",
+        event_source_url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://accidenthelpnow.com",
         action_source: "website",
         user_data,
         custom_data: {
