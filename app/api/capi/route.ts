@@ -125,14 +125,23 @@ export async function POST(req: NextRequest) {
     eventName,
     eventId,
     sourceUrl,
+    // Contact fields
     email: userData.email || null,
     phone: userData.phone || null,
+    firstName: userData.firstName || null,
+    lastName: userData.lastName || null,
+    state: userData.state || null,
+    city: userData.city || null,
+    zipcode: userData.zipcode || null,
+    ip: userData.ip || null,
+    userAgent: userData.userAgent || null,
+    // fbp / fbc
     fbp: fbp || null,
     fbc: fbc || null,
     fbp_source: userData.fbp ? "client" : fbp ? "cookie" : "none",
     fbc_source: userData.fbc ? "client" : fbc ? "cookie" : "none",
-    ip: userData.ip || null,
-    userAgent: userData.userAgent || null,
+    // Which user_data fields were hashed and sent to Meta
+    user_data_fields: Object.keys(user_data).join(","),
   });
 
   const res = await fetch(`${GRAPH_URL}?access_token=${token}`, {
@@ -143,11 +152,26 @@ export async function POST(req: NextRequest) {
   const data = await res.json();
 
   if (!res.ok) {
-    log("error", { type: "capi_meta_error", eventName, eventId, meta_error: data });
+    log("error", {
+      type: "capi_meta_error",
+      eventName,
+      eventId,
+      http_status: res.status,
+      meta_error_code: data?.error?.code ?? null,
+      meta_error_message: data?.error?.message ?? null,
+      meta_error_type: data?.error?.type ?? null,
+      raw: data,
+    });
     return NextResponse.json({ error: data }, { status: 502 });
   }
 
-  log("info", { type: "capi_success", eventName, eventId, events_received: data.events_received });
+  log("info", {
+    type: "capi_success",
+    eventName,
+    eventId,
+    events_received: data.events_received,
+    fbtrace_id: data.fbtrace_id ?? null,
+  });
   return NextResponse.json({
     ok: true,
     events_received: data.events_received,

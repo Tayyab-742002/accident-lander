@@ -201,13 +201,20 @@ export async function POST(req: NextRequest) {
     leadId: body.leadId ?? null,
     value: saleValue,
     currency: body.currency,
-    state: body.state ?? null,
+    // Contact fields
     email: body.email || null,
     phone: body.phone || null,
-    fbp: body.fbp || null,
-    fbc: body.fbc || null,
+    fullName: body.fullName || null,
+    city: body.city || null,
+    state: body.state || null,
+    zip: body.zip || null,
     ip: clientIpAddress || null,
     user_agent: body.user_agent || null,
+    // fbp / fbc
+    fbp: body.fbp || null,
+    fbc: body.fbc || null,
+    // Which user_data fields were hashed and sent to Meta
+    user_data_fields: Object.keys(user_data).join(","),
   });
 
   try {
@@ -219,11 +226,26 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
 
     if (!res.ok) {
-      log("error", { type: "lead_sold_meta_error", leadId: body.leadId ?? null, meta_error: data });
+      log("error", {
+        type: "lead_sold_meta_error",
+        leadId: body.leadId ?? null,
+        http_status: res.status,
+        meta_error_code: data?.error?.code ?? null,
+        meta_error_message: data?.error?.message ?? null,
+        meta_error_type: data?.error?.type ?? null,
+        raw: data,
+      });
       return NextResponse.json({ error: data }, { status: 502 });
     }
 
-    log("info", { type: "lead_sold_success", leadId: body.leadId ?? null, events_received: data.events_received });
+    log("info", {
+      type: "lead_sold_success",
+      leadId: body.leadId ?? null,
+      value: saleValue,
+      currency: body.currency,
+      events_received: data.events_received,
+      fbtrace_id: data.fbtrace_id ?? null,
+    });
     return NextResponse.json({
       ok: true,
       events_received: data.events_received,
