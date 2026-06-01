@@ -128,11 +128,20 @@ export default function PrivacyModal() {
                 <p className="modal-text" style={{ marginBottom: 0 }}>{t('s6Body')}</p>
               </div>
 
+              {/* California Privacy Rights (CA locale only) */}
+              {t('sCaliforniaTitle') && (
+                <div className="modal-section">
+                  <div className="modal-section-title">{t('sCaliforniaTitle')}</div>
+                  <p className="modal-text" style={{ marginBottom: 0 }}>{t('sCaliforniaBody')}</p>
+                </div>
+              )}
+
               {/* Contact */}
               <div className="modal-section">
                 <div className="modal-section-title">{t('s7Title')}</div>
                 <p className="modal-text">{t('s7Body')}</p>
                 <div className="modal-contact-email">{t('s7Email')}</div>
+                <div className="modal-contact-email" style={{ marginTop: 6 }}>{t('s7Phone')}</div>
               </div>
 
             </div>
