@@ -464,7 +464,6 @@ body::before {
   font-weight: 700;
   color: #065F46;
   margin-bottom: 3px;
-  white-space: nowrap;
 }
 
 .qualify-sub {
