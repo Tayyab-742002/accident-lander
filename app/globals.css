@@ -812,6 +812,10 @@ body::before {
   .trust-strip .trust-item:nth-child(3),
   .trust-strip .trust-item:nth-child(4) { border-bottom: none; }
   .trust-strip .trust-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  /* Shrink qualify box so title fits on one line */
+  .qualify-box { padding: 12px 14px 10px; gap: 10px; }
+  .qualify-icon-wrap { width: 36px; height: 36px; min-width: 36px; font-size: 17px; border-radius: 10px; }
+  .qualify-title { font-size: 13px; }
 }
 
 @media (min-height: 700px) and (min-width: 480px) {
