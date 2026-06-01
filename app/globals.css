@@ -460,10 +460,11 @@ body::before {
 
 .qualify-title {
   font-family: 'Sora', sans-serif;
-  font-size: 15px;
+  font-size: clamp(12.5px, 3.6vw, 15px);
   font-weight: 700;
   color: #065F46;
   margin-bottom: 3px;
+  white-space: nowrap;
 }
 
 .qualify-sub {
