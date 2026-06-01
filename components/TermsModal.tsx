@@ -166,6 +166,7 @@ export default function TermsModal() {
                 <div className="modal-section-title">{t('s11Title')}</div>
                 <p className="modal-text">{t('s11Body')}</p>
                 <div className="modal-contact-email">{t('s11Email')}</div>
+                <div className="modal-contact-email" style={{ marginTop: 6 }}>{t('s11Phone')}</div>
               </div>
 
             </div>
