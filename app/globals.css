@@ -665,6 +665,13 @@ body::before {
 
 .trust-strip .trust-item:last-child { border-right: none; }
 
+.trust-tf-img {
+  height: 22px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 /* ===== THANK YOU ===== */
 .ty-box {
   text-align: center;

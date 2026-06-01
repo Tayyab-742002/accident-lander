@@ -555,7 +555,9 @@ export default function QuizSection({ locale }: { locale: string }) {
           <div className="trust-strip">
             <div className="trust-item">{t("trustStrip.t1")}</div>
             <div className="trust-item">{t("trustStrip.t2")}</div>
-            <div className="trust-item">{t("trustStrip.t3")}</div>
+            <div className="trust-item trust-item--img">
+              <img src="/trustedform.jpeg" alt="TrustedForm Certified" className="trust-tf-img" />
+            </div>
             <div className="trust-item">{t("trustStrip.t4")}</div>
           </div>
         )}
