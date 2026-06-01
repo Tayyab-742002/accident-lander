@@ -5,6 +5,7 @@ import { generateEventId, sendCAPIEvent } from "@/lib/capi";
 import { useTranslations } from "next-intl";
 import PrivacyModal from "./PrivacyModal";
 import TermsModal from "./TermsModal";
+import DisclaimerModal from "./DisclaimerModal";
 import {
   type QuizAnswers,
   type LeadPayload,
@@ -571,6 +572,8 @@ export default function QuizSection({ locale }: { locale: string }) {
           <PrivacyModal />
           <span className="footer-sep">·</span>
           <TermsModal />
+          <span className="footer-sep">·</span>
+          <DisclaimerModal />
         </div>
         <div className="footer-copy">{t("footer.copy")}</div>
       </div>

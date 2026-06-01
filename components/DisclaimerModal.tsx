@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslations } from 'next-intl';
 
 export default function DisclaimerModal() {
@@ -26,12 +27,12 @@ export default function DisclaimerModal() {
     <>
       <button
         onClick={() => setOpen(true)}
-        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', padding: 0 }}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0 }}
       >
         {ft('disclaimerLink')}
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           className="modal-overlay"
           onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
@@ -59,7 +60,8 @@ export default function DisclaimerModal() {
             </div>
 
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

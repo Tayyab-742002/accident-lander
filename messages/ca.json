@@ -236,7 +236,7 @@
       "step3Body": "Your attorney only gets paid if you win — zero upfront fees, guaranteed."
     },
     "footer": {
-      "disclaimer": "This is a paid attorney advertisement on behalf of DK Law – Injuries, Accidents & More, located at 611 Anton Blvd, Costa Mesa, CA 92626. This website is an advertising service and not a law firm or attorney referral service. By submitting your information, you consent to be contacted by a licensed attorney or legal service provider regarding your potential case. Results may vary and prior outcomes do not guarantee similar results. Attorneys may work on a contingency fee basis, meaning no attorney fees unless there is a recovery. Submitting this form does not create an attorney-client relationship.",
+      "disclaimer": "This is a legal advertisement by DK Law - Injury, Accident, and More, a licensed California law firm. By submitting your information, you agree to be contacted by DK Law and/or its partner attorneys or legal service providers. Results may vary. Past case results do not guarantee future outcomes. Attorneys may work on a contingency fee basis — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
       "copy": "© 2026 AccidentHelpNow. All rights reserved."
     }
   },
@@ -346,7 +346,6 @@
   },
   "disclaimer": {
     "title": "Disclaimer",
-    "close": "Close",
     "sections": [
       {
         "title": "General",
@@ -380,7 +379,8 @@
         "title": "Voiceover",
         "body": "ADVERTISEMENT. DK LAW – INJURY, ACCIDENT, AND MORE, PC, IS A PERSONAL INJURY LAW FIRM, LICENSED IN CALIFORNIA. VOICEOVER IS DONE BY A PAID PROFESSIONAL SPOKESPERSON. PRIOR RESULTS DO NOT GUARANTEE A SIMILAR OUTCOME. OFFICE LOCATIONS AND ADDITIONAL INFORMATION CAN BE FOUND ON WWW.DKLAW.COM."
       }
-    ]
+    ],
+    "close": "Close"
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
