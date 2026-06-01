@@ -199,14 +199,15 @@
       "statePh": "— Seleccione su estado —",
       "submitBtn": "Obtener Mi Revisión Gratuita →",
       "submittingBtn": "Enviando...",
-      "tcpaPre": "Al enviar, acepta ser contactado por un abogado autorizado por teléfono, texto o correo usando tecnología automatizada. Sin honorarios a menos que gane. Consulte nuestra",
-      "tcpaAnd": "y",
-      "tcpaPost": "para más detalles.",
+      "tcpaPre": "Al hacer clic en \"Enviar\", acepto y consiento ser contactado por Accident Help Now, Case Settlement Now, Exclusive Leads Agency, sus empresas afiliadas, socios de marketing, socios de referencia, socios de ingesta, proveedores de servicios, vendedores y el bufete de abogados o bufetes participantes enumerados aquí y socios de marketing con respecto a mi consulta de accidente en el número de teléfono y correo electrónico que proporcioné, incluyendo por llamada telefónica, mensaje de texto y correo electrónico. Entiendo que estas comunicaciones pueden realizarse utilizando tecnología automatizada, voz pregrabada, voz artificial o un sistema de marcación automática, incluso si mi número está en una lista federal, estatal o interna de no llamar, en la medida permitida por la ley. Para leer el aviso legal completo y el consentimiento, desplácese hacia abajo o",
+      "tcpaAnd": "",
+      "tcpaPost": "",
       "errName": "Por favor ingrese su nombre completo",
       "errEmail": "Por favor ingrese un correo electrónico válido",
       "errPhone": "Por favor ingrese un número de teléfono válido de 10 dígitos",
       "errState": "Por favor seleccione su estado",
-      "errTcpa": "Por favor acepta los términos para continuar"
+      "errTcpa": "Por favor acepta los términos para continuar",
+      "tcpaClickHere": "haga clic aquí"
     },
     "trustStrip": {
       "t1": "🔒 100% Seguro",

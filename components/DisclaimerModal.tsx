@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslations } from 'next-intl';
 
-export default function DisclaimerModal() {
+export default function DisclaimerModal({ label }: { label?: string }) {
   const t  = useTranslations('disclaimer');
   const ft = useTranslations('footer');
   const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ export default function DisclaimerModal() {
         onClick={() => setOpen(true)}
         style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0 }}
       >
-        {ft('disclaimerLink')}
+        {label ?? ft('disclaimerLink')}
       </button>
 
       {open && createPortal(

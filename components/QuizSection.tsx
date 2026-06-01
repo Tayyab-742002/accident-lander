@@ -95,7 +95,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     setTimeout(() => goToStep(next), 300);
   }
 
-  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
+  async function submitForm(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submittingRef.current) return;
 
@@ -529,10 +529,9 @@ export default function QuizSection({ locale }: { locale: string }) {
                   />
                   <span className="tcpa">
                     {t("s6.tcpaPre")}{" "}
-                    <span onClick={(e) => e.stopPropagation()}><PrivacyModal /></span>
-                    {" "}{t("s6.tcpaAnd")}{" "}
-                    <span onClick={(e) => e.stopPropagation()}><TermsModal /></span>
-                    {" "}{t("s6.tcpaPost")}
+                    <span onClick={(e) => e.stopPropagation()}>
+                      <DisclaimerModal label={t("s6.tcpaClickHere")} />
+                    </span>
                   </span>
                 </label>
                 {fieldErrors.tcpa && (

@@ -199,14 +199,15 @@
       "statePh": "— Select your state —",
       "submitBtn": "Get My Free Case Review →",
       "submittingBtn": "Submitting...",
-      "tcpaPre": "By submitting, you consent to being contacted by a licensed attorney via phone, text, or email using automated technology. No fees unless you win. See our",
-      "tcpaAnd": "and",
-      "tcpaPost": "for details.",
+      "tcpaPre": "By clicking \"Submit\", I agree and consent to be contacted by Accident Help Now, Case Settlement Now, Exclusive Leads Agency, their affiliated companies, marketing partners, referral partners, intake partners, service providers, vendors, and the participating law firm or law firms listed here and marketing partners regarding my accident inquiry at the phone number and email I provided, including by phone call, text message, and email. I understand these communications may be made using automated technology, prerecorded voice, artificial voice, or an automatic telephone dialing system, even if my number is on a federal, state, or internal do not call list, to the extent permitted by law. To read the full disclaimer and consent, scroll down or",
+      "tcpaAnd": "",
+      "tcpaPost": "",
       "errName": "Please enter your full name",
       "errEmail": "Please enter a valid email address",
       "errPhone": "Please enter a valid 10-digit phone number",
       "errState": "Please select your state",
-      "errTcpa": "Please agree to the terms to continue"
+      "errTcpa": "Please agree to the terms to continue",
+      "tcpaClickHere": "click here"
     },
     "trustStrip": {
       "t1": "🔒 100% Secure",
