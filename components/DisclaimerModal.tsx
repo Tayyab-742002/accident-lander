@@ -54,7 +54,9 @@ export default function DisclaimerModal({ label }: { label?: string }) {
               {sections.map((section, i) => (
                 <div className="modal-section" key={i}>
                   <div className="modal-section-title">{section.title}</div>
-                  <p className="modal-text" style={{ marginBottom: 0 }}>{section.body}</p>
+                  {section.body.split('\n\n').map((para, j, arr) => (
+                    <p className="modal-text" style={{ marginBottom: j < arr.length - 1 ? 8 : 0 }} key={j}>{para}</p>
+                  ))}
                 </div>
               ))}
             </div>

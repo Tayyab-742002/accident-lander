@@ -335,43 +335,59 @@
     "sections": [
       {
         "title": "ADVERTISING DISCLOSURE",
-        "body": "Case Settlement Now (also known as Accident Help Now) is a legal advertising and lead generation service. We are not a law firm, attorney, or legal referral service. The information provided on this website is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed by visiting this website or submitting your information through any form on this site."
+        "body": "Case Settlement Now (also known as Accident Help Now) is a legal advertising and lead generation service. We are not a law firm, attorney, legal referral service, or legal advice provider. The information contained on this website is provided for general informational purposes only and should not be construed as legal advice. Visiting this website, communicating with us, or submitting information through any form on this website does not create an attorney-client relationship between you and Case Settlement Now (also known as Accident Help Now), Exclusive Leads Agency, or any participating attorney or law firm."
       },
       {
         "title": "ATTORNEY ADVERTISING NOTICE",
-        "body": "This website constitutes attorney advertising. Case Settlement Now (also known as Accident Help Now) connects individuals who may have legal claims with licensed attorneys and law firms in their respective states. All attorneys and law firms we work with are independently licensed to practice law in their respective jurisdictions. Case Settlement Now (also known as Accident Help Now) does not endorse, recommend, or guarantee the quality of services provided by any attorney or law firm."
+        "body": "This website constitutes attorney advertising. Case Settlement Now (also known as Accident Help Now) connects consumers who may have legal claims with licensed attorneys and law firms in their respective jurisdictions. Any attorney or law firm that may contact you is independently licensed to practice law in the applicable state or jurisdiction. Case Settlement Now (also known as Accident Help Now), Exclusive Leads Agency, and their affiliates do not endorse, recommend, or guarantee the quality, expertise, credentials, or services of any attorney or law firm."
       },
       {
-        "title": "NO GUARANTEE OF RESULTS",
-        "body": "Prior results do not guarantee a similar outcome. Every legal case is unique and depends on its own facts, circumstances, and the applicable laws of the relevant jurisdiction. Settlement amounts and verdicts shown on this website are for illustrative purposes only and are not guarantees of future results. Results achieved in past cases do not predict or guarantee results in future cases."
-      },
-      {
-        "title": "SETTLEMENT AMOUNTS DISCLOSURE",
-        "body": "Any settlement amounts, verdicts, or case results displayed on this website are meant for illustrative purposes only. These figures represent results obtained in specific cases and do not represent a guarantee, warranty, or prediction regarding the outcome of any future legal matter. Individual results will vary based on the specific facts and legal merits of each case."
+        "title": "NO ATTORNEY-CLIENT RELATIONSHIP",
+        "body": "Submission of information through this website, completion of any form, participation in any questionnaire, telephone communications, emails, text messages, or other communications with Case Settlement Now (also known as Accident Help Now) does not establish an attorney-client relationship. An attorney-client relationship can only be established through a separate written agreement between you and a licensed attorney or law firm."
       },
       {
         "title": "NO LEGAL ADVICE",
-        "body": "Nothing on this website should be construed as legal advice. The content provided is for general informational purposes only. You should consult with a qualified, licensed attorney in your jurisdiction before making any legal decisions. Submitting your information through our website does not create an attorney-client relationship between you and Case Settlement Now (also known as Accident Help Now) or any affiliated attorney or law firm."
+        "body": "Nothing contained on this website should be interpreted as legal advice, legal opinions, or legal recommendations. The content provided is intended solely for informational and educational purposes. You should consult a qualified attorney licensed in your jurisdiction regarding your specific legal situation before making any legal decisions."
+      },
+      {
+        "title": "NO GUARANTEE OF RESULTS",
+        "body": "Prior results do not guarantee a similar outcome. Every legal matter is unique and depends on its specific facts, circumstances, evidence, applicable law, and other factors. Any statements regarding settlements, verdicts, recoveries, or case outcomes are not guarantees, warranties, or predictions of future results."
+      },
+      {
+        "title": "SETTLEMENT AMOUNTS DISCLOSURE",
+        "body": "Any settlement amounts, verdicts, awards, recoveries, or case results displayed on this website are provided solely for illustrative and informational purposes. These figures reflect results achieved in specific cases and should not be interpreted as a guarantee, warranty, or prediction of the outcome of any future legal matter. Individual results will vary significantly."
       },
       {
         "title": "CONTINGENCY FEE NOTICE",
-        "body": "Attorneys who may contact you through Case Settlement Now (also known as Accident Help Now) generally work on a contingency fee basis, meaning you pay no attorney fees unless your case is successfully resolved. However, contingency fee arrangements vary by attorney and jurisdiction. You should discuss all fee arrangements directly with any attorney you choose to retain."
+        "body": "Attorneys who may contact you through Case Settlement Now (also known as Accident Help Now) generally handle personal injury matters on a contingency fee basis, meaning attorney fees are typically paid only if a recovery is obtained. However, fee structures vary by attorney, law firm, case type, and jurisdiction. You should discuss all fees, costs, and representation terms directly with the attorney or law firm you choose to retain."
       },
       {
         "title": "TCPA & COMMUNICATIONS CONSENT",
-        "body": "By submitting your information on this website, you expressly consent to be contacted by Case Settlement Now (also known as Accident Help Now) and its partners via telephone calls, emails, and text messages, including through the use of automated dialing systems, pre-recorded messages, and artificial voice messages, even if your number is listed on a federal, state, or corporate Do Not Call registry. Standard message and data rates may apply. Your consent is not a condition of any purchase or service."
+        "body": "By submitting your information through this website, you expressly consent to be contacted by Case Settlement Now (also known as Accident Help Now), Exclusive Leads Agency, their affiliated companies, marketing partners, referral partners, intake partners, service providers, vendors, and participating law firms regarding your inquiry.\n\nYou agree that such communications may be made through telephone calls, text messages (SMS), emails, prerecorded voice messages, artificial voice messages, automated technology, and automatic telephone dialing systems, even if your telephone number appears on any federal, state, or internal Do Not Call registry, to the extent permitted by applicable law.\n\nYour consent is not required as a condition of purchasing any goods or services. Standard message and data rates may apply. You may revoke your consent at any time by replying STOP to any text message, utilizing available unsubscribe mechanisms, or contacting us directly using the contact information provided below."
       },
       {
-        "title": "THIRD-PARTY LINKS & SERVICES",
-        "body": "This website may contain links to third-party websites or services. Case Settlement Now (also known as Accident Help Now) is not responsible for the content, accuracy, or privacy practices of any third-party websites. The inclusion of any link does not imply endorsement by Case Settlement Now (also known as Accident Help Now)."
+        "title": "INFORMATION SHARING & LEAD DISTRIBUTION",
+        "body": "By submitting your information, you acknowledge and agree that your information may be shared with Exclusive Leads Agency, affiliated companies, marketing partners, referral partners, intake partners, service providers, vendors, participating attorneys, and participating law firms for the purpose of evaluating your potential legal claim and contacting you regarding legal services. Not every inquiry will result in attorney representation."
       },
       {
         "title": "PRIVACY & DATA USE",
-        "body": "We collect personal information submitted through our website solely for the purpose of connecting you with licensed legal professionals. Your information may be shared with our network of attorneys, law firms, and legal service providers. We do not sell your personal information to unrelated third parties. For full details on how we collect, use, and protect your data, please refer to our Privacy Policy."
+        "body": "We collect personal information solely for purposes related to evaluating your inquiry and connecting you with attorneys, law firms, and legal service providers who may be able to assist you. We may share your information with our affiliated companies, marketing partners, referral partners, intake partners, service providers, vendors, attorneys, and law firms as described herein.\n\nWe do not sell personal information to unrelated third parties for their independent marketing purposes. Please review our Privacy Policy for additional details regarding the collection, use, storage, disclosure, and protection of your information."
+      },
+      {
+        "title": "THIRD-PARTY WEBSITES & SERVICES",
+        "body": "This website may contain links to third-party websites, services, or resources. Case Settlement Now (also known as Accident Help Now), Exclusive Leads Agency, and their affiliates are not responsible for the content, accuracy, availability, privacy practices, or policies of any third-party website or service. Inclusion of any link does not imply endorsement or recommendation."
+      },
+      {
+        "title": "NO ENDORSEMENT",
+        "body": "References to attorneys, law firms, legal services, settlements, verdicts, testimonials, reviews, or other materials on this website do not constitute endorsements, guarantees, or recommendations. Users should independently evaluate any attorney or law firm before retaining legal representation."
+      },
+      {
+        "title": "JURISDICTIONAL LIMITATIONS",
+        "body": "Legal services may not be available in all states or jurisdictions. Attorneys and law firms are licensed only in the jurisdictions in which they are authorized to practice. Any legal services offered are subject to applicable state laws, professional conduct rules, and attorney advertising regulations."
       },
       {
         "title": "CONTACT INFORMATION",
-        "body": "Case Settlement Now (also known as Accident Help Now)\nEmail: remove@lc.casesettlementnow.com\nPhone Number: +17704049406"
+        "body": "Case Settlement Now (also known as Accident Help Now)\nEmail: remove@lc.casesettlementnow.com\nPhone: +1 (770) 404-9406\n\nBy using this website or submitting your information, you acknowledge that you have read, understood, and agree to the terms of this Disclaimer, Privacy Policy, Terms of Use, and applicable consent language."
       }
     ],
     "close": "Close"
