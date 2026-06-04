@@ -25,7 +25,7 @@ import { createHash } from "crypto";
 import { log, flushLogs } from "@/lib/logger";
 
 const PIXEL_ID = process.env.META_PIXEL_ID!;
-const GRAPH_URL = `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`;
+const GRAPH_URL = `https://graph.facebook.com/v23.0/${PIXEL_ID}/events`;
 
 /** SHA-256 hash a string and lowercase-trim it first (Meta's requirement). */
 function hash(value: string): string {
