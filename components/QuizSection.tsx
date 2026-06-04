@@ -124,6 +124,32 @@ export default function QuizSection({ locale }: { locale: string }) {
     submittingRef.current = true;
     setSubmitting(true);
 
+    const [firstName, ...rest] = name.split(" ");
+    const lastName = rest.join(" ");
+
+    // Normalize phone to match CAPI exactly: digits + US country code.
+    // CAPI prepends "1" to bare 10-digit numbers, so the pixel must too —
+    // otherwise the two sides hash different strings and Meta can't match them.
+    let phoneDigits = phone.replace(/\D/g, "");
+    if (phoneDigits.length === 10) phoneDigits = "1" + phoneDigits;
+
+    // ── Fire the browser pixel CompleteRegistration IMMEDIATELY ──────────
+    // Do this BEFORE any network call (IP lookup, CRM) so the pixel event is
+    // never gated behind or lost to async latency. Set advanced matching via
+    // fbq('init') first to maximize Event Match Quality, then track.
+    const eventId = generateEventId();
+    const pixelId = getPixelConfig(locale).metaPixelId;
+    if (pixelId && typeof window.fbq === "function") {
+      window.fbq("init", pixelId, {
+        em: email.toLowerCase().trim(),
+        ph: phoneDigits,
+        fn: firstName.toLowerCase().trim(),
+        ln: lastName.toLowerCase().trim(),
+        external_id: getExternalId() || undefined,
+      });
+    }
+    trackEvent("CompleteRegistration", {}, eventId);
+
     try {
       const ip = await getVisitorIp();
       const tf = getTrustedFormValues();
@@ -160,30 +186,6 @@ export default function QuizSection({ locale }: { locale: string }) {
       // Fire-and-forget — don't block CAPI on CRM latency
       postLead(payload).catch(() => {});
 
-      const [firstName, ...rest] = name.split(" ");
-      const lastName = rest.join(" ");
-
-      // Normalize phone to match CAPI exactly: digits + US country code.
-      // CAPI prepends "1" to bare 10-digit numbers, so the pixel must too —
-      // otherwise the two sides hash different strings and Meta can't match them.
-      let phoneDigits = phone.replace(/\D/g, "");
-      if (phoneDigits.length === 10) phoneDigits = "1" + phoneDigits;
-
-      // Update Meta Pixel advanced matching before firing CompleteRegistration
-      // Re-calling fbq('init') with user data improves Event Match Quality (EMQ)
-      const pixelId = getPixelConfig(locale).metaPixelId;
-      if (pixelId && typeof window !== "undefined" && typeof (window as Window & { fbq?: (...a: unknown[]) => void }).fbq === "function") {
-        (window as Window & { fbq?: (...a: unknown[]) => void }).fbq!("init", pixelId, {
-          em: email.toLowerCase().trim(),
-          ph: phoneDigits,
-          fn: firstName.toLowerCase().trim(),
-          ln: lastName.toLowerCase().trim(),
-          external_id: getExternalId() || undefined,
-        });
-      }
-
-      const eventId = generateEventId();
-      trackEvent("CompleteRegistration", {}, eventId);
       await sendCAPIEvent("CompleteRegistration", eventId, {
         email,
         phone,
