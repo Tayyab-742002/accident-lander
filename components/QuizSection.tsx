@@ -17,6 +17,7 @@ import {
 } from "@/lib/leadpost";
 import { trackEvent } from "@/lib/fbq";
 import { getVariantConfig } from "@/lib/variants";
+import { getPixelConfig } from "@/lib/pixels";
 
 type StepId = 1 | 2 | 3 | 4 | 5 | 6 | "ty";
 
@@ -162,6 +163,19 @@ export default function QuizSection({ locale }: { locale: string }) {
 
       const [firstName, ...rest] = name.split(" ");
       const lastName = rest.join(" ");
+
+      // Update Meta Pixel advanced matching before firing CompleteRegistration
+      // Re-calling fbq('init') with user data improves Event Match Quality (EMQ)
+      const pixelId = getPixelConfig(locale).metaPixelId;
+      if (pixelId && typeof window !== "undefined" && typeof (window as Window & { fbq?: (...a: unknown[]) => void }).fbq === "function") {
+        (window as Window & { fbq?: (...a: unknown[]) => void }).fbq!("init", pixelId, {
+          em: email.toLowerCase().trim(),
+          ph: phone.replace(/\D/g, ""),
+          fn: firstName.toLowerCase().trim(),
+          ln: lastName.toLowerCase().trim(),
+        });
+      }
+
       const eventId = generateEventId();
       trackEvent("CompleteRegistration", {}, eventId);
       await sendCAPIEvent("CompleteRegistration", eventId, {
