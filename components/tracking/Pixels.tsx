@@ -19,11 +19,31 @@ export default function Pixels({ locale }: { locale: string }) {
   const [pageViewEventId] = useState(generateEventId);
 
   useEffect(() => {
-    // Fire pixel PageView from here (not the inline script) so the
-    // event_id is guaranteed to match the CAPI event_id.
-    if (metaPixelId && typeof window.fbq === "function") {
-      window.fbq("track", "PageView", {}, { eventID: pageViewEventId });
+    // Fire the browser PageView from here (not the inline snippet) so its
+    // event_id matches the CAPI event_id for deduplication.
+    //
+    // The Meta inline snippet loads `afterInteractive`, so `window.fbq` may
+    // not exist yet when this effect first runs. Poll briefly until the fbq
+    // stub is defined, then fire exactly once — otherwise the browser
+    // PageView can be silently skipped while CAPI still fires (breaking dedup).
+    if (metaPixelId) {
+      let fired = false;
+      let attempts = 0;
+      const fire = () => {
+        if (fired) return;
+        if (typeof window.fbq === "function") {
+          fired = true;
+          window.fbq("track", "PageView", {}, { eventID: pageViewEventId });
+          return;
+        }
+        if (attempts++ < 50) {
+          window.setTimeout(fire, 100); // retry up to ~5s
+        }
+      };
+      fire();
     }
+
+    // CAPI PageView is independent of fbq readiness — always fire.
     getVisitorIp().then((ip) => {
       sendCAPIEvent("PageView", pageViewEventId, { ip });
     });

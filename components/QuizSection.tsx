@@ -164,13 +164,19 @@ export default function QuizSection({ locale }: { locale: string }) {
       const [firstName, ...rest] = name.split(" ");
       const lastName = rest.join(" ");
 
+      // Normalize phone to match CAPI exactly: digits + US country code.
+      // CAPI prepends "1" to bare 10-digit numbers, so the pixel must too —
+      // otherwise the two sides hash different strings and Meta can't match them.
+      let phoneDigits = phone.replace(/\D/g, "");
+      if (phoneDigits.length === 10) phoneDigits = "1" + phoneDigits;
+
       // Update Meta Pixel advanced matching before firing CompleteRegistration
       // Re-calling fbq('init') with user data improves Event Match Quality (EMQ)
       const pixelId = getPixelConfig(locale).metaPixelId;
       if (pixelId && typeof window !== "undefined" && typeof (window as Window & { fbq?: (...a: unknown[]) => void }).fbq === "function") {
         (window as Window & { fbq?: (...a: unknown[]) => void }).fbq!("init", pixelId, {
           em: email.toLowerCase().trim(),
-          ph: phone.replace(/\D/g, ""),
+          ph: phoneDigits,
           fn: firstName.toLowerCase().trim(),
           ln: lastName.toLowerCase().trim(),
         });
