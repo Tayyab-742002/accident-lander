@@ -30,18 +30,32 @@ export function trackEvent(
   params?:   Record<string, unknown>,
   eventId?:  string,
 ) {
-  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-    const method = STANDARD_META_EVENTS.has(eventName) ? 'track' : 'trackCustom';
-    const options = eventId ? { eventID: eventId } : undefined;
+  if (typeof window === 'undefined') return;
 
-    if (params && options) {
-      window.fbq(method, eventName, params, options);
-    } else if (params) {
-      window.fbq(method, eventName, params);
-    } else if (options) {
-      window.fbq(method, eventName, {}, options);
-    } else {
-      window.fbq(method, eventName);
+  const method = STANDARD_META_EVENTS.has(eventName) ? 'track' : 'trackCustom';
+  const options = eventId ? { eventID: eventId } : undefined;
+
+  // The Meta Pixel loads `afterInteractive`, so window.fbq may not exist yet
+  // when an early event (e.g. SubmitApplication on the first quiz click) fires.
+  // Without this wait the pixel event is silently dropped while CAPI still
+  // sends — breaking deduplication. Retry until fbq is defined (~5s cap).
+  let attempts = 0;
+  const send = () => {
+    if (typeof window.fbq === 'function') {
+      if (params && options) {
+        window.fbq(method, eventName, params, options);
+      } else if (params) {
+        window.fbq(method, eventName, params);
+      } else if (options) {
+        window.fbq(method, eventName, {}, options);
+      } else {
+        window.fbq(method, eventName);
+      }
+      return;
     }
-  }
+    if (attempts++ < 50) {
+      window.setTimeout(send, 100);
+    }
+  };
+  send();
 }
