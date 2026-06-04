@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { generateEventId, sendCAPIEvent } from "@/lib/capi";
+import { generateEventId, sendCAPIEvent, getFbCookies, getExternalId } from "@/lib/capi";
 import { useTranslations } from "next-intl";
 import PrivacyModal from "./PrivacyModal";
 import TermsModal from "./TermsModal";
@@ -12,7 +12,6 @@ import {
   postLead,
   getVisitorIp,
   getTrustedFormValues,
-  getMetaCookieValues,
   formatInquiryDate,
 } from "@/lib/leadpost";
 import { trackEvent } from "@/lib/fbq";
@@ -128,7 +127,7 @@ export default function QuizSection({ locale }: { locale: string }) {
     try {
       const ip = await getVisitorIp();
       const tf = getTrustedFormValues();
-      const { fbp, fbc } = getMetaCookieValues();
+      const { fbp, fbc } = getFbCookies();
 
       const payload: LeadPayload = {
         Was_in_accident: answers.Was_in_accident ?? "",
@@ -179,6 +178,7 @@ export default function QuizSection({ locale }: { locale: string }) {
           ph: phoneDigits,
           fn: firstName.toLowerCase().trim(),
           ln: lastName.toLowerCase().trim(),
+          external_id: getExternalId() || undefined,
         });
       }
 

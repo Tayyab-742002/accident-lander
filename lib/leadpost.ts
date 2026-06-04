@@ -93,32 +93,12 @@ export function getTrustedFormValues() {
     xxTrustedFormToken: token,
   };
 }
-
-/** Read Meta cookies for webhook passthrough fields. */
-export function getMetaCookieValues(): { fbp: string; fbc: string } {
-  const cookies = Object.fromEntries(
-    document.cookie
-      .split(";")
-      .map((cookie) => cookie.trim())
-      .filter(Boolean)
-      .map((cookie) => {
-        const [key, ...rest] = cookie.split("=");
-        return [decodeURIComponent(key), decodeURIComponent(rest.join("="))];
-      }),
-  );
-
-  // Prefer fbclid from URL — original case, millisecond timestamp (Meta spec)
-  let fbc = cookies._fbc ?? "";
-  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
-  if (fbclid) {
-    fbc = `fb.1.${Date.now()}.${fbclid}`;
-  }
-
-  return {
-    fbp: cookies._fbp ?? "",
-    fbc,
-  };
-}
+/**
+ * fbp/fbc are read from the single source of truth in lib/capi.ts
+ * (getFbCookies) so the CRM payload, browser pixel, and CAPI all agree on
+ * the same values. The previous duplicate reader here regenerated the fbc
+ * timestamp on every call, which could desync CRM and CAPI.
+ */
 
 /** Format current date as MM/DD/YYYY (matches LeadProsper example). */
 export function formatInquiryDate(): string {

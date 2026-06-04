@@ -29,6 +29,7 @@
 
 const FBP_STORAGE_KEY = "_lndr_fbp";
 const FBC_STORAGE_KEY = "_lndr_fbc";
+const EXTERNAL_ID_STORAGE_KEY = "_lndr_eid";
 const COOKIE_DAYS = 90;
 
 /** Simple unique ID for browser/CAPI event deduplication. */
@@ -121,6 +122,28 @@ const _initialFbp: string = (() => {
 })();
 
 /**
+ * Module-load: capture/generate a stable anonymous visitor ID (external_id).
+ * Persisted to localStorage so it stays consistent across page views and
+ * sessions on the same device. Passed to BOTH the browser pixel (advanced
+ * matching) and CAPI so Meta can stitch events to one visitor — the single
+ * biggest Event Match Quality (EMQ) signal we control.
+ */
+const _externalId: string = (() => {
+  if (typeof window === "undefined") return "";
+  const existing = readStorage(EXTERNAL_ID_STORAGE_KEY);
+  if (existing) return existing;
+  const id = generateEventId();
+  writeStorage(EXTERNAL_ID_STORAGE_KEY, id);
+  return id;
+})();
+
+/** Read the stable external_id (raw, unhashed). Pixel + CAPI both hash it. */
+export function getExternalId(): string {
+  if (typeof window === "undefined") return "";
+  return readStorage(EXTERNAL_ID_STORAGE_KEY) || _externalId;
+}
+
+/**
  * Read fbp/fbc at event-send time.
  * Re-reads the live _fbp cookie so we pick up any value Meta Pixel may
  * have set after module load (Meta normally reuses our cookie, but if
@@ -155,6 +178,7 @@ export async function sendCAPIEvent(
 ): Promise<void> {
   try {
     const { fbp, fbc } = getFbCookies();
+    const externalId = getExternalId();
     await fetch("/api/capi", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -167,6 +191,7 @@ export async function sendCAPIEvent(
           userAgent: navigator.userAgent,
           fbp,
           fbc: fbc || undefined,
+          externalId: externalId || undefined,
         },
       }),
     });

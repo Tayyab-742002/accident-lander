@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { useState, useEffect } from "react";
 import { getPixelConfig } from "@/lib/pixels";
-import { generateEventId, sendCAPIEvent } from "@/lib/capi";
+import { generateEventId, sendCAPIEvent, getExternalId } from "@/lib/capi";
 import { getVisitorIp } from "@/lib/leadpost";
 
 declare global {
@@ -33,6 +33,10 @@ export default function Pixels({ locale }: { locale: string }) {
         if (fired) return;
         if (typeof window.fbq === "function") {
           fired = true;
+          // Apply external_id advanced matching before PageView so it (and
+          // every later event) carries the stable visitor ID for matching.
+          const eid = getExternalId();
+          if (eid) window.fbq("init", metaPixelId, { external_id: eid });
           window.fbq("track", "PageView", {}, { eventID: pageViewEventId });
           return;
         }

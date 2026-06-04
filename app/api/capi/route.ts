@@ -48,6 +48,7 @@ interface CAPIRequestBody {
     userAgent?: string;
     fbp?: string;
     fbc?: string;
+    externalId?: string;
   };
 }
 
@@ -102,6 +103,10 @@ export async function POST(req: NextRequest) {
   if (fbp) user_data.fbp = fbp;
   if (fbc) user_data.fbc = fbc;
 
+  // Stable anonymous visitor ID — hashed to match the browser pixel, which
+  // auto-hashes external_id passed via advanced matching.
+  if (userData.externalId) user_data.external_id = hash(userData.externalId);
+
   if (userData.state) user_data.st = hash(userData.state);
   // US-only lander — always send country for EMQ
   user_data.country = hash("us");
@@ -140,6 +145,7 @@ export async function POST(req: NextRequest) {
     fbc: fbc || null,
     fbp_source: userData.fbp ? "client" : fbp ? "cookie" : "none",
     fbc_source: userData.fbc ? "client" : fbc ? "cookie" : "none",
+    externalId: userData.externalId || null,
     // Which user_data fields were hashed and sent to Meta
     user_data_fields: Object.keys(user_data).join(","),
   });
