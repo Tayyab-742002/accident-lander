@@ -5,14 +5,6 @@
   "advBar": {
     "text": "⚖ ADVERTISING MATERIAL — This is a paid legal advertisement"
   },
-  "firmHeader": {
-    "namePrefix": "DK",
-    "nameAccent": "LAW",
-    "tagline": "Injuries, Accidents & More",
-    "address1": "611 Anton Blvd",
-    "address2": "Costa Mesa, CA 92626",
-    "badge": "CA Licensed"
-  },
   "hero": {
     "urgency": "California Statute of Limitations — Act Now",
     "headline1": "The Insurance Company",
@@ -206,7 +198,6 @@
     "trustStrip": {
       "t1": "🔒 100% Secure",
       "t2": "💼 No Upfront Cost",
-      "t3": "⚖️ Licensed Attorneys",
       "t4": "⭐ 4.9/5 Rating"
     },
     "thankyou": {
@@ -256,14 +247,12 @@
   },
   "footer": {
     "firmLabel": "⚖ Advertising Attorney / Law Firm",
-    "firmName": "DK Law – Injuries, Accidents and More",
     "firmAddr": "611 Anton Blvd, Costa Mesa, CA 92626\nLicensed by the State Bar of California",
     "firmLic": "This advertisement was paid for by DK Law. This is advertising material.",
     "disclaimer": "This is a legal advertisement by DK Law - Injury, Accident, and More, a licensed California law firm. By submitting your information, you agree to be contacted by DK Law and/or its partner attorneys or legal service providers. Results may vary. Past case results do not guarantee future outcomes. Attorneys may work on a contingency fee basis — no fees unless you win. No attorney-client relationship is formed by submitting this form.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "disclaimerLink": "Disclaimer",
-    "copy": "© 2026 DK Law – Injuries, Accidents and More. All rights reserved."
+    "disclaimerLink": "Disclaimer"
   },
   "terms": {
     "title": "Terms of Service",
