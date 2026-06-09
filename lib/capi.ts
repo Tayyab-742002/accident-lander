@@ -179,13 +179,18 @@ export async function sendCAPIEvent(
   try {
     const { fbp, fbc } = getFbCookies();
     const externalId = getExternalId();
+    // Send only origin + path as the event source URL. The query string
+    // (fbclid + UTM params) is not needed for attribution — fbc/fbp/external_id
+    // carry that — and Meta restricts "parts of URLs after the domain". Keep
+    // the data we send minimal and aggregated.
+    const sourceUrl = `${window.location.origin}${window.location.pathname}`;
     await fetch("/api/capi", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         eventName,
         eventId,
-        sourceUrl: window.location.href,
+        sourceUrl,
         userData: {
           ...userData,
           userAgent: navigator.userAgent,
