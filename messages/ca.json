@@ -116,24 +116,24 @@
       ]
     },
     "s3": {
-      "question": "Did you receive medical treatment following the accident?",
+      "question": "What level of physical evaluation did you receive?",
       "hint": "(Select the option that best applies.)",
       "options": [
         {
-          "label": "Emergency Room",
-          "sub": ""
+          "label": "Emergency Evaluation",
+          "sub": "Immediate acute or transport assessment"
         },
         {
-          "label": "Urgent Care / Specialist",
-          "sub": ""
+          "label": "Walk-In / Specialist",
+          "sub": "Follow-up clinic or diagnostic review"
         },
         {
-          "label": "Minor Treatment Only",
-          "sub": ""
+          "label": "Minor Evaluation Only",
+          "sub": "First-aid or minimal physical impact"
         },
         {
-          "label": "No Medical Treatment",
-          "sub": "",
+          "label": "No Physical Evaluation",
+          "sub": "Strictly vehicle or property damage",
           "dq": true
         }
       ]

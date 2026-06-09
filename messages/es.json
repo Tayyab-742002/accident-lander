@@ -105,24 +105,24 @@
       ]
     },
     "s3": {
-      "question": "¿Recibió tratamiento médico después del accidente?",
+      "question": "¿Qué nivel de evaluación física recibió?",
       "hint": "(Seleccione la opción que mejor aplique.)",
       "options": [
         {
-          "label": "Sala de Emergencias",
-          "sub": ""
+          "label": "Evaluación de Emergencia",
+          "sub": "Evaluación aguda inmediata o de transporte"
         },
         {
-          "label": "Atención de Urgencia / Especialista",
-          "sub": ""
+          "label": "Consulta sin Cita / Especialista",
+          "sub": "Clínica de seguimiento o revisión diagnóstica"
         },
         {
-          "label": "Solo Tratamiento Menor",
-          "sub": ""
+          "label": "Solo Evaluación Menor",
+          "sub": "Primeros auxilios o impacto físico mínimo"
         },
         {
-          "label": "Sin Tratamiento Médico",
-          "sub": "",
+          "label": "Sin Evaluación Física",
+          "sub": "Estrictamente daño al vehículo o a la propiedad",
           "dq": true
         }
       ]
