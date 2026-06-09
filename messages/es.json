@@ -42,7 +42,6 @@
     "complete": "¡Completado!",
     "progressComplete": "Completado",
     "backBtn": "Regresar",
-    "dqStep": "En revisión",
     "stepOf": "Paso {step} de {total}",
     "topnav": {
       "logo": "AccidentHelpNow",
@@ -168,22 +167,6 @@
           "dq": true
         }
       ]
-    },
-    "dqTime": {
-      "title": "Es posible que no podamos ayudarle",
-      "msg": "Las reclamaciones de más de 12 meses a menudo quedan fuera del estatuto de limitaciones en la mayoría de los estados. Le recomendamos hablar con un abogado local para confirmar sus opciones — puede que aún haya una solución según su estado."
-    },
-    "dqInjury": {
-      "title": "¡Nos alegra que esté bien!",
-      "msg": "Dado que no se lesionó, probablemente no hay una reclamación de lesiones personales que perseguir. Sin embargo, si experimentó algún dolor o síntoma después — incluso leve — puede que valga la pena una consulta rápida con un abogado."
-    },
-    "dqFault": {
-      "title": "No podemos proceder con este caso",
-      "msg": "Si usted tuvo toda la culpa, no es posible presentar una reclamación de lesiones personales contra la otra parte. Sin embargo, puede que aún tenga opciones — consulte con un abogado local que pueda revisar todos los detalles de su situación."
-    },
-    "dqAttorney": {
-      "title": "¡Usted ya está en buenas manos!",
-      "msg": "Dado que ya tiene representación legal, no podemos asistirle en este momento. Si no está satisfecho con su abogado actual o quiere una segunda opinión, no dude en volver — trabajamos con abogados de accidentes altamente calificados en todo el país."
     },
     "qualify": {
       "title": "¡Apresúrese! Solo Quedan Algunos Lugares Hoy",

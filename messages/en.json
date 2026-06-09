@@ -42,7 +42,6 @@
     "complete": "Complete!",
     "progressComplete": "Complete",
     "backBtn": "Go back",
-    "dqStep": "Under Review",
     "stepOf": "Step {step} of {total}",
     "topnav": {
       "logo": "AccidentHelpNow",
@@ -168,22 +167,6 @@
           "dq": true
         }
       ]
-    },
-    "dqTime": {
-      "title": "We may not be able to help",
-      "msg": "Claims older than 12 months often fall outside the statute of limitations in most states. We recommend speaking with a local attorney to confirm your options — there may still be a path forward depending on your state."
-    },
-    "dqInjury": {
-      "title": "We're glad you're okay!",
-      "msg": "Since you weren't injured, there likely isn't a personal injury claim to pursue. However, if you experienced any pain or symptoms in the days after — even mild ones — it may still be worth a quick consultation with an attorney."
-    },
-    "dqFault": {
-      "title": "We can't proceed with this case",
-      "msg": "If you were fully at fault, pursuing a personal injury claim against the other party isn't possible. However, you may still have options — consult with a local attorney who can review the full details of your situation."
-    },
-    "dqAttorney": {
-      "title": "You're already in good hands",
-      "msg": "Since you already have legal representation, we can't assist at this time. If you're unhappy with your current attorney or want a second opinion, feel free to come back — we work with top-rated accident lawyers across the country."
     },
     "qualify": {
       "title": "Hurry! Only a Few Spots Left Today",
