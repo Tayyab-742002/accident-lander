@@ -184,6 +184,10 @@ export async function sendCAPIEvent(
     // carry that — and Meta restricts "parts of URLs after the domain". Keep
     // the data we send minimal and aggregated.
     const sourceUrl = `${window.location.origin}${window.location.pathname}`;
+    // Forward a test_event_code ONLY when present in the URL (?test_event_code=…).
+    // Real visitors never have it, so production data is never polluted.
+    const testEventCode =
+      new URLSearchParams(window.location.search).get("test_event_code") || undefined;
     await fetch("/api/capi", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -191,6 +195,7 @@ export async function sendCAPIEvent(
         eventName,
         eventId,
         sourceUrl,
+        testEventCode,
         userData: {
           ...userData,
           userAgent: navigator.userAgent,

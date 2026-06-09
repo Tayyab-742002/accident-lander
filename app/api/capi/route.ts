@@ -36,6 +36,7 @@ interface CAPIRequestBody {
   eventName: string;
   eventId: string;
   sourceUrl: string;
+  testEventCode?: string;
   userData?: {
     email?: string;
     phone?: string;
@@ -66,7 +67,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { eventName, eventId, sourceUrl, userData = {} } = body;
+  const { eventName, eventId, sourceUrl, userData = {}, testEventCode } = body;
 
   const ALLOWED_EVENTS = [
     "PageView",
@@ -110,7 +111,10 @@ export async function POST(req: NextRequest) {
   if (userData.state) user_data.st = hash(userData.state);
   // US-only lander — always send country for EMQ
   user_data.country = hash("us");
-  const payload = {
+  const payload: {
+    data: Array<Record<string, unknown>>;
+    test_event_code?: string;
+  } = {
     data: [
       {
         event_name: eventName,
@@ -121,9 +125,14 @@ export async function POST(req: NextRequest) {
         user_data,
       },
     ],
-    // Uncomment to use test event tool in Events Manager:
-    // test_event_code: 'TEST12345',
   };
+
+  // Only present when the visitor explicitly added ?test_event_code=... to the
+  // URL. Routes the event to Events Manager → Test Events instead of production
+  // reporting, so manual QA never pollutes real optimization data.
+  if (testEventCode) {
+    payload.test_event_code = testEventCode;
+  }
 
   log("info", {
     type: "capi_request",
@@ -146,6 +155,7 @@ export async function POST(req: NextRequest) {
     fbp_source: userData.fbp ? "client" : fbp ? "cookie" : "none",
     fbc_source: userData.fbc ? "client" : fbc ? "cookie" : "none",
     externalId: userData.externalId || null,
+    testEventCode: testEventCode || null,
     // Which user_data fields were hashed and sent to Meta
     user_data_fields: Object.keys(user_data).join(","),
   });
