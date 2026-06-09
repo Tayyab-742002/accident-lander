@@ -113,11 +113,11 @@
         },
         {
           "label": "Walk-In / Specialist",
-          "sub": "Follow-up clinic or diagnostic review"
+          "sub": "Follow-up assessment or specialist review"
         },
         {
           "label": "Minor Evaluation Only",
-          "sub": "First-aid or minimal physical impact"
+          "sub": "Initial documentation or minimal physical impact"
         },
         {
           "label": "No Physical Evaluation",
@@ -222,7 +222,7 @@
     "step3Desc": "You pay nothing unless your case is won."
   },
   "reviews": {
-    "label": "What Accident Victims Are Saying",
+    "label": "What Drivers & Passengers Are Saying",
     "items": [
       {
         "text": "\"I thought my fender bender wasn't worth pursuing. The attorney they connected me with got me $43,000. I never would have known if I hadn't filled out this form.\"",
@@ -409,7 +409,7 @@
       "Usage Data"
     ],
     "s2UsageTitle": "Usage Data",
-    "s2UsageBody": "Usage Data is automatically collected when you use the Service and may include your IP address, browser type, browser version, pages visited, time spent on pages, device identifiers, and diagnostic data.",
+    "s2UsageBody": "Usage Data is automatically collected when you use the Service and may include your IP address, browser type, browser version, pages visited, time spent on pages, device identifiers, and technical data.",
     "s2CookiesTitle": "Tracking Technologies and Cookies",
     "s2CookiesBody": "We use cookies and similar tracking technologies to monitor activity on our Service and store certain information. We use both session and persistent cookies for various purposes.",
     "s2UseTitle": "Use of Your Personal Data",
