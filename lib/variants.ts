@@ -56,22 +56,6 @@ const variants: Record<string, VariantConfig> = {
     footerAttAdvLink: false,
     stateOptions: ALL_STATES,
   },
-  es: {
-    sections: {
-      advDisclosureBar: false,
-      firmHeader: false,
-      hero: false,
-      quiz: true,
-      howItWorks: false,
-      reviews: false,
-      trustedIndicator: false,
-      footer: false,
-    },
-    footerFirmBlock: false,
-    footerCcpaLink: false,
-    footerAttAdvLink: false,
-    stateOptions: ALL_STATES,
-  },
   ca: {
     sections: {
       advDisclosureBar: false,
