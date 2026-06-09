@@ -61,121 +61,121 @@
     },
     "header": {
       "eyebrow": "🔒 Free & Confidential Case Calculator",
-      "title": "Find Out What Your California Accident Case Is ",
-      "titleEm": "Really Worth",
-      "sub1": "Get a fast attorney-backed estimate. If you qualify, most people get up to ",
-      "subStrong": "70% more",
-      "sub2": " + you'll never pay out of pocket."
+      "title": "Your Accident Claim Could Be Worth More Than ",
+      "titleEm": "You Think",
+      "sub1": "Insurance companies don't always offer the full value of a claim. Complete this quick ",
+      "subStrong": "60-second",
+      "sub2": " review to see whether you may qualify to discuss your case and potential compensation options."
     },
     "socialProof": {
       "text": "2,200+ accident victims helped — avg. review in under 4 mins"
     },
     "s1": {
-      "question": "What type of accident were you in?",
-      "hint": "Select the option that best describes your situation.",
+      "question": "What type of accident were you involved in?",
+      "hint": "(Even passengers may qualify.)",
       "options": [
         {
-          "label": "Car or Truck Accident",
-          "sub": "Collision with another vehicle"
+          "label": "Vehicle Collision",
+          "sub": "Car, truck, or another vehicle"
         },
         {
-          "label": "Motorcycle Accident",
-          "sub": "Bike collision or road incident"
+          "label": "Motorcycle Incident",
+          "sub": "Motorcycle or road-related accident"
         },
         {
-          "label": "Rideshare Accident",
-          "sub": "Uber, Lyft or delivery driver"
+          "label": "Rideshare Situation",
+          "sub": "Uber, Lyft, or delivery driver involved"
         },
         {
-          "label": "Pedestrian / Cyclist",
-          "sub": "Hit while walking or cycling"
+          "label": "Pedestrian or Cyclist",
+          "sub": "Involved while walking or cycling"
         }
       ]
     },
     "s2": {
-      "question": "When did the accident happen?",
-      "hint": "California's statute of limitations is 2 years — act before time runs out.",
+      "question": "When did the accident occur?",
+      "hint": "(Select the timeframe that applies.)",
       "options": [
         {
-          "label": "Within the last month",
-          "sub": "Recent — strong case window"
+          "label": "Within the last 30 days",
+          "sub": ""
         },
         {
-          "label": "1 to 3 months ago",
-          "sub": "Still within claim window"
+          "label": "1 to 6 months ago",
+          "sub": ""
         },
         {
-          "label": "4 to 12 months ago",
-          "sub": "Act soon — time limits apply"
+          "label": "6 months to 1 year ago",
+          "sub": ""
         },
         {
-          "label": "Over a year ago",
-          "sub": "May affect eligibility",
+          "label": "More than 1 year ago",
+          "sub": "",
           "dq": true
         }
       ]
     },
     "s3": {
-      "question": "Did you receive medical treatment?",
-      "hint": "Medical documentation significantly strengthens your case.",
+      "question": "Did you receive medical treatment following the accident?",
+      "hint": "(Select the option that best applies.)",
       "options": [
         {
-          "label": "Yes — Emergency Room",
-          "sub": "Treated at ER same day or after"
+          "label": "Emergency Room",
+          "sub": ""
         },
         {
-          "label": "Yes — Doctor or Clinic",
-          "sub": "Saw a physician or specialist"
+          "label": "Urgent Care / Specialist",
+          "sub": ""
         },
         {
-          "label": "Injured but no treatment yet",
-          "sub": "Pain or symptoms but no visit"
+          "label": "Minor Treatment Only",
+          "sub": ""
         },
         {
-          "label": "Not injured",
-          "sub": "No physical harm from accident",
+          "label": "No Medical Treatment",
+          "sub": "",
           "dq": true
         }
       ]
     },
     "s4": {
-      "question": "Who was at fault for the accident?",
-      "hint": "Even partial fault cases may still qualify for compensation.",
+      "question": "Who was primarily responsible for the accident?",
+      "hint": "(This helps us find the right match for your situation.)",
       "options": [
         {
-          "label": "The other driver was at fault",
-          "sub": "They caused the accident"
+          "label": "The other party was responsible",
+          "sub": ""
         },
         {
-          "label": "Shared or unclear fault",
-          "sub": "Both parties involved"
+          "label": "Shared or unclear responsibility",
+          "sub": ""
         },
         {
-          "label": "I'm not sure",
-          "sub": "Fault hasn't been determined"
+          "label": "Not sure",
+          "sub": ""
         },
         {
-          "label": "I was at fault",
-          "sub": "I caused the accident",
+          "label": "I was responsible",
+          "sub": "",
           "dq": true
         }
       ]
     },
     "s5": {
-      "question": "Are you currently working with an attorney?",
-      "hint": "This helps us understand where you are in the process.",
+      "question": "Do you currently have professional representation?",
+      "hint": "(This helps us find the right match for your situation.)",
       "options": [
         {
-          "label": "No, I don't have one yet",
-          "sub": "Still looking for representation"
+          "label": "No, I don't have representation yet",
+          "sub": ""
         },
         {
-          "label": "I'm thinking about switching",
-          "sub": "Not fully satisfied with current one"
+          "label": "Yes, but I'm exploring other options",
+          "sub": ""
         },
         {
-          "label": "Yes, I have an attorney",
-          "sub": "Already represented",
+          "label": "I had representation but no longer do",
+          "sub": "",
           "dq": true
         }
       ]
