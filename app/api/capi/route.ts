@@ -67,7 +67,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { eventName, eventId, sourceUrl, userData = {}, testEventCode } = body;
+  const { eventName, eventId, sourceUrl, userData = {} } = body;
+
+  // Only honor a test code that matches Meta's format (TEST followed by
+  // alphanumerics). Stray or abusive ?test_event_code=… values are ignored,
+  // so they can never route real traffic into Test Events.
+  const testEventCode =
+    body.testEventCode && /^TEST[A-Za-z0-9]+$/.test(body.testEventCode)
+      ? body.testEventCode
+      : undefined;
 
   const ALLOWED_EVENTS = [
     "PageView",
