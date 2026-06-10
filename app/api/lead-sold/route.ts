@@ -182,7 +182,7 @@ export async function POST(req: NextRequest) {
   const payload = {
     data: [
       {
-        event_name: "Lead",
+        event_name: "Purchase",
         event_time: Math.floor(Date.now() / 1000),
         event_id: `lead-sold-${body.leadId ?? Date.now()}`,
         event_source_url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://accidenthelpnow.com",

@@ -4,7 +4,7 @@
  * POST /api/capi
  * Body (JSON):
  *   {
- *     eventName: 'PageView' | 'SubmitApplication' | 'CompleteRegistration',
+ *     eventName: 'PageView' | 'ViewContent' | 'Lead',
  *     eventId:   string,          // must match the browser fbq() call
  *     sourceUrl: string,          // window.location.href from the client
  *     userData?: {
@@ -79,8 +79,8 @@ export async function POST(req: NextRequest) {
 
   const ALLOWED_EVENTS = [
     "PageView",
-    "SubmitApplication",
-    "CompleteRegistration",
+    "ViewContent",
+    "Lead",
   ];
   if (!eventName || !eventId || !ALLOWED_EVENTS.includes(eventName)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });

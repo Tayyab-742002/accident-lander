@@ -86,11 +86,11 @@ export default function QuizSection({ locale }: { locale: string }) {
 
   function selectOption(updates: Partial<QuizAnswers>, next: StepId) {
     setAnswers((prev) => ({ ...prev, ...updates }));
-    // Fire SubmitApplication once on the very first quiz selection
+    // Fire ViewContent once on the very first quiz selection
     if (stepHistory.length === 1) {
       const eventId = generateEventId();
-      trackEvent("SubmitApplication", {}, eventId);
-      getVisitorIp().then((ip) => sendCAPIEvent("SubmitApplication", eventId, { ip }));
+      trackEvent("ViewContent", {}, eventId);
+      getVisitorIp().then((ip) => sendCAPIEvent("ViewContent", eventId, { ip }));
     }
     setTimeout(() => goToStep(next), 300);
   }
@@ -148,7 +148,7 @@ export default function QuizSection({ locale }: { locale: string }) {
         external_id: getExternalId() || undefined,
       });
     }
-    trackEvent("CompleteRegistration", {}, eventId);
+    trackEvent("Lead", {}, eventId);
 
     try {
       const ip = await getVisitorIp();
@@ -186,7 +186,7 @@ export default function QuizSection({ locale }: { locale: string }) {
       // Fire-and-forget — don't block CAPI on CRM latency
       postLead(payload).catch(() => {});
 
-      await sendCAPIEvent("CompleteRegistration", eventId, {
+      await sendCAPIEvent("Lead", eventId, {
         email,
         phone,
         firstName,
